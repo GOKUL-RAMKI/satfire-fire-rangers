@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CircleMarker, GeoJSON, MapContainer, Polygon, Popup, TileLayer, Tooltip, useMap } from "react-leaflet";
 import type { PathOptions } from "leaflet";
 import type { FeatureCollection } from "geojson";
 import { offsetLatLon } from "../../shared/geo.ts";
 import { CLASS_COLORS, CLASS_LABELS, TIER_LABELS } from "../../shared/labels.ts";
-import type { LandTag, PolygonCollection, PolygonFeature, SatEvent } from "../../shared/types.ts";
+import type { Dataset, LandTag, PolygonCollection, PolygonFeature, SatEvent } from "../../shared/types.ts";
 import { fmtNum, fmtTime } from "../lib/format";
+import { api } from "../lib/api";
 import { SampleBadge } from "./badges";
 
 const TILE_URL: string = import.meta.env.VITE_TILE_URL || "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -34,6 +35,59 @@ function polygonPopup(f: PolygonFeature): string {
   ]
     .filter(Boolean)
     .join("<br/>");
+}
+
+function polygonStyle(f?: { properties?: Record<string, unknown> }): PathOptions {
+  const tag = (f?.properties as PolygonFeature["properties"] | undefined)?.tag ?? "industrial";
+  const c = TAG_COLORS[tag as LandTag] ?? TAG_COLORS.industrial;
+  return { color: c, weight: 1.5, fillColor: c, fillOpacity: 0.12, dashArray: tag === "industrial" ? undefined : "4 3" };
+}
+
+/**
+ * Live (national-scale) polygon overlay: fetches only the visible viewport on
+ * pan/zoom (debounced, previous request aborted). The full layer is 225k
+ * features and must never be downloaded or rendered whole.
+ */
+function ViewportPolygons({ dataset }: { dataset: Dataset }) {
+  const map = useMap();
+  const [fc, setFc] = useState<(PolygonCollection & { truncated?: boolean }) | null>(null);
+  useEffect(() => {
+    let alive = true;
+    let timer = 0;
+    let ctrl: AbortController | null = null;
+    const load = () => {
+      ctrl?.abort();
+      ctrl = new AbortController();
+      const b = map.getBounds();
+      api
+        .polygons(dataset, [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()], ctrl.signal)
+        .then((res) => {
+          if (alive) setFc(res);
+        })
+        .catch(() => undefined);
+    };
+    const debounced = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(load, 300);
+    };
+    load();
+    map.on("moveend", debounced);
+    return () => {
+      alive = false;
+      window.clearTimeout(timer);
+      map.off("moveend", debounced);
+      ctrl?.abort();
+    };
+  }, [map, dataset]);
+  if (!fc) return null;
+  return (
+    <GeoJSON
+      key={`${fc.features.length}-${fc.features[0]?.id ?? ""}`}
+      data={fc as unknown as FeatureCollection}
+      style={(f) => polygonStyle(f as { properties?: Record<string, unknown> } | undefined)}
+      onEachFeature={(f, layer) => layer.bindPopup(polygonPopup(f as unknown as PolygonFeature))}
+    />
+  );
 }
 
 function FlyTo({ lat, lon }: { lat: number; lon: number }) {
@@ -70,6 +124,7 @@ export default function MapView({
   events,
   polygons,
   polygonSample = false,
+  dataset = "sample",
   selectedId,
   onSelect,
   height = 520,
@@ -80,6 +135,8 @@ export default function MapView({
   events: SatEvent[];
   polygons: PolygonCollection | null;
   polygonSample?: boolean;
+  /** Live dataset renders polygons per viewport (national layer); sample renders `polygons`. */
+  dataset?: Dataset;
   selectedId: string | null;
   onSelect: (id: string) => void;
   height?: number;
@@ -106,14 +163,11 @@ export default function MapView({
           <GeoJSON
             key={`${polygons.features.length}-${polygons.features[0]?.id ?? ""}`}
             data={polygons as unknown as FeatureCollection}
-            style={(f) => {
-              const tag = (f?.properties as PolygonFeature["properties"] | undefined)?.tag ?? "industrial";
-              const c = TAG_COLORS[tag];
-              return { color: c, weight: 1.5, fillColor: c, fillOpacity: 0.12, dashArray: tag === "industrial" ? undefined : "4 3" };
-            }}
+            style={(f) => polygonStyle(f as { properties?: Record<string, unknown> } | undefined)}
             onEachFeature={(f, layer) => layer.bindPopup(polygonPopup(f as unknown as PolygonFeature))}
           />
         )}
+        {showPolygons && dataset === "live" && <ViewportPolygons dataset={dataset} />}
         {ordered.flatMap((e) => {
           const isSel = e.id === selectedId;
           const { radius, path } = markerStyle(e, isSel);

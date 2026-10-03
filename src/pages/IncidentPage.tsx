@@ -119,6 +119,7 @@ export default function IncidentPage() {
           events={[event]}
           polygons={polygons}
           polygonSample={status?.polygons.sample ?? false}
+          dataset={dataset}
           selectedId={event.id}
           onSelect={() => undefined}
           height={380}

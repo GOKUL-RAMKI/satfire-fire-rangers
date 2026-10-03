@@ -8,7 +8,7 @@ import { classCounts } from "../lib/format";
 import { selectedEvent, useSatfire } from "../lib/store";
 
 export default function MapPage() {
-  const { events, polygons, status, selection, selectEvent } = useSatfire();
+  const { events, polygons, status, selection, selectEvent, dataset, loading } = useSatfire();
   const [hidden, setHidden] = useState<Set<ClassKey>>(new Set());
   const [showPolygons, setShowPolygons] = useState(true);
   const counts = useMemo(() => new Map(classCounts(events).map((c) => [c.label, c.count])), [events]);
@@ -60,6 +60,7 @@ export default function MapPage() {
           events={filtered}
           polygons={polygons}
           polygonSample={status?.polygons.sample ?? false}
+          dataset={dataset}
           selectedId={selected?.id ?? null}
           onSelect={selectEvent}
           flyToSelected={Boolean(selection)}
@@ -73,6 +74,26 @@ export default function MapPage() {
       </div>
       <div className="min-w-0 xl:col-span-2">
         {selected ? <EvidencePanel event={selected} /> : <Empty>Click a detection on the map to open its evidence panel.</Empty>}
+        {!loading && filtered.length === 0 && (
+          <div className="mt-3">
+            <Empty>
+              {dataset === "live" ? (
+                <>
+                  No live events in this pull.{" "}
+                  {status?.lastRun?.firmsError
+                    ? `FIRMS error: ${status.lastRun.firmsError}.`
+                    : status?.heartbeat.warning
+                      ? `${status.heartbeat.warning}`
+                      : !status?.firmsConfigured
+                        ? "No FIRMS key is configured on the backend."
+                        : `Last run accepted ${status?.lastRun?.accepted ?? 0} of ${status?.lastRun?.rows ?? 0} rows (${status?.lastRun?.rejected ?? 0} rejected).`}
+                </>
+              ) : (
+                "No events match the current class filter."
+              )}
+            </Empty>
+          </div>
+        )}
       </div>
     </div>
   );

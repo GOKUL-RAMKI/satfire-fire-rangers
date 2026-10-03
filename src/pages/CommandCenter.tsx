@@ -67,6 +67,7 @@ export default function CommandCenter() {
             events={events}
             polygons={polygons}
             polygonSample={status?.polygons.sample ?? false}
+            dataset={dataset}
             selectedId={selected?.id ?? null}
             onSelect={selectEvent}
           flyToSelected={Boolean(selection)}

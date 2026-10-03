@@ -202,6 +202,21 @@ test("API: login, events, review escalates Alert to Code Red, SITREP falls back 
   assert.equal((await api("/api/events?dataset=bogus", { cookie })).status, 400);
 });
 
+test("API: live polygons require a bbox; sample serves the full small layer", async () => {
+  const ok = await api("/api/auth/login", { method: "POST", body: JSON.stringify({ username: "operator", password: "pw" }) });
+  const cookie = (ok.cookie ?? "").split(";")[0];
+  assert.equal((await api("/api/polygons?dataset=live", { cookie })).status, 413);
+  assert.equal((await api("/api/polygons?dataset=live&bbox=bogus", { cookie })).status, 400);
+  const vp = await api("/api/polygons?dataset=live&bbox=68,6,98,36", { cookie });
+  assert.equal(vp.status, 200);
+  assert.ok(Array.isArray(vp.body.features));
+  assert.equal(typeof vp.body.truncated, "boolean");
+  const sample = await api("/api/polygons?dataset=sample", { cookie });
+  assert.equal(sample.status, 200);
+  assert.equal(sample.body.features.length, 19);
+  assert.equal(sample.body.truncated, false);
+});
+
 test("API: login is rate-limited after repeated failures", async () => {
   let last = 0;
   for (let i = 0; i < 7; i++) last = (await api("/api/auth/login", { method: "POST", body: JSON.stringify({ username: "x", password: "y" }) })).status;

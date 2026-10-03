@@ -58,6 +58,7 @@ export default function FacilityDetailPage() {
           events={evs}
           polygons={ownPolygons}
           polygonSample={status?.polygons.sample ?? false}
+          dataset={dataset}
           selectedId={evs[0]?.id ?? null}
           onSelect={() => undefined}
           height={360}

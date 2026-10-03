@@ -3,7 +3,7 @@
 
 import pg from "pg";
 import { polygonsOf } from "../shared/geo.ts";
-import type { Dataset, Detection, FacilityMatch, PolygonCollection } from "../shared/types.ts";
+import type { Dataset, Detection, FacilityMatch, PolygonCollection, PolygonFeature } from "../shared/types.ts";
 
 export function createPool(url: string): pg.Pool {
   return new pg.Pool({ connectionString: url, max: 5, connectionTimeoutMillis: 5000 });
@@ -92,6 +92,42 @@ export async function joinDetections(pool: pg.Pool, keys: string[], version: num
 
 export async function setSiteKeys(pool: pg.Pool, pairs: { detKey: string; siteKey: string }[]): Promise<void> {
   for (const p of pairs) await pool.query(`UPDATE firms_detections SET site_key=$2 WHERE det_key=$1`, [p.detKey, p.siteKey]);
+}
+
+/** Viewport query for the map overlay: polygons intersecting w,s,e,n, capped. */
+export async function polygonsInBbox(
+  pool: pg.Pool,
+  dataset: Dataset,
+  bbox: [number, number, number, number],
+  limit: number,
+): Promise<{ features: PolygonCollection["features"]; truncated: boolean }> {
+  const [w, s, e, n] = bbox;
+  const res = await pool.query(
+    `SELECT poly_id, tag, facility_id, facility_name, cpcb_category, source, refreshed_at, mapped_since, osm_tags,
+            ST_AsGeoJSON(ST_Multi(geom)) AS geojson
+     FROM osm_landuse
+     WHERE dataset = $1 AND geom::geography && ST_MakeEnvelope($2, $3, $4, $5, 4326)::geography
+     LIMIT ${Math.floor(limit) + 1}`,
+    [dataset, w, s, e, n],
+  );
+  const truncated = res.rows.length > limit;
+  const features = res.rows.slice(0, limit).map((r) => ({
+    type: "Feature" as const,
+    id: r.poly_id as string,
+    properties: {
+      id: r.poly_id as string,
+      tag: r.tag,
+      facilityId: r.facility_id,
+      name: r.facility_name,
+      cpcbCategory: r.cpcb_category,
+      source: r.source,
+      refreshedAt: new Date(r.refreshed_at).toISOString(),
+      mappedSince: r.mapped_since ? new Date(r.mapped_since).toISOString() : null,
+      osmTags: r.osm_tags ?? {},
+    },
+    geometry: JSON.parse(r.geojson as string) as PolygonFeature["geometry"],
+  }));
+  return { features, truncated };
 }
 
 /** Bulk-load polygons for a dataset, bump the attribution version and re-attribute stored detections. */

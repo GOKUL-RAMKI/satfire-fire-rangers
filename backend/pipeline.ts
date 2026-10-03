@@ -10,7 +10,7 @@ import { assembleEvents, attribute, type EngineResources } from "../shared/engin
 import { CLASS_LABELS, TIER_LABELS } from "../shared/labels.ts";
 import { runQualityGate } from "../shared/qualityGate.ts";
 import { generateSitrep } from "../shared/sitrep.ts";
-import { bufferFor, buildPolygonIndex, joinPoint } from "../shared/spatial.ts";
+import { bufferFor, buildPolygonIndex, featuresInBbox, joinPoint, VIEWPORT_MAX } from "../shared/spatial.ts";
 import type {
   AlertKind,
   AlertRecord,
@@ -29,8 +29,8 @@ import type { Config } from "./config.ts";
 import type { Dispatcher } from "./dispatch.ts";
 import { fetchFirms } from "./firms.ts";
 import type { Phraser } from "./llm.ts";
-import { loadLiveLayer } from "./livePolygons.ts";
-import { attributionVersion, insertDetections, joinDetections, loadPolygons, polygonCount, setSiteKeys } from "./postgis.ts";
+import { loadLiveLayer, liveLayerIndex } from "./livePolygons.ts";
+import { attributionVersion, insertDetections, joinDetections, loadPolygons, polygonCount, polygonsInBbox, setSiteKeys } from "./postgis.ts";
 import { loadSample, type SampleBundle } from "./sampleData.ts";
 import { alertId, type Store } from "./store.ts";
 
@@ -281,7 +281,20 @@ export function createPipeline(deps: {
     run: (dataset: Dataset, opts: { refetch?: boolean } = {}) => queued(() => run(dataset, opts)),
     events,
     status,
-    polygons: (dataset: Dataset) => polygonsFor(dataset).fc,
+    polygons: async (dataset: Dataset, bbox: [number, number, number, number] | null): Promise<PolygonCollection & { truncated: boolean }> => {
+      if (dataset === "sample") {
+        const fc = polygonsFor("sample").fc;
+        const features = bbox ? featuresInBbox(buildPolygonIndex(fc, 1), bbox, VIEWPORT_MAX).features : fc.features;
+        return { ...fc, features, truncated: false };
+      }
+      if (!bbox) throw new Error("bbox is required for the live polygon layer (national scale)");
+      if (pool) {
+        const { features, truncated } = await polygonsInBbox(pool, dataset, bbox, VIEWPORT_MAX);
+        return { type: "FeatureCollection", features, truncated };
+      }
+      const { features, truncated } = featuresInBbox(liveLayerIndex(cfg.root), bbox, VIEWPORT_MAX);
+      return { type: "FeatureCollection", features, truncated };
+    },
     facilities: facilitiesFor,
     async review(dataset: Dataset, eventId: string, decision: "confirm" | "reject", note: string, by: string) {
       const ev = (await events(dataset)).find((e) => e.id === eventId);

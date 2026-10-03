@@ -111,7 +111,12 @@ export const api = {
   wind: (id: string, dataset: Dataset) => request<WindInfo>(`/api/events/${encodeURIComponent(id)}/wind${q(dataset)}`),
   alerts: (dataset?: Dataset) => request<AlertRecord[]>(`/api/alerts${q(dataset)}`),
   facilities: (dataset: Dataset) => request<Facility[]>(`/api/facilities${q(dataset)}`),
-  polygons: (dataset: Dataset) => request<PolygonCollection>(`/api/polygons${q(dataset)}`),
+  /** Live layer is national scale: pass the visible bbox. Sample needs no bbox. */
+  polygons: (dataset: Dataset, bbox?: [number, number, number, number], signal?: AbortSignal) =>
+    request<PolygonCollection & { truncated?: boolean }>(
+      `/api/polygons${q(dataset)}${bbox ? `&bbox=${bbox.map((v) => v.toFixed(4)).join(",")}` : ""}`,
+      { signal },
+    ),
   /** `null` when no report has been generated yet (404). */
   backtest: async (): Promise<BacktestReport | null> => {
     try {

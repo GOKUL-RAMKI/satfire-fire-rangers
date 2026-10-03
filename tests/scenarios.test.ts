@@ -5,6 +5,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { loadSample, sampleResources } from "../backend/sampleData.ts";
 import { runEngine } from "../shared/engine.ts";
+import { featuresInBbox } from "../shared/spatial.ts";
 
 const s = loadSample(process.cwd());
 const { res, index } = sampleResources(s);
@@ -76,4 +77,14 @@ test("cold start routes baseline-dependent calls to review, not wildfire routing
 
 test("sample thermal data is physically consistent: no I4 above saturation", () => {
   for (const r of s.rows) if (r.bright_ti4 && Number(r.bright_ti4) > 0) assert.ok(Number(r.bright_ti4) <= 367);
+});
+
+test("viewport query returns intersecting polygons and caps the set", () => {
+  const all = featuresInBbox(index, [60, 5, 100, 38], 2000);
+  assert.equal(all.features.length, s.polygons.features.length);
+  assert.equal(all.truncated, false);
+  assert.equal(featuresInBbox(index, [0, 0, 1, 1], 2000).features.length, 0);
+  const capped = featuresInBbox(index, [60, 5, 100, 38], 5);
+  assert.equal(capped.features.length, 5);
+  assert.equal(capped.truncated, true);
 });

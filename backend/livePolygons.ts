@@ -6,7 +6,7 @@
 
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { buildPolygonIndex, joinPoint } from "../shared/spatial.ts";
+import { buildPolygonIndex, joinPoint, type PolygonIndex } from "../shared/spatial.ts";
 import type { Facility, PolygonCollection, PolygonFeature } from "../shared/types.ts";
 
 export interface LiveLayer {
@@ -95,4 +95,18 @@ export function loadLiveLayer(root: string): LiveLayer {
 
 export function clearLiveLayerCache(): void {
   cache = null;
+  indexCache = null;
+}
+
+// Viewport index for the map overlay (memory fallback path): rebuilt only when
+// the underlying layer changes.
+let indexCache: { key: string; index: PolygonIndex } | null = null;
+
+export function liveLayerIndex(root: string): PolygonIndex {
+  const layer = loadLiveLayer(root);
+  const key = `${layer.source}|${layer.polygons.features.length}|${layer.refreshedAt ?? ""}`;
+  if (indexCache && indexCache.key === key) return indexCache.index;
+  const index = buildPolygonIndex(layer.polygons, 1);
+  indexCache = { key, index };
+  return index;
 }

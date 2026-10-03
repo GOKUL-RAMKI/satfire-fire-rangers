@@ -223,3 +223,25 @@ submitting, and flip the rows if they fail.**
 - Still open: GEM steel/oil/gas trackers, ESA WorldCover live fallback, India-wide real
   backtest (`to_do.md` §C). One debug-script `setval` mishap (sequence reset to 1) was caught
   and repaired during verification — repo code unaffected.
+
+## 2026-10-03 — live tab freeze + empty live mode fixed at national scale
+- Symptoms: (1) "Page Unresponsive" in live mode, (2) no live points. Root causes, both from the
+  national layer landing without a serving strategy: `DataProvider` fetched the whole 247 MB /
+  225k-feature collection on every dataset view and `MapView` rendered it as Leaflet SVG paths.
+  Empty live was the freeze masking the paint, plus `.env.local` pointing at port 5433 (another
+  project's Postgres) so the server silently fell back to file store + 6 s in-memory joins.
+- Fix: `GET /api/polygons?dataset=live` now requires `bbox=w,s,e,n` (else 413) and returns a
+  capped viewport set (2000, `truncated` flag) — PostGIS `ST_Intersects` on the geography index,
+  memory fallback via `featuresInBbox` (`shared/spatial.ts`). The map refetches per viewport on
+  pan/zoom (debounced, aborted). Sample layer (19 features) still serves whole. Facilities page
+  got search + 60/page pagination (8,140 live cards were a second DOM bomb). Map page got a
+  reason-aware live empty-state; FIRMS/heartbeat banners already existed in `StatusBanner`.
+- `.env.local` DATABASE_URL → `localhost:5434`. FIRMS key probed live: valid (day-range 1 empty,
+  day-range 2 returns rows — NRT latency, not a key problem).
+- Smoke numbers (real server, PostGIS, national layer): live pull 2,840 rows → 1,289 events;
+  `/api/events?dataset=live` 2.7 s; viewport bbox (Vijayanagar area) 279 polygons in ~700 ms;
+  full-layer request correctly 413. `backend/livePolygons.ts` gained a cached layer index.
+- Verified: typecheck, lint, `npm test` 55/55 (new: viewport-cap unit test + bbox endpoint
+  contract test incl. 413/400), `test:integration` 3/3, build, backtest unchanged (14/15 strict,
+  recall 1.00, 0 false/week). Note: the bbox API test parses the 247 MB file where present
+  (~12 s); instant on fresh clones with the focus file.

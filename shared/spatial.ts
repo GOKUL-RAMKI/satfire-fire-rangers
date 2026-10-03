@@ -87,6 +87,24 @@ export function joinPoint(index: PolygonIndex, lat: number, lon: number, bufferM
     .map((h, i) => ({ ...h, rank: i + 1 }));
 }
 
+/** Viewport query for the map overlay: features whose bbox intersects w,s,e,n. */
+export const VIEWPORT_MAX = 2000;
+
+export function featuresInBbox(
+  index: PolygonIndex,
+  bbox: [number, number, number, number],
+  limit: number = VIEWPORT_MAX,
+): { features: PolygonFeature[]; truncated: boolean } {
+  const [w, s, e, n] = bbox;
+  const out: PolygonFeature[] = [];
+  for (const { f, bbox: b } of index.features) {
+    if (b[0] > e || b[2] < w || b[1] > n || b[3] < s) continue;
+    out.push(f);
+    if (out.length > limit) return { features: out.slice(0, limit), truncated: true };
+  }
+  return { features: out, truncated: false };
+}
+
 // ---------------------------------------------------------------- WorldCover (sample layer)
 
 export interface LandcoverPoint {

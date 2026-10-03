@@ -50,11 +50,13 @@ export default function DataProvider({
     };
     (async () => {
       const errs: string[] = [];
+      // The live polygon layer is national scale (225k features): it is fetched
+      // per map viewport by MapView, never whole. Sample (19 features) loads here.
       const [st, events, facilities, polygons, alerts] = await Promise.all([
         settle("status", api.status(dataset), null, errs),
         settle("events", api.events(dataset), [] as SatEvent[], errs),
         settle("facilities", api.facilities(dataset), [] as Facility[], errs),
-        settle("polygons", api.polygons(dataset), null, errs),
+        dataset === "sample" ? settle("polygons", api.polygons(dataset), null, errs) : Promise.resolve(null),
         settle("alerts", api.alerts(dataset), [] as AlertRecord[], errs),
       ]);
       if (id !== reqId.current) return;

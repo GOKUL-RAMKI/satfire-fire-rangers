@@ -162,7 +162,23 @@ export async function startServer(overrides: Partial<Config> = {}) {
           return send(res, 200, await store.listAlerts(d ? datasetOf(d) : undefined));
         }
         if (path === "/api/facilities") return send(res, 200, pipeline.facilities(datasetOf(q.get("dataset"))));
-        if (path === "/api/polygons") return send(res, 200, pipeline.polygons(datasetOf(q.get("dataset"))));
+        if (path === "/api/polygons") {
+          const dataset = datasetOf(q.get("dataset"));
+          const raw = q.get("bbox");
+          // The live layer is national scale: it is only served per viewport.
+          // bbox=w,s,e,n in degrees; sample (19 features) needs no bbox.
+          let bbox: [number, number, number, number] | null = null;
+          if (raw !== null) {
+            const nums = raw.split(",").map(Number);
+            if (nums.length !== 4 || nums.some((v) => !Number.isFinite(v))) throw new HttpError(400, "bbox must be w,s,e,n numbers");
+            const [w, s, e, n] = nums as [number, number, number, number];
+            if (w >= e || s >= n || w < -180 || e > 180 || s < -90 || n > 90) throw new HttpError(400, "bbox must satisfy w<e, s<n within -180/180, -90/90");
+            bbox = [w, s, e, n];
+          } else if (dataset === "live") {
+            throw new HttpError(413, "bbox is required for the live polygon layer; request /api/polygons?dataset=live&bbox=w,s,e,n");
+          }
+          return send(res, 200, await pipeline.polygons(dataset, bbox));
+        }
         if (path === "/api/cpcb") return send(res, 200, JSON.parse(readFileSync(join(cfg.root, "data", "sample", "cpcb_categories.json"), "utf8")));
         if (path === "/api/backtest") {
           const p = join(cfg.root, "data", "derived", "backtest_report.json");

@@ -21,7 +21,7 @@ must show a SAMPLE DATA badge for it.
 | POST | `/api/events/:id/sitrep` | `{ dataset }` | `{ text, phrasing: "template"\|"llm", note }`. The LLM only rephrases; on failure or timeout the raw template is returned |
 | GET | `/api/alerts` | `?dataset=` (optional) | `AlertRecord[]` (DB-first records, with dispatch status) |
 | GET | `/api/facilities` | `?dataset=` | `Facility[]` |
-| GET | `/api/polygons` | `?dataset=` | GeoJSON `PolygonCollection` (facility / land-use layer) |
+| GET | `/api/polygons` | `?dataset=` + `&bbox=w,s,e,n` (**required for live**) | GeoJSON `PolygonCollection` + `truncated` flag, capped at 2000 features per viewport. Live without bbox → `413`. |
 | GET | `/api/cpcb` | — | CPCB category descriptions |
 | GET | `/api/backtest` | — | `BacktestReport` or `404` if none has been generated |
 | POST | `/api/pipeline/refresh` | `{ dataset }` | `PipelineStatus` after a manual run |

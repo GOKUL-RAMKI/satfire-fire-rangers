@@ -282,6 +282,8 @@ export interface Classification {
   codeRedRule: { satisfied: boolean; checks: { name: string; ok: boolean; detail: string }[] };
   needsReview: boolean;
   reviewReason: string | null;
+  /** Triage order inside the review queue. Null when no review is needed. */
+  reviewPriority: "high" | "medium" | "low" | null;
   action: string;
   confidence: ScoreBreakdown;
   evidenceFor: string[];

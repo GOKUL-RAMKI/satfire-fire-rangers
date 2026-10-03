@@ -245,3 +245,32 @@ submitting, and flip the rows if they fail.**
   contract test incl. 413/400), `test:integration` 3/3, build, backtest unchanged (14/15 strict,
   recall 1.00, 0 false/week). Note: the bbox API test parses the 247 MB file where present
   (~12 s); instant on fresh clones with the focus file.
+
+## 2026-10-03 — farmland-shows-as-unmapped: diagnosis, rural mapping, triage, weak-shape gate
+- The event in question (EVT-CELL-12.41-77.07, 12.4131/77.0688, single static daytime pixel,
+  FRP 2.5 MW, Dozier central 1225 °C with range 244–1225 °C): label came from exactly two
+  inputs — central-hot (≥800 °C) + `tag === null`. Kinematics never enters that rule (it fires
+  before the rule table). Answered in chat; this entry records the remedies.
+- Step 0 diagnosis (local PBF spot extract, no network): within 1.5 km only power towers/lines,
+  a village node and residential polygons ~1 km out — no farmland of any tag. The "Farmland"
+  was a tile-legend artifact. `tag === null` was correct, not a data gap.
+- Step 1 rural mapping: `farm/farmyard/meadow/orchard/vineyard/grass/plant_nursery` →
+  `farmland` in `shared/osmTags.ts` (parks/gardens stay out), mirrored in the GDAL extract
+  filter and the Overpass loader query. National farmland 108,363 → 142,748 (+34,385);
+  `db:load` v5 (259,667 polygons). Live proof: 3 agricultural events now keyed to `OSM-india`
+  farmland polygons (`agri_in_season`). Residual truth: most Indian fields are simply unmapped
+  in OSM — topology cannot fix that; steps 2–3 handle it.
+- Step 2 triage: `classification.reviewPriority` high/medium/low (null when no review needed).
+  Alert-tier review → high, except weak-thermal unmapped → low; everything else → medium.
+  Alerts review queue sorts by priority then recency; Events table shows the priority badge.
+- Step 3 gate (all had to hold, all held): single + static + unsaturated + daytime +
+  `range_wide` unmapped → `other` (`unmapped_weak_thermal`, still `needsReview`, no Alert tier).
+  Saturated pixels (real energy) and nighttime pixels (no solar contamination) stay candidates —
+  the Vapi sample is saturated, so the demo and backtest are unchanged (14/15, recall 1.00).
+  Live pull 3,122 rows / 1,398 events: unmapped alerts 28 → 11, all 11 high priority
+  (6 saturated, 5 multi-pixel); 12 demoted, every one single/static/unsaturated/low, none lost
+  from review. Old alert records for demoted events remain as history; the queue shows current labels.
+- Also fixed: Docker Desktop Windows bind mounts need the `//d/...` form (`D:/...` silently
+  mounts empty) — `scripts/load-india.ts` now builds the mount arg accordingly.
+- Verified: typecheck, lint, `npm test` 58/58 (new: rural-tag, weak-shape, priority tests),
+  `test:integration` 3/3, build, backtest. Still open: GEM trackers, WorldCover fallback.

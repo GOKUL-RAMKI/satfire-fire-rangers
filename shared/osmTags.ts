@@ -14,6 +14,14 @@ export function tagOf(t: Record<string, string>): LandTag | null {
   if (t.landuse === "quarry" || t.industrial === "mine" || t.landuse === "mine") return "quarry";
   if (t.landuse === "industrial" || t.power === "plant" || t.man_made === "works" || t.man_made === "kiln" || t.industrial === "brickyard") return "industrial";
   if (t.landuse === "farmland") return "farmland";
+  // Rural working lands that render green but are not landuse=farmland: smallholdings,
+  // farmsteads, meadows, orchards and nurseries. Parks, gardens and recreation grounds
+  // stay excluded (urban green, not burnable farmland).
+  if (
+    t.landuse === "farm" || t.landuse === "farmyard" || t.landuse === "meadow" ||
+    t.landuse === "orchard" || t.landuse === "vineyard" || t.landuse === "grass" ||
+    t.landuse === "plant_nursery"
+  ) return "farmland";
   if (t.landuse === "forest" || t.natural === "wood") return "forest";
   return null;
 }

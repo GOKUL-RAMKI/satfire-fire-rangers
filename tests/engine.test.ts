@@ -6,6 +6,7 @@ import { computeSiteHistory } from "../shared/history.ts";
 import { analyseKinematics } from "../shared/kinematics.ts";
 import { lifecycleOf, linkDetections } from "../shared/lifecycle.ts";
 import { parseAcqTime, runQualityGate } from "../shared/qualityGate.ts";
+import { tagOf } from "../shared/osmTags.ts";
 import { agriSeason, inKilnSeason } from "../shared/season.ts";
 import type { Detection, DozierResult, FirmsRow, HistoryRecord, Kinematics, SiteContext, SiteHistory } from "../shared/types.ts";
 
@@ -268,6 +269,42 @@ test("hot heat with no map match becomes unmapped_industrial_candidate at Alert 
   const c = classify(input({ context: ctx({ tag: null, tagSource: "none", match: null }), dozier: dz(1100, 0.4) }));
   assert.equal(c.label, "unmapped_industrial_candidate");
   assert.equal(c.tier, "alert");
+});
+
+test("rural working lands map to farmland; urban green stays out", () => {
+  for (const lu of ["farm", "farmyard", "meadow", "orchard", "vineyard", "grass", "plant_nursery"]) assert.equal(tagOf({ landuse: lu }), "farmland");
+  assert.equal(tagOf({ landuse: "park" }), null);
+  assert.equal(tagOf({ landuse: "garden" }), null);
+  assert.equal(tagOf({ landuse: "farmland" }), "farmland");
+});
+
+test("weak-thermal unmapped shape is held as other without Alert; saturated and night stay candidates", () => {
+  const unmapped = ctx({ tag: null, tagSource: "none", match: null });
+  const single = kin({ pattern: "single-pixel", pixels: 1, overpasses: 1 });
+  const weak = { ...dz(950, 0.05), flags: ["background_default", "daytime_reflected_solar", "range_wide"] };
+  const c = classify(input({ context: unmapped, dozier: weak, kinematics: single }));
+  assert.equal(c.label, "other");
+  assert.equal(c.tier, null);
+  assert.equal(c.needsReview, true);
+  assert.equal(c.reviewPriority, "low");
+  assert.ok(c.flags.includes("unmapped_weak_thermal"));
+  const sat = classify(input({ context: unmapped, dozier: dz(null, null, true), kinematics: single }));
+  assert.equal(sat.label, "unmapped_industrial_candidate");
+  assert.equal(sat.tier, "alert");
+  const night = { ...dz(950, 0.05), flags: ["background_default", "range_wide"] };
+  const nc = classify(input({ context: unmapped, dozier: night, kinematics: single }));
+  assert.equal(nc.label, "unmapped_industrial_candidate");
+  assert.equal(nc.tier, "alert");
+  assert.equal(nc.reviewPriority, "low");
+});
+
+test("review priority ranks alert-level review above routine review", () => {
+  const alert = classify(input({ dozier: dz(1100, 0.8), history: hist(null), kinematics: kin({ expanding: true, overpasses: 2, pattern: "radial-expansion" }) }));
+  assert.equal(alert.tier, "alert");
+  assert.equal(alert.needsReview, true);
+  assert.equal(alert.reviewPriority, "high");
+  const prov = classify(input({ heldByGate: true }));
+  assert.equal(prov.reviewPriority, "medium");
 });
 
 test("unsolvable non-saturated or gate-held detections are provisional", () => {

@@ -94,11 +94,24 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
     flags: [...flags, ...extraFlags.filter((f): f is string => Boolean(f))],
     trace: [],
   });
+  // A hot unmapped pixel whose temperature is itself uncertain — single static daytime
+  // pixel, unsaturated, wide Dozier range — is held for review WITHOUT Alert tier.
+  // Saturated pixels carry real energy however wide the range, and nighttime pixels have
+  // no solar contamination, so both stay unmapped candidates (e.g. the Vapi sample).
+  const weakUnmappedShape =
+    c.tag === null &&
+    hot &&
+    !d.saturated &&
+    !k.expanding &&
+    (k.pixels <= 1) &&
+    d.flags.includes("daytime_reflected_solar") &&
+    d.flags.includes("range_wide");
   // Provisional holds never silently drop the industrial signal: a hot, unmapped
   // detection held for low confidence stays provisional (never auto-escalated) but
   // carries the flag so reviewers see what it would otherwise have become.
   if (input.heldByGate) return early("provisional", "held_low_confidence", c.tag === null && hot ? "hot_unmapped_while_provisional" : undefined);
   if (d.tfCentralC === null && !d.saturated) return early("provisional", `dozier_${d.status}`);
+  if (weakUnmappedShape) return early("other", "unmapped_weak_thermal");
   if (c.tag === null && hot) {
     // Live mode has no land-cover fallback, so an unmapped call there rests on
     // polygon absence alone — say so explicitly instead of looking certain.
@@ -269,6 +282,11 @@ function evidence(input: ClassifyInput, season: SeasonInfo | null) {
   if (input.partialHold) a.push("Mixed confidence: some pixels held by the quality gate — classification is less certain");
   if (input.heldByGate && c.tag === null && hot)
     a.push("Hot unmapped signature held provisional for low confidence — review as potential industrial heat, never auto-escalated");
+  if (
+    c.tag === null && hot && !d.saturated && !k.expanding && k.pixels <= 1 &&
+    d.flags.includes("daytime_reflected_solar") && d.flags.includes("range_wide")
+  )
+    a.push("Weak-thermal unmapped shape (single static daytime pixel, wide Dozier range) — held for review without Alert tier");
   if (c.runnerUps.length) a.push(`Ambiguous attribution: ${c.runnerUps.length} runner-up polygon(s) within buffer`);
   if (h.coldStart) a.push(`Cold start: ${h.coldStartReason} — routed to manual review`);
   else f.push(`Site history ${h.pattern}: ${h.activeDays} active days, baseline ${h.baselineFrpMW} MW, current ${h.currentFrpMW} MW (${h.deviationX}×)`);
@@ -333,7 +351,9 @@ export function classify(input: ClassifyInput): Classification {
   if (r.flags.includes("hot_unmapped_while_provisional"))
     reviewReasons.push("hot unmapped signature held for low confidence");
   if (r.flags.includes("partial_gate_hold")) reviewReasons.push("mixed-confidence pixels (partial gate hold)");
-  if (r.label === "other") reviewReasons.push("fits no class");
+  if (r.label === "other" && r.flags.includes("unmapped_weak_thermal"))
+    reviewReasons.push("weak-thermal unmapped signature (single static daytime pixel, wide Dozier range)");
+  else if (r.label === "other") reviewReasons.push("fits no class");
   if (r.label === "unmapped_industrial_candidate") reviewReasons.push("unmapped industrial-like heat");
   if (r.fired.includes("persistent_source_unverified") && r.winningRule === "persistent_source_unverified")
     reviewReasons.push("persistent signature without a baseline (never auto-whitelisted)");
@@ -345,6 +365,26 @@ export function classify(input: ClassifyInput): Classification {
     reviewReasons.push(`cold-start site (${input.history.coldStartReason ?? "no baseline"})`);
   if (r.flags.includes("kiln_off_season")) reviewReasons.push("kiln heat outside operating season");
   const needsReview = !review && reviewReasons.length > 0;
+
+  // Triage order for the review queue. A hot unmapped alert is normally highest
+  // priority — except the weak-thermal shape (single static pixel, daytime and/or
+  // wide Dozier range, never saturated), which sorts last but is still reviewed.
+  let reviewPriority: "high" | "medium" | "low" | null = null;
+  if (needsReview) {
+    const weakThermal =
+      !input.dozier.saturated &&
+      !input.kinematics.expanding &&
+      input.kinematics.pixels <= 1 &&
+      (input.dozier.flags.includes("daytime_reflected_solar") || input.dozier.flags.includes("range_wide"));
+    reviewPriority =
+      tier === "alert" || tier === "code_red"
+        ? r.label === "unmapped_industrial_candidate" && weakThermal
+          ? "low"
+          : "high"
+        : r.flags.includes("unmapped_weak_thermal")
+          ? "low"
+          : "medium";
+  }
 
   const ev = evidence(input, season);
   return {
@@ -358,6 +398,7 @@ export function classify(input: ClassifyInput): Classification {
     codeRedRule: cr,
     needsReview,
     reviewReason: needsReview ? reviewReasons.join("; ") : null,
+    reviewPriority,
     action: CLASS_ACTIONS[r.label],
     confidence: score(r.label, input, season),
     evidenceFor: ev.f,

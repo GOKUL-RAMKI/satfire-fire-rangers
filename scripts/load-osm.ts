@@ -37,7 +37,7 @@ const bboxes: { name: string; bbox: [number, number, number, number] }[] = [
 const query = (b: [number, number, number, number]) => {
   const bb = `${b[1]},${b[0]},${b[3]},${b[2]}`; // Overpass wants s,w,n,e
   return `[out:json][timeout:180];(
-  way["landuse"~"^(industrial|quarry|farmland|forest)$"](${bb});
+  way["landuse"~"^(industrial|quarry|farmland|forest|farm|farmyard|meadow|orchard|vineyard|grass|plant_nursery)$"](${bb});
   relation["landuse"~"^(industrial|quarry|forest)$"](${bb});
   way["natural"="wood"](${bb});
   way["power"="plant"](${bb}); relation["power"="plant"](${bb});

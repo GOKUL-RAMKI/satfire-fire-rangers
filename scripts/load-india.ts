@@ -43,9 +43,11 @@ if (!skipGdal) {
   const sql =
     `SELECT osm_id, osm_way_id, landuse, natural, power, man_made, industrial, name,` +
     ` operator, product, company, other_tags FROM multipolygons WHERE landuse IN` +
-    ` ('industrial','quarry','farmland','forest') OR natural = 'wood' OR power = 'plant'` +
+    ` ('industrial','quarry','farmland','forest','farm','farmyard','meadow','orchard',` +
+    ` 'vineyard','grass','plant_nursery') OR natural = 'wood' OR power = 'plant'` +
     ` OR man_made IN ('works','kiln') OR industrial IN ('mine','brickyard')`;
-  const dataArg = DIR.replace(/\\/g, "/");
+  // Docker Desktop on Windows only shares the //d/... mount form reliably here.
+  const dataArg = DIR.replace(/\\/g, "/").replace(/^([A-Za-z]):/, (_m, d: string) => `//${d.toLowerCase()}`);
   console.log("gdal: filtering multipolygons (this takes a few minutes)...");
   execFileSync(
     "docker",

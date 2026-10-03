@@ -14,11 +14,22 @@ const KIND_STYLE: Record<AlertKind, string> = {
   wildfire_route: "text-orange-900 border-orange-900/50",
 };
 const KINDS: AlertKind[] = ["code_red", "alert", "watch", "wildfire_route"];
+const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 } as const;
 
 export default function AlertsPage() {
   const { alerts, events, dataset, status } = useSatfire();
   const [kind, setKind] = useState<AlertKind | "all">("all");
-  const queue = useMemo(() => events.filter((e) => e.classification.needsReview), [events]);
+  const queue = useMemo(
+    () =>
+      events
+        .filter((e) => e.classification.needsReview)
+        .sort(
+          (a, b) =>
+            (PRIORITY_ORDER[a.classification.reviewPriority ?? "medium"] - PRIORITY_ORDER[b.classification.reviewPriority ?? "medium"]) ||
+            b.lastDetected.localeCompare(a.lastDetected),
+        ),
+    [events],
+  );
   const rows = useMemo(
     () => [...alerts].filter((a) => kind === "all" || a.kind === kind).sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
     [alerts, kind],

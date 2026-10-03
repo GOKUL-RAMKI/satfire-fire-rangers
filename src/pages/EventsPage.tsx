@@ -42,7 +42,18 @@ export function EventsTable({ events }: { events: SatEvent[] }) {
               <td className="px-3 py-1.5 font-mono text-[11px]">{fmtTime(e.lastDetected)}</td>
               <td className="px-3 py-1.5 font-mono text-[11px]">{fmtNum(e.peakFrpMW)} MW</td>
               <td className="px-3 py-1.5 font-mono text-[11px]">{e.classification.confidence.total}/100</td>
-              <td className="px-3 py-1.5">{e.classification.needsReview ? <ReviewBadge /> : e.review ? <span className="font-mono text-[10px] text-mute">{e.review.decision}ed</span> : ""}</td>
+              <td className="px-3 py-1.5">
+                {e.classification.needsReview ? (
+                  <>
+                    <ReviewBadge />{" "}
+                    <span className="font-mono text-[10px] uppercase text-mute">{e.classification.reviewPriority ?? "medium"}</span>
+                  </>
+                ) : e.review ? (
+                  <span className="font-mono text-[10px] text-mute">{e.review.decision}ed</span>
+                ) : (
+                  ""
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

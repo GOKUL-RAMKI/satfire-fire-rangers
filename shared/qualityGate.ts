@@ -164,7 +164,7 @@ export function runQualityGate(rows: FirmsRow[], dataset: Dataset, now: Date = n
       corroboratedBy: [],
       match: null,
       runnerUps: [],
-      bufferM: 50,
+      bufferM: 150, // transient: overwritten by bufferFor() during attribution
     });
   });
 

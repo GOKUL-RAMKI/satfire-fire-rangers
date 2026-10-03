@@ -1,7 +1,9 @@
 // In-memory spatial join with the same semantics as the PostGIS query in db/schema.sql:
 //   ST_DWithin(detection, polygon, buffer) on geography, ordered by distance, top 3,
 //   rank 1 wins, ranks 2-3 are runner-ups, no rows = unmapped.
-// The fence-line buffer shrinks from 50 m to the fire radius implied by the Dozier area estimate.
+// The fence-line buffer is the Dozier fire radius clamped to a geolocation floor and
+// cap: VIIRS geolocation is ~50-100 m at nadir and worse at edge, so a few-metre
+// fire radius alone would turn near-miss polygons into false unmapped candidates.
 
 import { fireRadiusM } from "./dozier.ts";
 import { bboxOf, haversineM, pointPolygonDistanceM, polygonsOf } from "./geo.ts";
@@ -14,7 +16,7 @@ import type {
   SiteContext,
 } from "./types.ts";
 
-export const SPATIAL = { maxBufferM: 50, nominalPixelM: 375, topN: 3 };
+export const SPATIAL = { maxBufferM: 150, minBufferM: 100, nominalPixelM: 375, topN: 3 };
 
 export interface PolygonIndex {
   features: { f: PolygonFeature; polys: number[][][][]; bbox: [number, number, number, number] }[];
@@ -45,12 +47,13 @@ export function buildPolygonIndex(collection: PolygonCollection, attributionVers
   return { attributionVersion, features, grid };
 }
 
-/** Buffer for the boundary match: the Dozier fire radius, capped at 50 m; 50 m when p is unknown or saturated. */
+/** Buffer for the boundary match: Dozier fire radius clamped to [100, 150] m; 150 m when p is unknown or saturated. */
 export function bufferFor(d: Detection): number {
   const p = d.dozier.pRangePct?.[1];
   if (d.dozier.saturated || p === undefined || p === null) return SPATIAL.maxBufferM;
   const area = (d.scanKm ?? SPATIAL.nominalPixelM / 1000) * (d.trackKm ?? SPATIAL.nominalPixelM / 1000) * 1e6;
-  return Math.round(Math.min(SPATIAL.maxBufferM, fireRadiusM(p, area)) * 10) / 10;
+  const radius = fireRadiusM(p, area);
+  return Math.round(Math.min(SPATIAL.maxBufferM, Math.max(SPATIAL.minBufferM, radius)) * 10) / 10;
 }
 
 export function joinPoint(index: PolygonIndex, lat: number, lon: number, bufferM: number): FacilityMatch[] {

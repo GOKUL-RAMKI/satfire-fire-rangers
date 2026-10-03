@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS firms_detections (
   p_range_pct  NUMRANGE,
   status       TEXT DEFAULT 'ok',                    -- Dozier status
   dozier       JSONB,
-  buffer_m     DOUBLE PRECISION NOT NULL DEFAULT 50,
+   buffer_m     DOUBLE PRECISION NOT NULL DEFAULT 150,
   site_key     TEXT,                                 -- set after event assembly; feeds site history
   geom         GEOMETRY(Point, 4326) NOT NULL,
   UNIQUE (sensor, acq_time, lat, lon)                -- idempotency key

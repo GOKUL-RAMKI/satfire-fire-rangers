@@ -46,6 +46,8 @@ export const RULES = {
 export interface ClassifyInput {
   dozier: DozierResult;
   heldByGate: boolean;
+  /** Some (but not all) of the event's detections were held by the quality gate. */
+  partialHold?: boolean;
   staticSourceFlag: boolean;
   context: SiteContext;
   history: SiteHistory;
@@ -74,6 +76,9 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
   const coldStart = h.deviationX === null;
   const dev = h.deviationX ?? 0;
   if (coldStart) flags.push("cold_start_manual_review");
+  // Mixed-confidence events are still classified (only all-held events are provisional),
+  // but the uncertainty must travel with the outcome and force a review.
+  if (input.partialHold) flags.push("partial_gate_hold");
   const kilnOffSeason = c.kiln && !inKilnSeason(input.when);
   if (kilnOffSeason) flags.push("kiln_off_season");
 
@@ -82,16 +87,24 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
   const checks: [RuleId, boolean, string][] = [];
   const t = (tf: number | null) => (tf === null ? "—" : `${Math.round(tf)} °C`);
 
-  const early = (label: ClassKey, flag?: string): RuleOutcome => ({
+  const early = (label: ClassKey, ...extraFlags: (string | undefined)[]): RuleOutcome => ({
     label,
     winningRule: null,
     fired: [],
-    flags: flag ? [...flags, flag] : flags,
+    flags: [...flags, ...extraFlags.filter((f): f is string => Boolean(f))],
     trace: [],
   });
-  if (input.heldByGate) return early("provisional", "held_low_confidence");
+  // Provisional holds never silently drop the industrial signal: a hot, unmapped
+  // detection held for low confidence stays provisional (never auto-escalated) but
+  // carries the flag so reviewers see what it would otherwise have become.
+  if (input.heldByGate) return early("provisional", "held_low_confidence", c.tag === null && hot ? "hot_unmapped_while_provisional" : undefined);
   if (d.tfCentralC === null && !d.saturated) return early("provisional", `dozier_${d.status}`);
-  if (c.tag === null && hot) return early("unmapped_industrial_candidate");
+  if (c.tag === null && hot) {
+    // Live mode has no land-cover fallback, so an unmapped call there rests on
+    // polygon absence alone — say so explicitly instead of looking certain.
+    const unverified = c.worldCoverSource === "unavailable" ? "spatial_unverified_no_landcover" : undefined;
+    return early("unmapped_industrial_candidate", unverified);
+  }
 
   const industrialFire = ind && k.expanding && hot && (coldStart || dev >= RULES.breakX);
   checks.push([
@@ -238,6 +251,7 @@ function score(label: ClassKey, input: ClassifyInput, season: SeasonInfo | null)
 
 function evidence(input: ClassifyInput, season: SeasonInfo | null) {
   const { dozier: d, context: c, history: h, kinematics: k, sar } = input;
+  const hot = d.saturated || (d.tfCentralC ?? 0) >= RULES.hotC;
   const f: string[] = [];
   const a: string[] = [];
   if (d.saturated) f.push("I4 saturated — T_f is a lower bound; classification leans on saturation, FRP and footprint");
@@ -248,7 +262,13 @@ function evidence(input: ClassifyInput, season: SeasonInfo | null) {
   if (d.flags.includes("daytime_reflected_solar")) a.push("Daytime pass: I4 includes reflected sunlight");
   if (c.match) f.push(`${c.match.distanceM === 0 ? "Inside" : `${c.match.distanceM} m from`} ${c.match.name ?? c.match.polygonId} (${c.tag}, ${c.match.source})`);
   else if (c.tagSource === "worldcover") f.push(`No mapped polygon; WorldCover class "${c.worldCover}" → ${c.tag}`);
+  else if (c.tag === null && hot) f.push("Hot signature with no map match — basis for the unmapped industrial candidate call");
   else a.push("No mapped land-use polygon or land-cover class at this location");
+  if (c.tag === null && c.worldCoverSource === "unavailable")
+    a.push("No land-cover fallback in live mode — the unmapped call rests on polygon absence alone");
+  if (input.partialHold) a.push("Mixed confidence: some pixels held by the quality gate — classification is less certain");
+  if (input.heldByGate && c.tag === null && hot)
+    a.push("Hot unmapped signature held provisional for low confidence — review as potential industrial heat, never auto-escalated");
   if (c.runnerUps.length) a.push(`Ambiguous attribution: ${c.runnerUps.length} runner-up polygon(s) within buffer`);
   if (h.coldStart) a.push(`Cold start: ${h.coldStartReason} — routed to manual review`);
   else f.push(`Site history ${h.pattern}: ${h.activeDays} active days, baseline ${h.baselineFrpMW} MW, current ${h.currentFrpMW} MW (${h.deviationX}×)`);
@@ -262,6 +282,9 @@ function evidence(input: ClassifyInput, season: SeasonInfo | null) {
 }
 
 export function severityOf(label: ClassKey, tier: Tier | null): Severity {
+  // Note: unmapped candidates carry tier=alert, so they return HIGH via the tier
+  // branch above. The label branch below only applies after operator rejection
+  // (tier cleared) or if a future rule emits the label without a tier.
   if (tier === "code_red") return "CRITICAL";
   if (tier === "alert") return "HIGH";
   if (tier === "watch" || label === "wildfire") return "MEDIUM";
@@ -307,6 +330,9 @@ export function classify(input: ClassifyInput): Classification {
 
   const reviewReasons: string[] = [];
   if (r.label === "provisional") reviewReasons.push("provisional detection");
+  if (r.flags.includes("hot_unmapped_while_provisional"))
+    reviewReasons.push("hot unmapped signature held for low confidence");
+  if (r.flags.includes("partial_gate_hold")) reviewReasons.push("mixed-confidence pixels (partial gate hold)");
   if (r.label === "other") reviewReasons.push("fits no class");
   if (r.label === "unmapped_industrial_candidate") reviewReasons.push("unmapped industrial-like heat");
   if (r.fired.includes("persistent_source_unverified") && r.winningRule === "persistent_source_unverified")

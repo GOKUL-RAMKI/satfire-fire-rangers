@@ -80,9 +80,11 @@ export function buildEvents(detections: Detection[], deps: BuildEventsDeps): Sat
     });
     const kinematics = analyseKinematics(dets);
     const review = deps.reviewFor(id);
+    const heldCount = dets.filter((d) => d.gateStatus === "provisional").length;
     const base = {
       dozier: peak.dozier,
-      heldByGate: dets.every((d) => d.gateStatus === "provisional"),
+      heldByGate: heldCount === dets.length,
+      partialHold: heldCount > 0 && heldCount < dets.length,
       staticSourceFlag: dets.some((d) => d.staticSourceFlag === true),
       context,
       history,

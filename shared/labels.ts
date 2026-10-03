@@ -45,6 +45,7 @@ export const PRECEDENCE: RuleId[] = [
   "wildfire",
   "agri_off_season",
   "mining",
+  "mining_cold_start",
   "persistent_source",
   "persistent_source_unverified",
   "agri_in_season",
@@ -57,6 +58,7 @@ export const RULE_TO_CLASS: Record<RuleId, ClassKey> = {
   agri_off_season: "agricultural_fire",
   agri_in_season: "agricultural_fire",
   mining: "mining",
+  mining_cold_start: "mining",
   persistent_source: "persistent_source",
   persistent_source_unverified: "persistent_source",
 };

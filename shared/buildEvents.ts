@@ -85,6 +85,7 @@ export function buildEvents(detections: Detection[], deps: BuildEventsDeps): Sat
       dozier: peak.dozier,
       heldByGate: heldCount === dets.length,
       partialHold: heldCount > 0 && heldCount < dets.length,
+      allModis: dets.every((d) => d.instrument === "MODIS"),
       staticSourceFlag: dets.some((d) => d.staticSourceFlag === true),
       context,
       history,

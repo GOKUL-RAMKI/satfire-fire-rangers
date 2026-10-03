@@ -48,10 +48,9 @@ Status as of 2026-09-29. Deadline 30 Sep 2026. Ordered by priority. See `log.md`
   300 K default is flagged. This needs VIIRS L1B/L2 granules.
 - [ ] Assign history by space rather than exact site key for live data: attribute stored detections
   to the polygon that contains them when polygons change.
-- [ ] Seed live site baselines by running `npm run firms:history` for the monitored sites, then
-  `python analytics/site_baselines.py --history <file> --out data/derived/site_baselines_live.json`.
-  Until then, live events at monitored sites start as cold start, and the live store builds history
-  over time.
+- [x] Seed live site history with `npm run seed:history` (Jharia + Neyveli belts, 12,094 rows,
+  2026-10-03; Jharia quarries at LONG_SMEAR). Note: `firms:history` output is backtest-shaped
+  and never reaches the live pipeline; a baselines JSON alone cannot clear cold start.
 
 ## C. Data coverage
 

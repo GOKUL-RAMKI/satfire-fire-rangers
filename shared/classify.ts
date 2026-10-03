@@ -48,6 +48,8 @@ export interface ClassifyInput {
   heldByGate: boolean;
   /** Some (but not all) of the event's detections were held by the quality gate. */
   partialHold?: boolean;
+  /** Every detection in the event is MODIS (no VIIRS solve exists). */
+  allModis?: boolean;
   staticSourceFlag: boolean;
   context: SiteContext;
   history: SiteHistory;
@@ -148,6 +150,16 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
   const mining =
     c.tag === "quarry" && h.pattern === "LONG_SMEAR" && !d.saturated && (d.tfCentralC ?? Infinity) < RULES.miningMaxC;
   checks.push(["mining", mining, `quarry=${c.tag === "quarry"}, history=${h.pattern}, Tf ${t(d.tfCentralC)} (<${RULES.miningMaxC} °C), saturated=${d.saturated}`]);
+  // First-seen quarry heat with a mining thermal shape: called mining but ALWAYS
+  // reviewed — a cold start can never silently whitelist. Expanding or dispersed
+  // footprints are excluded (mine fire vs wildfire-on-mine needs a human or history).
+  const miningColdStart =
+    c.tag === "quarry" &&
+    (k.pattern === "single-pixel" || k.pattern === "static-compact") &&
+    !d.saturated &&
+    (d.tfCentralC ?? Infinity) < RULES.miningMaxC &&
+    coldStart;
+  checks.push(["mining_cold_start", miningColdStart, `quarry=${c.tag === "quarry"}, pattern=${k.pattern}, Tf ${t(d.tfCentralC)} (<${RULES.miningMaxC} °C), cold start (no baseline yet)`]);
 
   const persistentShape = ind && !k.expanding && hot && tiny && !kilnOffSeason;
   const persistent = persistentShape && !coldStart && dev < RULES.routineX;
@@ -358,6 +370,8 @@ export function classify(input: ClassifyInput): Classification {
   if (r.fired.includes("persistent_source_unverified") && r.winningRule === "persistent_source_unverified")
     reviewReasons.push("persistent signature without a baseline (never auto-whitelisted)");
   if (r.winningRule === "agri_off_season") reviewReasons.push("agricultural pattern outside the burning season");
+  if (r.winningRule === "mining_cold_start")
+    reviewReasons.push("quarry heat without a baseline — confirm mining activity (never silently whitelisted)");
   // cold start matters where a baseline decides the outcome (never auto-whitelist a site without one);
   // wildfire / agricultural calls do not rest on a site baseline
   const baselineDependent = r.label === "industrial_fire" || r.label === "persistent_source" || r.label === "mining";
@@ -387,6 +401,16 @@ export function classify(input: ClassifyInput): Classification {
   }
 
   const ev = evidence(input, season);
+  // Provisional flavor for triage (mirrors the early-return order): untrusted pixels
+  // first, then unsolved physics, then MODIS-only. Labels and tiers are untouched.
+  const provisionalKind =
+    r.label !== "provisional"
+      ? null
+      : input.heldByGate
+        ? "low_confidence"
+        : input.allModis
+          ? "modis_only"
+          : "unsolvable_cool";
   return {
     label: r.label,
     winningRule: r.winningRule,
@@ -399,6 +423,7 @@ export function classify(input: ClassifyInput): Classification {
     needsReview,
     reviewReason: needsReview ? reviewReasons.join("; ") : null,
     reviewPriority,
+    provisionalKind,
     action: CLASS_ACTIONS[r.label],
     confidence: score(r.label, input, season),
     evidenceFor: ev.f,

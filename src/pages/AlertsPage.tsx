@@ -15,6 +15,7 @@ const KIND_STYLE: Record<AlertKind, string> = {
 };
 const KINDS: AlertKind[] = ["code_red", "alert", "watch", "wildfire_route"];
 const PRIORITY_ORDER = { high: 0, medium: 1, low: 2 } as const;
+const PROVISIONAL_ORDER = { low_confidence: 0, modis_only: 1, unsolvable_cool: 2 } as const;
 
 export default function AlertsPage() {
   const { alerts, events, dataset, status } = useSatfire();
@@ -26,6 +27,8 @@ export default function AlertsPage() {
         .sort(
           (a, b) =>
             (PRIORITY_ORDER[a.classification.reviewPriority ?? "medium"] - PRIORITY_ORDER[b.classification.reviewPriority ?? "medium"]) ||
+            ((a.classification.provisionalKind ? PROVISIONAL_ORDER[a.classification.provisionalKind] : -1) -
+              (b.classification.provisionalKind ? PROVISIONAL_ORDER[b.classification.provisionalKind] : -1)) ||
             b.lastDetected.localeCompare(a.lastDetected),
         ),
     [events],

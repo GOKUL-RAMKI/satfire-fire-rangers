@@ -55,7 +55,7 @@ const STAGES: Stage[] = [
   {
     phase: "4",
     title: "Rule classifier (precedence, evidence score, seasonal prior)",
-    detail: "industrial_fire > industrial_watch > wildfire > agri_off_season > mining > persistent_source > persistent_source_unverified > agri_in_season > other. Every fired rule is logged.",
+      detail: "industrial_fire > industrial_watch > wildfire > agri_off_season > mining > mining_cold_start > persistent_source > persistent_source_unverified > agri_in_season > other. Every fired rule is logged.",
     live: () => ({ text: "transparent rules, computed per event" }),
   },
   {

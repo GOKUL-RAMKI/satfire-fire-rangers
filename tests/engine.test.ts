@@ -315,7 +315,7 @@ test("unsolvable non-saturated or gate-held detections are provisional", () => {
 test("precedence: safety-critical rule wins and every fired rule is logged", () => {
   const r = applyRules(input({ dozier: dz(1100, 0.8), history: hist(3.5), kinematics: kin({ expanding: true, pattern: "radial-expansion" }) }), null);
   assert.equal(r.winningRule, "industrial_fire");
-  assert.ok(r.trace.length === 8);
+  assert.ok(r.trace.length === 9);
 });
 
 test("agricultural: field-bound single pixel (deviation c), in and off season", () => {
@@ -335,6 +335,34 @@ test("wildfire accepts radial or irregular expansion in forest (deviation e); mi
   const quarry = ctx({ tag: "quarry" });
   assert.equal(classify(input({ context: quarry, dozier: dz(250, 0.5), history: hist(1, "LONG_SMEAR") })).label, "mining");
   assert.equal(classify(input({ context: quarry, dozier: dz(250, 0.5), history: hist(1, "CONSISTENT") })).label, "other");
+});
+
+test("cold-start quarry heat with a mining shape is mining but always reviewed", () => {
+  const quarry = ctx({ tag: "quarry" });
+  const shape = kin({ pattern: "static-compact", pixels: 3, overpasses: 1 });
+  const c = classify(input({ context: quarry, dozier: dz(250, 0.5), history: hist(null), kinematics: shape }));
+  assert.equal(c.winningRule, "mining_cold_start");
+  assert.equal(c.label, "mining");
+  assert.equal(c.tier, null);
+  assert.equal(c.needsReview, true);
+  assert.ok((c.reviewReason ?? "").includes("without a baseline"));
+  // dispersed footprints are excluded (could be wind-blown burns over the mine)
+  const disp = classify(input({ context: quarry, dozier: dz(250, 0.5), history: hist(null), kinematics: kin({ pattern: "dispersed", pixels: 11, overpasses: 2 }) }));
+  assert.notEqual(disp.winningRule, "mining_cold_start");
+  // hot quarry heat is not mining-shaped
+  const hot = classify(input({ context: quarry, dozier: dz(900, 0.3), history: hist(null), kinematics: shape }));
+  assert.notEqual(hot.winningRule, "mining_cold_start");
+  // the LONG_SMEAR rule still wins when history exists
+  const known = classify(input({ context: quarry, dozier: dz(250, 0.5), history: hist(1, "LONG_SMEAR"), kinematics: shape }));
+  assert.equal(known.winningRule, "mining");
+});
+
+test("provisional flavor mirrors the hold reason", () => {
+  assert.equal(classify(input({ heldByGate: true })).provisionalKind, "low_confidence");
+  assert.equal(classify(input({ dozier: dz(null, null) })).provisionalKind, "unsolvable_cool");
+  const modis = { ...dz(null, null), status: "not_applicable" as const };
+  assert.equal(classify(input({ dozier: modis, allModis: true })).provisionalKind, "modis_only");
+  assert.equal(classify(input({})).provisionalKind, null);
 });
 
 test("kiln heat outside the operating season is not whitelisted (deviation d)", () => {

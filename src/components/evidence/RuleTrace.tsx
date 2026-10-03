@@ -8,6 +8,7 @@ const RULE_NAMES: Record<RuleId, string> = {
   wildfire: "Wildfire",
   agri_off_season: "Agricultural (off-season)",
   mining: "Mining",
+  mining_cold_start: "Mining (cold start — review required)",
   persistent_source: "Persistent source",
   persistent_source_unverified: "Persistent source (unverified)",
   agri_in_season: "Agricultural (in-season)",

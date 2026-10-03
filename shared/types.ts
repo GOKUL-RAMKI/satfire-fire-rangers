@@ -241,6 +241,7 @@ export type RuleId =
   | "wildfire"
   | "agri_off_season"
   | "mining"
+  | "mining_cold_start"
   | "persistent_source"
   | "persistent_source_unverified"
   | "agri_in_season";
@@ -284,6 +285,8 @@ export interface Classification {
   reviewReason: string | null;
   /** Triage order inside the review queue. Null when no review is needed. */
   reviewPriority: "high" | "medium" | "low" | null;
+  /** Provisional sub-flavor for triage. Null unless the label is provisional. */
+  provisionalKind: "low_confidence" | "unsolvable_cool" | "modis_only" | null;
   action: string;
   confidence: ScoreBreakdown;
   evidenceFor: string[];

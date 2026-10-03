@@ -274,3 +274,21 @@ submitting, and flip the rows if they fail.**
   mounts empty) — `scripts/load-india.ts` now builds the mount arg accordingly.
 - Verified: typecheck, lint, `npm test` 58/58 (new: rural-tag, weak-shape, priority tests),
   `test:integration` 3/3, build, backtest. Still open: GEM trackers, WorldCover fallback.
+
+## 2026-10-03 — mining and persistent: cold-start mining rule, history seeder, provisional flavors
+- Recheck overturned the first plan: `firms:history` writes backtest files the live pipeline
+  never reads, and a baselines file alone cannot clear cold start (records required). Built
+  `npm run seed:history` instead (fetch 12 months per bbox in 5-day FIRMS chunks — dated
+  queries cap at 5, not 10 — gate, attribute to polygon ids, idempotent insert + site keys,
+  pattern report per site). Jharia belt: 12,084 rows, quarry polygons at LONG_SMEAR with
+  200+ active days. Neyveli belt: only 10 rows in 12 months (genuinely quiet).
+- New `mining_cold_start` rule (precedence right after `mining`): quarry + single/static-compact
+  + unsaturated + Tf < 400 °C + cold start → mining, tier none, unconditional review. Dispersed
+  and expanding shapes excluded (mine fire vs wildfire-on-mine stays human-or-history work).
+- New `Classification.provisionalKind` (backend, mirrors early-return order):
+  low_confidence / unsolvable_cool / modis_only. Events-table sub-badge; review queue sorts
+  untrusted pixels first.
+- Live pull 3,122 rows / 1,398 events: mining 0 → 4 (1 LONG_SMEAR seeded, 3 cold-start);
+  provisional flavors 666 unsolvable_cool / 207 low_confidence / 43 modis_only. Routine
+  non-tiny industrial heat stays in Other per operator call.
+- Verified: typecheck, lint, `npm test` 60/60, integration 3/3, build, backtest unchanged.

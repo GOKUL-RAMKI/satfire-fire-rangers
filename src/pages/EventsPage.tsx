@@ -47,6 +47,9 @@ export function EventsTable({ events }: { events: SatEvent[] }) {
                   <>
                     <ReviewBadge />{" "}
                     <span className="font-mono text-[10px] uppercase text-mute">{e.classification.reviewPriority ?? "medium"}</span>
+                    {e.classification.provisionalKind && (
+                      <span className="font-mono text-[10px] text-faint"> · {e.classification.provisionalKind.replace("_", " ")}</span>
+                    )}
                   </>
                 ) : e.review ? (
                   <span className="font-mono text-[10px] text-mute">{e.review.decision}ed</span>

@@ -102,13 +102,41 @@ export async function loadPolygons(pool: pg.Pool, dataset: Dataset, fc: PolygonC
     await client.query(`DELETE FROM osm_landuse WHERE dataset=$1`, [dataset]);
     const cur = Number((await client.query(`SELECT value FROM meta WHERE key='attribution_version'`)).rows[0]?.value ?? 1);
     const version = cur + 1;
-    for (const f of fc.features) {
-      const p = f.properties;
-      const multi = { type: "MultiPolygon", coordinates: polygonsOf(f.geometry) };
+    // Batched UNNEST inserts: a national layer is ~225k polygons, and one
+    // round-trip per row would take the better part of an hour on localhost.
+    const BATCH = 1000;
+    for (let i = 0; i < fc.features.length; i += BATCH) {
+      const chunk = fc.features.slice(i, i + BATCH);
+      const polyId: string[] = [];
+      const tag: string[] = [];
+      const facilityId: (string | null)[] = [];
+      const facilityName: (string | null)[] = [];
+      const cpcb: (string | null)[] = [];
+      const source: string[] = [];
+      const refreshedAt: string[] = [];
+      const mappedSince: (string | null)[] = [];
+      const osmTags: string[] = [];
+      const geom: string[] = [];
+      for (const f of chunk) {
+        const p = f.properties;
+        polyId.push(p.id);
+        tag.push(p.tag);
+        facilityId.push(p.facilityId);
+        facilityName.push(p.name);
+        cpcb.push(p.cpcbCategory);
+        source.push(p.source);
+        refreshedAt.push(p.refreshedAt);
+        mappedSince.push(p.mappedSince);
+        osmTags.push(JSON.stringify(p.osmTags));
+        geom.push(JSON.stringify({ type: "MultiPolygon", coordinates: polygonsOf(f.geometry) }));
+      }
       await client.query(
         `INSERT INTO osm_landuse (poly_id, dataset, tag, facility_id, facility_name, cpcb_category, source, refreshed_at, mapped_since, osm_tags, attribution_version, geom)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11, ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON($12),4326)))`,
-        [p.id, dataset, p.tag, p.facilityId, p.name, p.cpcbCategory, p.source, p.refreshedAt, p.mappedSince, p.osmTags, version, JSON.stringify(multi)],
+         SELECT p, $2, t, f, fn, c, s, r::timestamptz, m::timestamptz, o::jsonb, $11,
+                ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(g),4326))
+         FROM unnest($1::text[], $3::text[], $4::text[], $5::text[], $6::text[], $7::text[], $8::text[], $9::text[], $10::text[], $12::text[])
+           AS u(p, t, f, fn, c, s, r, m, o, g)`,
+        [polyId, dataset, tag, facilityId, facilityName, cpcb, source, refreshedAt, mappedSince, osmTags, version, geom],
       );
     }
     await client.query(`UPDATE meta SET value=$1 WHERE key='attribution_version'`, [String(version)]);

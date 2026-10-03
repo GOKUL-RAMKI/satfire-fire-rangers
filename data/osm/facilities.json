@@ -2715,5 +2715,138 @@
   "polygonIds": [
    "OSM-relation-13875985"
   ]
+ },
+ {
+  "id": "OSM-way-285680302",
+  "dataset": "live",
+  "name": "Jindal Steel Works",
+  "type": "Steel plant",
+  "lat": 15.173371370786509,
+  "lon": 76.682941494382,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-285680302"
+  ]
+ },
+ {
+  "id": "OSM-way-350606678",
+  "dataset": "live",
+  "name": "Jindal SAW",
+  "type": "Industrial site",
+  "lat": 15.159553352941176,
+  "lon": 76.71159461764704,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-350606678"
+  ]
+ },
+ {
+  "id": "OSM-way-350607479",
+  "dataset": "live",
+  "name": "Shatavahana Kudatini Steels",
+  "type": "Steel plant",
+  "lat": 15.225335666666668,
+  "lon": 76.76482924999999,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-350607479"
+  ]
+ },
+ {
+  "id": "OSM-way-350610235",
+  "dataset": "live",
+  "name": "Minera Steel and Power Pvt Limited",
+  "type": "Steel plant",
+  "lat": 15.150421769230768,
+  "lon": 76.7155253076923,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-350610235"
+  ]
+ },
+ {
+  "id": "OSM-way-350610379",
+  "dataset": "live",
+  "name": "Metallurgical Products India Pvt Ltd",
+  "type": "Industrial site",
+  "lat": 15.1402101875,
+  "lon": 76.7109104375,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-350610379"
+  ]
+ },
+ {
+  "id": "OSM-way-762568585",
+  "dataset": "live",
+  "name": "Iron Ore Mines",
+  "type": "Mine / quarry",
+  "lat": 15.086690818181815,
+  "lon": 76.60241072727273,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-762568585"
+  ]
+ },
+ {
+  "id": "OSM-way-822601316",
+  "dataset": "live",
+  "name": "Vijayanagar Toranagallu Power Station",
+  "type": "Thermal power plant",
+  "lat": 15.185415076923077,
+  "lon": 76.66530492307693,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-10-03T07:07:13.504Z",
+  "polygonIds": [
+   "OSM-way-822601316"
+  ]
  }
 ]

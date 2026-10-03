@@ -29,6 +29,7 @@ import type { Config } from "./config.ts";
 import type { Dispatcher } from "./dispatch.ts";
 import { fetchFirms } from "./firms.ts";
 import type { Phraser } from "./llm.ts";
+import { loadLiveLayer } from "./livePolygons.ts";
 import { attributionVersion, insertDetections, joinDetections, loadPolygons, polygonCount, setSiteKeys } from "./postgis.ts";
 import { loadSample, type SampleBundle } from "./sampleData.ts";
 import { alertId, type Store } from "./store.ts";
@@ -40,8 +41,6 @@ interface DatasetState {
   stats: PipelineRunStats | null;
   referenceNow: string;
 }
-
-const EMPTY_FC: PolygonCollection = { type: "FeatureCollection", features: [] };
 
 function readJson<T>(path: string, fallback: T): T {
   try {
@@ -66,20 +65,19 @@ export function createPipeline(deps: {
   let lastSuccessfulPull: string | null = null;
   let running: Promise<void> | null = null;
 
-  const livePolygonsPath = join(cfg.root, "data", "osm", "landuse.geojson");
   const polygonsFor = (dataset: Dataset): { fc: PolygonCollection; source: string; sample: boolean; refreshedAt: string | null } => {
     if (dataset === "sample")
       return { fc: sample.polygons, source: "SAMPLE polygons (data/sample/landuse_polygons.geojson)", sample: true, refreshedAt: sample.polygons.features[0]?.properties.refreshedAt ?? null };
-    const fc = readJson<PolygonCollection>(livePolygonsPath, EMPTY_FC);
+    const live = loadLiveLayer(cfg.root);
     return {
-      fc,
-      source: fc.features.length ? "OpenStreetMap bulk load (data/osm/landuse.geojson)" : "No live polygons loaded (run npm run osm:load)",
+      fc: live.polygons,
+      source: live.polygons.features.length ? live.source : "No live polygons loaded (run npm run osm:load or npm run osm:india)",
       sample: false,
-      refreshedAt: fc.features.map((f) => f.properties.refreshedAt).sort().at(-1) ?? null,
+      refreshedAt: live.refreshedAt,
     };
   };
   const facilitiesFor = (dataset: Dataset): Facility[] =>
-    dataset === "sample" ? sample.facilities : readJson<Facility[]>(join(cfg.root, "data", "osm", "facilities.json"), []);
+    dataset === "sample" ? sample.facilities : loadLiveLayer(cfg.root).facilities;
   const baselinesFor = (dataset: Dataset): Record<string, { baselineFrpMW: number }> | null => {
     const file = readJson<{ sample?: boolean; baselines?: Record<string, { baselineFrpMW: number }> } | null>(
       join(cfg.root, "data", "derived", dataset === "sample" ? "site_baselines.json" : "site_baselines_live.json"),

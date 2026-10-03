@@ -150,3 +150,76 @@ The code is written and unit-tested, but none of these ran against a real servic
 The commands are listed in `to_do.md` §A. Plan §3 keeps "FIRMS VIIRS ingestion ✔" and "template
 SITREP with LLM phrasing ✔" on the basis that the user has the keys. **Verify them before
 submitting, and flip the rows if they fail.**
+
+## 2026-10-03 — provisional / unmapped logic fixes (no label-invariant changes)
+- `provisional` still means all-held-by-gate or Dozier-unresolved; `unmapped_industrial_candidate`
+  still means hot with `tag === null` and never falls into Other.
+- A hot unmapped event held provisional now keeps `provisional` (never auto-escalated) but carries
+  `hot_unmapped_while_provisional` plus a review reason and evidence, so the industrial signal is
+  not silently dropped (`shared/classify.ts`, `shared/buildEvents.ts`).
+- Mixed-confidence events (some but not all pixels held) are still classified normally but carry
+  `partial_gate_hold`, an evidence note, and a review reason (`ClassifyInput.partialHold`).
+- Unmapped calls with no land-cover fallback (live mode) carry `spatial_unverified_no_landcover`
+  and an evidence note saying the call rests on polygon absence alone; the absence-hot basis is
+  now listed under evidence-for instead of looking like pure counter-evidence.
+- Fence-line buffer is now the Dozier fire radius clamped to [100, 150] m (was: capped at 50 m with
+  no floor), so VIIRS geolocation error stops manufacturing false unmapped candidates. Both
+  backends read the same per-detection `buffer_m`, so memory and PostGIS stay in sync; the
+  transient default in `shared/qualityGate.ts` and `db/schema.sql` was updated to match.
+- Verified: `npm run typecheck`, `npm run lint`, `npm test` (53/53 pass), `npm run build`.
+  `npm run backtest` could not run here (python `sklearn` not installed — pre-existing env gap);
+  scenario tests through the same engine path still pass. No sample expectation changed.
+
+## 2026-10-03 — live unmapped at Vijayanagar power station was missing polygon coverage
+- A live event at (15.180, 76.666), visually inside Vijayanagar Toranagallu Power Station on the
+  OSM base tiles, classified `unmapped_industrial_candidate`. Correct behaviour given its inputs:
+  neither `data/sample/landuse_polygons.geojson` (19 features) nor `data/osm/landuse.geojson`
+  (989 features) had any polygon within 25 km — the Overpass loader only covers ±10 km around the
+  monitored sample facilities, and Vijayanagar/JSW Toranagallu is not one of them. The base-map
+  tiles render OSM; the classifier only sees the bulk-loaded polygons.
+- Fix (data, not code): `npm run osm:load -- --merge --only-extra
+  --bbox 76.573,15.090,76.759,15.270` → 1011 polygons (+22), 150 named facilities (+7), including
+  `OSM-way-822601316` Vijayanagar Toranagallu Power Station (Thermal power plant, CPCB Red) and
+  the enclosing `OSM-way-285680302` Jindal Steel Works (Steel plant, CPCB Red). Verified the point
+  now joins at distance 0 → `industrial`.
+- Note: the next pipeline run re-reads the file (PostGIS path re-bulk-loads on count mismatch and
+  re-attributes), so refresh/re-run to see the event reclassify. Stored `CELL-*` history for that
+  site does not transfer to the new facility site key (open work, `to_do.md` §B).
+
+## 2026-10-03 — national polygon layer: whole-India OSM extract + WRI second anchor
+- Requirement: the product must work for all of India, not just the sample-site bboxes. The
+  Overpass focus loader only covers ±10 km around monitored facilities by design.
+- Extract: `india-latest.osm.pbf` (Geofabrik, 1.6 GB, git-ignored in `data/runtime/osm/`) →
+  `npm run osm:india` (new `scripts/load-india.ts`): GDAL `osgeo/gdal:ubuntu-small-3.6.3` filters
+  the multipolygons layer with a shipped config (`scripts/osmconf.india.ini`: default osmconf +
+  power/industrial/operator/product/company attributes; colon keys ride in other_tags), simplify
+  ~5 m, then Node builds the layer with the shared `shared/osmTags.ts` mapping (extracted from
+  `scripts/load-osm.ts`; parity proven over all 1011 stored features; the Overpass loader now
+  imports it too). Alpine-small GDAL lacks GEOS so `-simplify` silently no-ops — ubuntu-small
+  is required and pinned in the script.
+- Yield: 225,268 polygons (industrial 29,886 / quarry 10,598 / farmland 108,363 / forest 76,421),
+  6,551 named facilities → `data/runtime/osm/landuse_india.geojson` (247 MB) +
+  `facilities_india.json`. Every real monitored plant verified present (Paradip, Mathura, Neyveli,
+  Talcher, Durgapur, Barauni, Haldia, Korba, Bhilai, Vizag steel+refinery, Vijayanagar); Jharia
+  coalfield has 100 quarry polygons. Sample scenario coordinates are synthetic demo points, so
+  several don't sit on real polygons — expected, not a coverage gap.
+- Second anchor: `npm run osm:wri` (new `scripts/load-wri.ts`): WRI Global Power Plant Database
+  v1.3.0 (CC BY 4.0) → 1,589 India plants, 388 thermal-fuel synthetic circular anchors
+  (capacity-scaled 250–800 m, marked fallback-only). Merged on top of OSM by
+  `backend/livePolygons.ts`, which drops a synthetic polygon wherever an OSM polygon already
+  anchors the site (347 dropped, 41 kept): 225,309 polygons / 8,140 facilities merged.
+- Wiring: live dataset uses the national file when present, else the tracked focus files
+  (fresh clones keep today's behaviour); `scripts/db-load.ts` loads the same merged layer.
+  The 247 MB file is mtime-cached (5.5 s first read, instant after; index 0.7 s; 100 joins
+  15 ms). PostGIS stays the primary backend at national scale.
+- PostGIS: `loadPolygons` now batched (UNNEST, 1000/batch — the row-by-row version would have
+  taken ~1 h for 225k rows); `live: loaded 225309 polygons` verified. PostGIS-vs-memory join
+  parity confirmed on live points (Vijayanagar industrial/0 m both backends).
+- Env notes (this machine): Docker Desktop was started (daemon was down); port 5433 is taken
+  by another project's Postgres, so the SATFIRE PostGIS runs on 5434
+  (`DATABASE_URL=postgres://satfire:satfire_dev@localhost:5434/satfire`). Repo defaults
+  unchanged. `py -m pip install scikit-learn` done → `npm run baselines` + `npm run backtest`
+  run: 14/15 strict (Vapi by design), industrialFireRecall 1.00, 0 false alerts/week.
+- Still open: GEM steel/oil/gas trackers, ESA WorldCover live fallback, India-wide real
+  backtest (`to_do.md` §C). One debug-script `setval` mishap (sequence reset to 1) was caught
+  and repaired during verification — repo code unaffected.

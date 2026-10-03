@@ -2,7 +2,7 @@
 
 > **SAMPLE DATA.** Self-consistency check on generated sample data — not a performance claim.
 
-Generated 2026-09-29T11:17:08Z. Classifier: `scripts/classify-batch.ts` (the live engine, `shared/engine.ts`).
+Generated 2026-10-03T08:29:39Z. Classifier: `scripts/classify-batch.ts` (the live engine, `shared/engine.ts`).
 
 **Caveat.** Self-consistency check on generated sample data — not a performance claim. Windows are the sample scenarios (scripts/gen-sample.ts) with their intended labels; the Vapi unmapped candidate is given truth industrial_fire, so it appears as a strict per-class miss (predicted unmapped_industrial_candidate) but counts as surfaced in industrialFireRecall. Window-level weak labels: every event in a window is assigned the window's truth label. industrialFireRecall counts industrial_fire and unmapped_industrial_candidate predictions as surfaced; strict per-class recall is in perClass. A window with no detection counts as one missed event scored as 'other'.
 

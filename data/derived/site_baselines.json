@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-29T11:07:11Z",
+ "generatedAt": "2026-10-03T08:29:30Z",
  "sample": true,
  "source": "data/sample/site_history.json",
  "method": "isolation_forest",

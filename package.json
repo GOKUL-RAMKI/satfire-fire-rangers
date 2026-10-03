@@ -20,6 +20,8 @@
     "db:init": "node scripts/db-init.ts",
     "db:load": "node scripts/db-load.ts",
     "osm:load": "node scripts/load-osm.ts",
+    "osm:india": "node scripts/load-india.ts",
+    "osm:wri": "node scripts/load-wri.ts",
     "firms:history": "node scripts/fetch-firms-history.ts",
     "baselines": "python analytics/site_baselines.py",
     "backtest": "python analytics/backtest.py"

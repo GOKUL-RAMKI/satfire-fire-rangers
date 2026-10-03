@@ -55,12 +55,14 @@ Status as of 2026-09-29. Deadline 30 Sep 2026. Ordered by priority. See `log.md`
 
 ## C. Data coverage
 
-- [ ] India-wide OSM: Geofabrik `india-latest.osm.pbf` → osmium/ogr2ogr → PostGIS. The Overpass loader
-  only covers ±10 km around the monitored facilities. The public Overpass instance rate-limits
-  (429/504 seen), and Mathura needed a retry.
+- [x] India-wide OSM: `npm run osm:india` (Geofabrik `india-latest.osm.pbf` → GDAL container →
+  `data/runtime/osm/landuse_india.geojson`, 225,268 polygons). The tracked Overpass files remain
+  the fallback. Covered earlier: Vijayanagar/JSW Toranagallu bbox.
+- [x] WRI Global Power Plant Database as second anchor: `npm run osm:wri` (1,589 India plants,
+  388 thermal circular anchors, OSM wins on overlap). GEM steel / oil & gas trackers still open.
 - [ ] ESA WorldCover bulk tiles for land cover. Live mode currently has no WorldCover (status shows
   "unavailable"); sample mode uses sample points.
-- [ ] Facility datasets as a second anchor: WRI Global Power Plant Database, Global Energy Monitor
+- [ ] Facility datasets as a second anchor: Global Energy Monitor
   steel/oil & gas trackers, VIIRS Nightfire flare catalogue, and the official CPCB Red category list.
   The CPCB category is currently derived from industry type and labelled as such.
 - [ ] The OSM Mathura refinery polygon has no name, so it is not a named facility.

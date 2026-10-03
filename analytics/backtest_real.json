@@ -1,0 +1,136 @@
+{
+ "dataset": "firms_archive:VIIRS_SNPP_SP",
+ "sample": false,
+ "caveat": "Real historical backtest on NASA FIRMS VIIRS S-NPP standard-processing archive rows. Truth labels come from documented events and land use at the window level; windows and bboxes were chosen from public reporting and must be verified before results are quoted. History is the 12 months before each window (no leakage).",
+ "verify": "Coordinates and dates below are from public reporting as recalled by the analyst; check each bbox on a map before quoting results.",
+ "windows": [
+  {
+   "name": "punjab-sangrur-stubble-2023",
+   "label": "agricultural_fire",
+   "start": "2023-10-25",
+   "end": "2023-11-14",
+   "bbox": [
+    75.66,
+    30.14,
+    75.78,
+    30.24
+   ],
+   "note": "Paddy-stubble burning peak, rural Sangrur district between Sangrur and Sunam (farmland).",
+   "rowsPath": "data/backtest/punjab-sangrur-stubble-2023.json",
+   "historyPath": "data/backtest/punjab-sangrur-stubble-2023_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "punjab-ludhiana-stubble-2023",
+   "label": "agricultural_fire",
+   "start": "2023-10-25",
+   "end": "2023-11-14",
+   "bbox": [
+    75.5,
+    30.72,
+    75.62,
+    30.82
+   ],
+   "note": "Paddy-stubble burning peak, rural Ludhiana district near Jagraon (farmland).",
+   "rowsPath": "data/backtest/punjab-ludhiana-stubble-2023.json",
+   "historyPath": "data/backtest/punjab-ludhiana-stubble-2023_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "jamnagar-refinery-2023",
+   "label": "persistent_source",
+   "start": "2023-03-01",
+   "end": "2023-03-28",
+   "bbox": [
+    69.8,
+    22.28,
+    69.93,
+    22.4
+   ],
+   "note": "Reliance Jamnagar refinery complex: routine flares, 4 ordinary weeks (no known incident).",
+   "rowsPath": "data/backtest/jamnagar-refinery-2023.json",
+   "historyPath": "data/backtest/jamnagar-refinery-2023_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "jharia-coalfield-2023",
+   "label": "mining",
+   "start": "2023-03-01",
+   "end": "2023-03-28",
+   "bbox": [
+    86.36,
+    23.72,
+    86.46,
+    23.8
+   ],
+   "note": "Jharia coalfield: long-burning coal-seam fires and open-cast mining, 4 ordinary weeks.",
+   "rowsPath": "data/backtest/jharia-coalfield-2023.json",
+   "historyPath": "data/backtest/jharia-coalfield-2023_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "similipal-forest-fire-2021",
+   "label": "wildfire",
+   "start": "2021-02-25",
+   "end": "2021-03-10",
+   "bbox": [
+    86.2,
+    21.75,
+    86.45,
+    21.95
+   ],
+   "note": "Similipal National Park forest fires, late Feb - early Mar 2021.",
+   "rowsPath": "data/backtest/similipal-forest-fire-2021.json",
+   "historyPath": "data/backtest/similipal-forest-fire-2021_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "uttarakhand-forest-fire-2021",
+   "label": "wildfire",
+   "start": "2021-04-01",
+   "end": "2021-04-10",
+   "bbox": [
+    78.7,
+    29.95,
+    79.0,
+    30.2
+   ],
+   "note": "Uttarakhand forest fires, early April 2021, Pauri Garhwal.",
+   "rowsPath": "data/backtest/uttarakhand-forest-fire-2021.json",
+   "historyPath": "data/backtest/uttarakhand-forest-fire-2021_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "baghjan-blowout-fire-2020",
+   "label": "industrial_fire",
+   "start": "2020-06-09",
+   "end": "2020-06-22",
+   "bbox": [
+    95.36,
+    27.53,
+    95.48,
+    27.62
+   ],
+   "note": "Baghjan oil-well (Baghjan-5) blowout caught fire 9 June 2020, Tinsukia, Assam; burned for months.",
+   "rowsPath": "data/backtest/baghjan-blowout-fire-2020.json",
+   "historyPath": "data/backtest/baghjan-blowout-fire-2020_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  },
+  {
+   "name": "hpcl-vizag-refinery-fire-2021",
+   "label": "industrial_fire",
+   "start": "2021-05-25",
+   "end": "2021-05-26",
+   "bbox": [
+    83.22,
+    17.67,
+    83.27,
+    17.71
+   ],
+   "note": "HPCL Visakh refinery crude-unit fire, afternoon 25 May 2021, doused within hours: may fall between VIIRS overpasses (tests the revisit limit).",
+   "rowsPath": "data/backtest/hpcl-vizag-refinery-fire-2021.json",
+   "historyPath": "data/backtest/hpcl-vizag-refinery-fire-2021_history.json",
+   "polygonsPath": "data/osm/landuse.geojson"
+  }
+ ]
+}

@@ -1,0 +1,324 @@
+[
+ {
+  "id": "FAC-001",
+  "dataset": "sample",
+  "name": "Paradip Petrochemical Processing Complex",
+  "type": "Petrochemical complex",
+  "lat": 20.294,
+  "lon": 86.662,
+  "state": "Odisha",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Flare stack F-1 (routine)",
+   "Process heater H-2"
+  ],
+  "kiln": false,
+  "mappedSince": "2019-06-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-001"
+  ]
+ },
+ {
+  "id": "FAC-002",
+  "dataset": "sample",
+  "name": "Jamnagar Refinery — Flare Yard",
+  "type": "Oil refinery",
+  "lat": 22.383,
+  "lon": 70.012,
+  "state": "Gujarat",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Flare stack J-1 (routine, planned)",
+   "Flare stack J-2 (standby)"
+  ],
+  "kiln": false,
+  "mappedSince": "2016-03-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-002"
+  ]
+ },
+ {
+  "id": "FAC-003",
+  "dataset": "sample",
+  "name": "Korba Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 22.384,
+  "lon": 82.68,
+  "state": "Chhattisgarh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Boiler stack (steady heat)",
+   "Coal conveyor gallery"
+  ],
+  "kiln": false,
+  "mappedSince": "2015-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-003"
+  ]
+ },
+ {
+  "id": "FAC-004",
+  "dataset": "sample",
+  "name": "Jharia Coal Mine Complex",
+  "type": "Coal mine",
+  "lat": 23.712,
+  "lon": 86.413,
+  "state": "Jharkhand",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Underground seam smoulder zone",
+   "Slag cooling yard"
+  ],
+  "kiln": false,
+  "mappedSince": "2014-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-004"
+  ]
+ },
+ {
+  "id": "FAC-005",
+  "dataset": "sample",
+  "name": "Kakinada LNG Terminal",
+  "type": "LNG terminal",
+  "lat": 16.962,
+  "lon": 82.281,
+  "state": "Andhra Pradesh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Pilot flare K-1"
+  ],
+  "kiln": false,
+  "mappedSince": "2018-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-005"
+  ]
+ },
+ {
+  "id": "FAC-006",
+  "dataset": "sample",
+  "name": "Bhilai Steel Plant",
+  "type": "Steel plant",
+  "lat": 21.195,
+  "lon": 81.38,
+  "state": "Chhattisgarh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Blast furnace BF-3",
+   "Coke oven battery"
+  ],
+  "kiln": false,
+  "mappedSince": "2015-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-006"
+  ]
+ },
+ {
+  "id": "FAC-007",
+  "dataset": "sample",
+  "name": "Talcher Fertilizer Complex",
+  "type": "Fertilizer plant",
+  "lat": 20.944,
+  "lon": 85.202,
+  "state": "Odisha",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Reformer stack"
+  ],
+  "kiln": false,
+  "mappedSince": "2017-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-007"
+  ]
+ },
+ {
+  "id": "FAC-008",
+  "dataset": "sample",
+  "name": "Vindhyachal Super Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 24.095,
+  "lon": 82.672,
+  "state": "Madhya Pradesh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Unit stacks 1–6"
+  ],
+  "kiln": false,
+  "mappedSince": "2015-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-008"
+  ]
+ },
+ {
+  "id": "FAC-009",
+  "dataset": "sample",
+  "name": "Haldia Petrochemical Refinery",
+  "type": "Oil refinery",
+  "lat": 22.062,
+  "lon": 88.119,
+  "state": "West Bengal",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Flare H-1 (routine)"
+  ],
+  "kiln": false,
+  "mappedSince": "2016-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-009"
+  ]
+ },
+ {
+  "id": "FAC-010",
+  "dataset": "sample",
+  "name": "Neyveli Lignite Mine",
+  "type": "Lignite mine",
+  "lat": 11.613,
+  "lon": 79.477,
+  "state": "Tamil Nadu",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Overburden dump smoulder"
+  ],
+  "kiln": false,
+  "mappedSince": "2014-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-010"
+  ]
+ },
+ {
+  "id": "FAC-011",
+  "dataset": "sample",
+  "name": "Visakhapatnam Steel Plant",
+  "type": "Steel plant",
+  "lat": 17.629,
+  "lon": 83.198,
+  "state": "Andhra Pradesh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Blast furnace",
+   "Sinter plant"
+  ],
+  "kiln": false,
+  "mappedSince": "2015-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-011"
+  ]
+ },
+ {
+  "id": "FAC-012",
+  "dataset": "sample",
+  "name": "Mathura Refinery",
+  "type": "Oil refinery",
+  "lat": 27.489,
+  "lon": 77.673,
+  "state": "Uttar Pradesh",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Flare M-1 (routine)"
+  ],
+  "kiln": false,
+  "mappedSince": "2016-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-012"
+  ]
+ },
+ {
+  "id": "FAC-013",
+  "dataset": "sample",
+  "name": "Durgapur Steel & Power Cluster",
+  "type": "Steel plant",
+  "lat": 23.548,
+  "lon": 87.292,
+  "state": "West Bengal",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Coke oven",
+   "Power boiler"
+  ],
+  "kiln": false,
+  "mappedSince": "2015-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-013"
+  ]
+ },
+ {
+  "id": "FAC-014",
+  "dataset": "sample",
+  "name": "Barauni Refinery",
+  "type": "Oil refinery",
+  "lat": 25.442,
+  "lon": 86.021,
+  "state": "Bihar",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Flare B-1 (routine)"
+  ],
+  "kiln": false,
+  "mappedSince": "2016-01-01T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-014"
+  ]
+ },
+ {
+  "id": "FAC-015",
+  "dataset": "sample",
+  "name": "Newly mapped chemical unit (sample), Bharuch district",
+  "type": "Chemical plant",
+  "lat": 21.701,
+  "lon": 72.582,
+  "state": "Gujarat",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [
+   "Process flare (commissioned 2026)"
+  ],
+  "kiln": false,
+  "mappedSince": "2026-03-10T00:00:00Z",
+  "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+  "refreshedAt": "2026-04-01T00:00:00Z",
+  "polygonIds": [
+   "POLY-FAC-015"
+  ]
+ }
+]

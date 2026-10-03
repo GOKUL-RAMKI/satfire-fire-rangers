@@ -1,0 +1,137 @@
+[
+ {
+  "lat": 20.294,
+  "lon": 86.662,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 22.383,
+  "lon": 70.012,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 22.384,
+  "lon": 82.68,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 23.712,
+  "lon": 86.413,
+  "radiusKm": 3,
+  "worldCoverClass": "Bare / sparse vegetation"
+ },
+ {
+  "lat": 16.962,
+  "lon": 82.281,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 21.195,
+  "lon": 81.38,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 20.944,
+  "lon": 85.202,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 24.095,
+  "lon": 82.672,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 22.062,
+  "lon": 88.119,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 11.613,
+  "lon": 79.477,
+  "radiusKm": 3,
+  "worldCoverClass": "Bare / sparse vegetation"
+ },
+ {
+  "lat": 17.629,
+  "lon": 83.198,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 27.489,
+  "lon": 77.673,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 23.548,
+  "lon": 87.292,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 25.442,
+  "lon": 86.021,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 21.701,
+  "lon": 72.582,
+  "radiusKm": 3,
+  "worldCoverClass": "Built-up"
+ },
+ {
+  "lat": 31.1502,
+  "lon": 75.3438,
+  "radiusKm": 10,
+  "worldCoverClass": "Cropland"
+ },
+ {
+  "lat": 29.6815,
+  "lon": 76.9821,
+  "radiusKm": 10,
+  "worldCoverClass": "Cropland"
+ },
+ {
+  "lat": 21.912,
+  "lon": 86.314,
+  "radiusKm": 15,
+  "worldCoverClass": "Tree cover"
+ },
+ {
+  "lat": 30.0893,
+  "lon": 79.3125,
+  "radiusKm": 12,
+  "worldCoverClass": "Tree cover"
+ },
+ {
+  "lat": 20.371,
+  "lon": 72.931,
+  "radiusKm": 2,
+  "worldCoverClass": "Built-up",
+  "place": "Unmapped built-up area near Vapi, Gujarat"
+ },
+ {
+  "lat": 19.72,
+  "lon": 85.318,
+  "radiusKm": 2,
+  "worldCoverClass": "Permanent water bodies",
+  "place": "Chilika lake shore, Odisha"
+ },
+ {
+  "lat": 23.0051,
+  "lon": 80.014,
+  "radiusKm": 2,
+  "worldCoverClass": "Grassland",
+  "place": "Roadside near Jabalpur, Madhya Pradesh"
+ }
+]

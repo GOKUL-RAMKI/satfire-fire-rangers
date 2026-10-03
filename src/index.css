@@ -1,0 +1,33 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: #f3f0e8;
+  color: #1d1b16;
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+.leaflet-container {
+  background: #e7e3d8;
+  font-family: inherit;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #cfc8b8;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+}

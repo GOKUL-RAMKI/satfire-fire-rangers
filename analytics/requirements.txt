@@ -1,0 +1,4 @@
+# SATFIRE batch analytics (analytics/*.py). Python >= 3.10. Plain json/csv + numpy + scikit-learn;
+# no GeoPandas needed.
+numpy>=1.26
+scikit-learn>=1.4

@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Red",
+    "description": "Highly polluting industries with Pollution Index score of 60 and above.",
+    "examples": ["Petrochemical complexes", "Oil refineries", "Thermal power plants", "Steel / metallurgical units", "Coal mines", "LNG terminals", "Fertilizer plants"],
+    "monitoringPriority": "Highest — continuous surveillance, immediate escalation on anomalous heat"
+  },
+  {
+    "category": "Orange",
+    "description": "Moderately polluting industries with Pollution Index 41–59.",
+    "examples": ["Chemical blending", "Textile processing", "Food processing (large)", "Stone crushers"],
+    "monitoringPriority": "High — periodic review"
+  },
+  {
+    "category": "Green",
+    "description": "Low polluting industries with Pollution Index 21–40.",
+    "examples": ["Assembly units", "Small fabrication", "Dairy (small)"],
+    "monitoringPriority": "Standard"
+  },
+  {
+    "category": "White",
+    "description": "Practically non-polluting / exempted categories.",
+    "examples": ["Software units", "Service enterprises"],
+    "monitoringPriority": "Minimal"
+  }
+]

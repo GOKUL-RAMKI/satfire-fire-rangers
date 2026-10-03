@@ -1,0 +1,430 @@
+{
+ "generatedAt": "2026-09-29T11:07:11Z",
+ "sample": true,
+ "source": "data/sample/site_history.json",
+ "method": "isolation_forest",
+ "params": {
+  "overpassBucketMin": 30,
+  "minOverpassesForIsolationForest": 10,
+  "isolationForest": {
+   "n_estimators": 200,
+   "contamination": 0.05,
+   "random_state": 26162
+  },
+  "features": [
+   "log1p(frpMW per overpass)",
+   "sin(hour of day UTC)",
+   "cos(hour of day UTC)"
+  ],
+  "dbscan": {
+   "eps_m": 750,
+   "min_samples": 3,
+   "metric": "haversine"
+  }
+ },
+ "baselines": {
+  "FAC-001": {
+   "baselineFrpMW": 9.21
+  },
+  "FAC-002": {
+   "baselineFrpMW": 8.54
+  },
+  "FAC-003": {
+   "baselineFrpMW": 11.62
+  },
+  "FAC-004": {
+   "baselineFrpMW": 4.05
+  },
+  "FAC-005": {
+   "baselineFrpMW": 6.86
+  },
+  "FAC-009": {
+   "baselineFrpMW": 14.45
+  },
+  "FAC-010": {
+   "baselineFrpMW": 5.26
+  },
+  "FAC-015": {
+   "baselineFrpMW": 11.17
+  },
+  "POLY-AGRI-KNL": {
+   "baselineFrpMW": 17.7
+  },
+  "POLY-AGRI-LDH": {
+   "baselineFrpMW": 18.91
+  }
+ },
+ "sites": {
+  "FAC-001": {
+   "baselineFrpMW": 9.21,
+   "method": "isolation_forest",
+   "records": 210,
+   "overpasses": 210,
+   "inliers": 199,
+   "outliers": 11,
+   "outlierFrpMW": [
+    4.13,
+    4.98,
+    5.23,
+    5.87,
+    5.9,
+    6.15,
+    6.21,
+    6.59,
+    6.9,
+    8.17,
+    11.76
+   ],
+   "medianAllFrpMW": 9.16,
+   "firstSeen": "2025-04-21T08:16:00Z",
+   "lastSeen": "2026-04-17T20:37:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 20.29671,
+     "centroidLon": 86.65719,
+     "members": 210,
+     "radiusM": 263,
+     "medianFrpMW": 9.16
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "FAC-002": {
+   "baselineFrpMW": 8.54,
+   "method": "isolation_forest",
+   "records": 300,
+   "overpasses": 300,
+   "inliers": 285,
+   "outliers": 15,
+   "outlierFrpMW": [
+    4.64,
+    5.75,
+    6.04,
+    6.05,
+    6.16,
+    6.26,
+    6.64,
+    7.33,
+    9.2,
+    10.24,
+    10.56,
+    10.62,
+    10.65,
+    10.86,
+    11.52
+   ],
+   "medianAllFrpMW": 8.54,
+   "firstSeen": "2025-04-22T20:15:00Z",
+   "lastSeen": "2026-04-18T20:27:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 22.38656,
+     "centroidLon": 70.00615,
+     "members": 300,
+     "radiusM": 272,
+     "medianFrpMW": 8.54
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "FAC-003": {
+   "baselineFrpMW": 11.62,
+   "method": "isolation_forest",
+   "records": 110,
+   "overpasses": 110,
+   "inliers": 104,
+   "outliers": 6,
+   "outlierFrpMW": [
+    4.87,
+    5.59,
+    5.62,
+    6.88,
+    18.49,
+    18.71
+   ],
+   "medianAllFrpMW": 11.5,
+   "firstSeen": "2025-05-01T08:39:00Z",
+   "lastSeen": "2026-04-17T08:12:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 22.38306,
+     "centroidLon": 82.68152,
+     "members": 110,
+     "radiusM": 353,
+     "medianFrpMW": 11.5
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "FAC-004": {
+   "baselineFrpMW": 4.05,
+   "method": "isolation_forest",
+   "records": 320,
+   "overpasses": 320,
+   "inliers": 304,
+   "outliers": 16,
+   "outlierFrpMW": [
+    1.64,
+    1.69,
+    1.7,
+    1.78,
+    1.96,
+    1.98,
+    2.09,
+    2.25,
+    2.3,
+    2.59,
+    2.83,
+    3.01,
+    4.9,
+    5.49,
+    5.55,
+    6.69
+   ],
+   "medianAllFrpMW": 3.99,
+   "firstSeen": "2025-04-21T20:36:00Z",
+   "lastSeen": "2026-04-18T20:19:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 23.71314,
+     "centroidLon": 86.41394,
+     "members": 314,
+     "radiusM": 3845,
+     "medianFrpMW": 3.99
+    }
+   ],
+   "noise": 6,
+   "note": null
+  },
+  "FAC-005": {
+   "baselineFrpMW": 6.86,
+   "method": "isolation_forest",
+   "records": 250,
+   "overpasses": 250,
+   "inliers": 237,
+   "outliers": 13,
+   "outlierFrpMW": [
+    4.34,
+    4.6,
+    4.76,
+    4.8,
+    4.84,
+    4.87,
+    4.93,
+    5.06,
+    6.52,
+    7.5,
+    7.7,
+    8.33,
+    9.2
+   ],
+   "medianAllFrpMW": 6.85,
+   "firstSeen": "2025-04-22T08:00:00Z",
+   "lastSeen": "2026-04-17T08:09:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 16.96063,
+     "centroidLon": 82.28289,
+     "members": 250,
+     "radiusM": 246,
+     "medianFrpMW": 6.85
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "FAC-009": {
+   "baselineFrpMW": 14.45,
+   "method": "isolation_forest",
+   "records": 150,
+   "overpasses": 150,
+   "inliers": 142,
+   "outliers": 8,
+   "outlierFrpMW": [
+    7.43,
+    7.48,
+    8.41,
+    9.41,
+    9.54,
+    18.2,
+    19.69,
+    20.83
+   ],
+   "medianAllFrpMW": 14.38,
+   "firstSeen": "2025-04-23T20:22:00Z",
+   "lastSeen": "2026-04-18T08:08:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 22.06387,
+     "centroidLon": 88.11611,
+     "members": 150,
+     "radiusM": 358,
+     "medianFrpMW": 14.38
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "FAC-010": {
+   "baselineFrpMW": 5.26,
+   "method": "isolation_forest",
+   "records": 280,
+   "overpasses": 280,
+   "inliers": 266,
+   "outliers": 14,
+   "outlierFrpMW": [
+    1.78,
+    1.82,
+    2.12,
+    2.35,
+    2.45,
+    2.5,
+    2.98,
+    3.43,
+    3.65,
+    3.94,
+    4.56,
+    6.79,
+    7.52,
+    7.86
+   ],
+   "medianAllFrpMW": 5.21,
+   "firstSeen": "2025-04-21T08:25:00Z",
+   "lastSeen": "2026-04-17T20:05:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 11.61985,
+     "centroidLon": 79.47224,
+     "members": 278,
+     "radiusM": 2661,
+     "medianFrpMW": 5.22
+    }
+   ],
+   "noise": 2,
+   "note": null
+  },
+  "FAC-015": {
+   "baselineFrpMW": 11.17,
+   "method": "isolation_forest",
+   "records": 25,
+   "overpasses": 25,
+   "inliers": 23,
+   "outliers": 2,
+   "outlierFrpMW": [
+    7.76,
+    15.3
+   ],
+   "medianAllFrpMW": 11.17,
+   "firstSeen": "2026-03-13T08:20:00Z",
+   "lastSeen": "2026-04-17T20:34:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 21.70136,
+     "centroidLon": 72.58286,
+     "members": 25,
+     "radiusM": 202,
+     "medianFrpMW": 11.17
+    }
+   ],
+   "noise": 0,
+   "note": null
+  },
+  "POLY-AGRI-KNL": {
+   "baselineFrpMW": 17.7,
+   "method": "isolation_forest",
+   "records": 22,
+   "overpasses": 22,
+   "inliers": 20,
+   "outliers": 2,
+   "outlierFrpMW": [
+    7.94,
+    24.77
+   ],
+   "medianAllFrpMW": 17.7,
+   "firstSeen": "2025-05-22T08:06:00Z",
+   "lastSeen": "2026-04-16T20:18:00Z",
+   "clusters": [
+    {
+     "id": 1,
+     "centroidLat": 29.67071,
+     "centroidLon": 76.97411,
+     "members": 5,
+     "radiusM": 886,
+     "medianFrpMW": 17.43
+    },
+    {
+     "id": 0,
+     "centroidLat": 29.69258,
+     "centroidLon": 76.9823,
+     "members": 4,
+     "radiusM": 534,
+     "medianFrpMW": 19.02
+    }
+   ],
+   "noise": 13,
+   "note": null
+  },
+  "POLY-AGRI-LDH": {
+   "baselineFrpMW": 18.91,
+   "method": "isolation_forest",
+   "records": 34,
+   "overpasses": 34,
+   "inliers": 32,
+   "outliers": 2,
+   "outlierFrpMW": [
+    8.34,
+    29.16
+   ],
+   "medianAllFrpMW": 18.91,
+   "firstSeen": "2025-04-24T08:33:00Z",
+   "lastSeen": "2026-04-16T08:00:00Z",
+   "clusters": [
+    {
+     "id": 0,
+     "centroidLat": 31.13651,
+     "centroidLon": 75.34797,
+     "members": 10,
+     "radiusM": 1765,
+     "medianFrpMW": 19.86
+    },
+    {
+     "id": 1,
+     "centroidLat": 31.13181,
+     "centroidLon": 75.33202,
+     "members": 4,
+     "radiusM": 298,
+     "medianFrpMW": 17.35
+    },
+    {
+     "id": 2,
+     "centroidLat": 31.14775,
+     "centroidLon": 75.33433,
+     "members": 4,
+     "radiusM": 544,
+     "medianFrpMW": 15.14
+    },
+    {
+     "id": 3,
+     "centroidLat": 31.17334,
+     "centroidLon": 75.34092,
+     "members": 3,
+     "radiusM": 554,
+     "medianFrpMW": 21.88
+    }
+   ],
+   "noise": 13,
+   "note": null
+  }
+ }
+}

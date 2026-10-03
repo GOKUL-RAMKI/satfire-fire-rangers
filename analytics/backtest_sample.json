@@ -1,0 +1,203 @@
+{
+ "dataset": "sample",
+ "sample": true,
+ "caveat": "Self-consistency check on generated sample data — not a performance claim. Windows are the sample scenarios (scripts/gen-sample.ts) with their intended labels; the Vapi unmapped candidate is given truth industrial_fire, so it appears as a strict per-class miss (predicted unmapped_industrial_candidate) but counts as surfaced in industrialFireRecall.",
+ "baselinesPath": "data/derived/site_baselines.json",
+ "windows": [
+  {
+   "name": "sample-FAC-001-paradip",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    86.612,
+    20.244,
+    86.712,
+    20.344
+   ]
+  },
+  {
+   "name": "sample-FAC-003-korba",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    82.63,
+    22.334,
+    82.73,
+    22.434
+   ]
+  },
+  {
+   "name": "sample-FAC-009-haldia",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    88.069,
+    22.012,
+    88.169,
+    22.112
+   ]
+  },
+  {
+   "name": "sample-vapi-unmapped",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    72.901,
+    20.341,
+    72.961,
+    20.401
+   ]
+  },
+  {
+   "name": "sample-FAC-002-jamnagar",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    69.962,
+    22.333,
+    70.062,
+    22.433
+   ]
+  },
+  {
+   "name": "sample-FAC-005-kakinada",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    82.231,
+    16.912,
+    82.331,
+    17.012
+   ]
+  },
+  {
+   "name": "sample-FAC-015-bharuch-new",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    72.532,
+    21.651,
+    72.632,
+    21.751
+   ]
+  },
+  {
+   "name": "sample-ludhiana-farmland",
+   "label": "agricultural_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    75.2838,
+    31.0902,
+    75.4038,
+    31.2102
+   ]
+  },
+  {
+   "name": "sample-karnal-farmland",
+   "label": "agricultural_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    76.9221,
+    29.6215,
+    77.0421,
+    29.7415
+   ]
+  },
+  {
+   "name": "sample-similipal-forest",
+   "label": "wildfire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    86.194,
+    21.792,
+    86.434,
+    22.032
+   ]
+  },
+  {
+   "name": "sample-uttarakhand-forest",
+   "label": "wildfire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    79.2125,
+    29.9893,
+    79.4125,
+    30.1893
+   ]
+  },
+  {
+   "name": "sample-FAC-004-jharia",
+   "label": "mining",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    86.363,
+    23.662,
+    86.463,
+    23.762
+   ]
+  },
+  {
+   "name": "sample-FAC-010-neyveli",
+   "label": "mining",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    79.427,
+    11.563,
+    79.527,
+    11.663
+   ]
+  },
+  {
+   "name": "sample-chilika-lakeshore",
+   "label": "provisional",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    85.288,
+    19.69,
+    85.348,
+    19.75
+   ]
+  },
+  {
+   "name": "sample-jabalpur-roadside",
+   "label": "other",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "useSample": true,
+   "bbox": [
+    79.984,
+    22.9751,
+    80.044,
+    23.0351
+   ]
+  }
+ ]
+}

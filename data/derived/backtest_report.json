@@ -1,0 +1,225 @@
+{
+ "generatedAt": "2026-09-29T11:17:08Z",
+ "dataset": "sample",
+ "sample": true,
+ "caveat": "Self-consistency check on generated sample data \u2014 not a performance claim. Windows are the sample scenarios (scripts/gen-sample.ts) with their intended labels; the Vapi unmapped candidate is given truth industrial_fire, so it appears as a strict per-class miss (predicted unmapped_industrial_candidate) but counts as surfaced in industrialFireRecall. Window-level weak labels: every event in a window is assigned the window's truth label. industrialFireRecall counts industrial_fire and unmapped_industrial_candidate predictions as surfaced; strict per-class recall is in perClass. A window with no detection counts as one missed event scored as 'other'.",
+ "windows": [
+  {
+   "name": "sample-FAC-001-paradip",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 20
+  },
+  {
+   "name": "sample-FAC-003-korba",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 4
+  },
+  {
+   "name": "sample-FAC-009-haldia",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 1
+  },
+  {
+   "name": "sample-vapi-unmapped",
+   "label": "industrial_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 1
+  },
+  {
+   "name": "sample-FAC-002-jamnagar",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 5
+  },
+  {
+   "name": "sample-FAC-005-kakinada",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 3
+  },
+  {
+   "name": "sample-FAC-015-bharuch-new",
+   "label": "persistent_source",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 2
+  },
+  {
+   "name": "sample-ludhiana-farmland",
+   "label": "agricultural_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 9
+  },
+  {
+   "name": "sample-karnal-farmland",
+   "label": "agricultural_fire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 1
+  },
+  {
+   "name": "sample-similipal-forest",
+   "label": "wildfire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 13
+  },
+  {
+   "name": "sample-uttarakhand-forest",
+   "label": "wildfire",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 9
+  },
+  {
+   "name": "sample-FAC-004-jharia",
+   "label": "mining",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 6
+  },
+  {
+   "name": "sample-FAC-010-neyveli",
+   "label": "mining",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 2
+  },
+  {
+   "name": "sample-chilika-lakeshore",
+   "label": "provisional",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 1
+  },
+  {
+   "name": "sample-jabalpur-roadside",
+   "label": "other",
+   "start": "2026-04-20T00:00:00Z",
+   "end": "2026-04-23T22:00:00Z",
+   "detections": 1
+  }
+ ],
+ "perClass": [
+  {
+   "label": "industrial_fire",
+   "precision": 1.0,
+   "recall": 0.75,
+   "support": 4,
+   "predicted": 3
+  },
+  {
+   "label": "wildfire",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 2,
+   "predicted": 2
+  },
+  {
+   "label": "agricultural_fire",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 2,
+   "predicted": 2
+  },
+  {
+   "label": "mining",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 2,
+   "predicted": 2
+  },
+  {
+   "label": "persistent_source",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 3,
+   "predicted": 3
+  },
+  {
+   "label": "unmapped_industrial_candidate",
+   "precision": 0.0,
+   "recall": null,
+   "support": 0,
+   "predicted": 1
+  },
+  {
+   "label": "provisional",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 1,
+   "predicted": 1
+  },
+  {
+   "label": "other",
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 1,
+   "predicted": 1
+  }
+ ],
+ "industrialFireRecall": 1.0,
+ "falseIndustrialAlertsPerWeek": 0.0,
+ "weeksCovered": 0.56,
+ "confusion": [
+  {
+   "truth": "industrial_fire",
+   "predicted": "industrial_fire",
+   "count": 3
+  },
+  {
+   "truth": "industrial_fire",
+   "predicted": "unmapped_industrial_candidate",
+   "count": 1
+  },
+  {
+   "truth": "wildfire",
+   "predicted": "wildfire",
+   "count": 2
+  },
+  {
+   "truth": "agricultural_fire",
+   "predicted": "agricultural_fire",
+   "count": 2
+  },
+  {
+   "truth": "mining",
+   "predicted": "mining",
+   "count": 2
+  },
+  {
+   "truth": "persistent_source",
+   "predicted": "persistent_source",
+   "count": 3
+  },
+  {
+   "truth": "provisional",
+   "predicted": "provisional",
+   "count": 1
+  },
+  {
+   "truth": "other",
+   "predicted": "other",
+   "count": 1
+  }
+ ],
+ "failures": [
+  {
+   "window": "sample-vapi-unmapped",
+   "eventId": "EVT-CELL-20.37-72.93-20260422",
+   "truth": "industrial_fire",
+   "predicted": "unmapped_industrial_candidate",
+   "why": "no facility/land-use polygon match; industrial-like thermal signature; tier alert; flagged for review"
+  }
+ ]
+}

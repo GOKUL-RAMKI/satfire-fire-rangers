@@ -1,0 +1,2719 @@
+[
+ {
+  "id": "OSM-way-84730819",
+  "dataset": "live",
+  "name": "Paradip Port",
+  "type": "Industrial site",
+  "lat": 20.27487503821656,
+  "lon": 86.67071957961781,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-84730819"
+  ]
+ },
+ {
+  "id": "OSM-way-166334648",
+  "dataset": "live",
+  "name": "IOCL Paradip Refinery Tankfarm",
+  "type": "Oil refinery",
+  "lat": 20.247611987654334,
+  "lon": 86.59816516049382,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-166334648"
+  ]
+ },
+ {
+  "id": "OSM-way-166334650",
+  "dataset": "live",
+  "name": "Paradeep Phosphates Limited Township",
+  "type": "Industrial site",
+  "lat": 20.261563452380944,
+  "lon": 86.62578228571431,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-166334650"
+  ]
+ },
+ {
+  "id": "OSM-way-201486015",
+  "dataset": "live",
+  "name": "Essar Steel Odisha Limited",
+  "type": "Steel plant",
+  "lat": 20.316880400000002,
+  "lon": 86.64860689999998,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-201486015"
+  ]
+ },
+ {
+  "id": "OSM-way-201486017",
+  "dataset": "live",
+  "name": "IFFCO Plant",
+  "type": "Industrial site",
+  "lat": 20.30616446153846,
+  "lon": 86.6629151923077,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-201486017"
+  ]
+ },
+ {
+  "id": "OSM-way-475763757",
+  "dataset": "live",
+  "name": "Cargill Foods Industry",
+  "type": "Industrial site",
+  "lat": 20.286261,
+  "lon": 86.6392265,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-475763757"
+  ]
+ },
+ {
+  "id": "OSM-way-476615816",
+  "dataset": "live",
+  "name": "IOCL Oil Refinery / Petrochemical Plant",
+  "type": "Oil refinery",
+  "lat": 20.260918440677965,
+  "lon": 86.60283277966101,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-476615816"
+  ]
+ },
+ {
+  "id": "OSM-way-476855038",
+  "dataset": "live",
+  "name": "Hindustan Petroleum Corporation Limited",
+  "type": "Oil refinery",
+  "lat": 20.2839825,
+  "lon": 86.62191842857143,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-476855038"
+  ]
+ },
+ {
+  "id": "OSM-way-476855039",
+  "dataset": "live",
+  "name": "IOCL Terminal",
+  "type": "Oil refinery",
+  "lat": 20.286554444444445,
+  "lon": 86.626798,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-476855039"
+  ]
+ },
+ {
+  "id": "OSM-way-499105807",
+  "dataset": "live",
+  "name": "Paradip Essar Power Plant",
+  "type": "Thermal power plant",
+  "lat": 20.310113750000003,
+  "lon": 86.64402583333334,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-499105807"
+  ]
+ },
+ {
+  "id": "OSM-way-1108634540",
+  "dataset": "live",
+  "name": "Paradip Refinery Captive Power Plant",
+  "type": "Thermal power plant",
+  "lat": 20.256997375,
+  "lon": 86.59205737500001,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1108634540"
+  ]
+ },
+ {
+  "id": "OSM-way-1201236217",
+  "dataset": "live",
+  "name": "Paradeep Phosphates Limited",
+  "type": "Industrial site",
+  "lat": 20.27497623529412,
+  "lon": 86.64058614705883,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1201236217"
+  ]
+ },
+ {
+  "id": "OSM-way-1216134832",
+  "dataset": "live",
+  "name": "IFFCO (Oswal) Power Station",
+  "type": "Thermal power plant",
+  "lat": 20.31201418181818,
+  "lon": 86.65811972727273,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1216134832"
+  ]
+ },
+ {
+  "id": "OSM-way-427382216",
+  "dataset": "live",
+  "name": "GIDC Phase 2",
+  "type": "Industrial site",
+  "lat": 22.413340645161295,
+  "lon": 70.05594564516129,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-427382216"
+  ]
+ },
+ {
+  "id": "OSM-way-427385354",
+  "dataset": "live",
+  "name": "GIDC Phase 3",
+  "type": "Industrial site",
+  "lat": 22.41688980952381,
+  "lon": 70.04558683333332,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-427385354"
+  ]
+ },
+ {
+  "id": "OSM-way-427766479",
+  "dataset": "live",
+  "name": "Digjam Textiles LTD",
+  "type": "Industrial site",
+  "lat": 22.473253250000003,
+  "lon": 70.0323994375,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-427766479"
+  ]
+ },
+ {
+  "id": "OSM-way-136512814",
+  "dataset": "live",
+  "name": "Bharat Aluminium",
+  "type": "Industrial site",
+  "lat": 22.39457175862069,
+  "lon": 82.7302614827586,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-136512814"
+  ]
+ },
+ {
+  "id": "OSM-way-136512819",
+  "dataset": "live",
+  "name": "Kusmunda Open Cast Mine",
+  "type": "Mine / quarry",
+  "lat": 22.331332322580646,
+  "lon": 82.66623116129033,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-136512819"
+  ]
+ },
+ {
+  "id": "OSM-way-203167965",
+  "dataset": "live",
+  "name": "Hasdeo Thermal Power Station Korba West",
+  "type": "Thermal power plant",
+  "lat": 22.414521500000003,
+  "lon": 82.6827395882353,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-203167965"
+  ]
+ },
+ {
+  "id": "OSM-way-203167967",
+  "dataset": "live",
+  "name": "Korba East Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 22.38516272413793,
+  "lon": 82.72000524137931,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-203167967"
+  ]
+ },
+ {
+  "id": "OSM-way-203167968",
+  "dataset": "live",
+  "name": "Dr. Shyama Prasad Mukherjee Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 22.370721648148137,
+  "lon": 82.72108744444444,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-203167968"
+  ]
+ },
+ {
+  "id": "OSM-way-203167969",
+  "dataset": "live",
+  "name": "Korba Super Thermal Power Plant",
+  "type": "Thermal power plant",
+  "lat": 22.387676224137927,
+  "lon": 82.68376443103448,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-203167969"
+  ]
+ },
+ {
+  "id": "OSM-way-437012405",
+  "dataset": "live",
+  "name": "Balco - III",
+  "type": "Thermal power plant",
+  "lat": 22.397243230769227,
+  "lon": 82.740636,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-437012405"
+  ]
+ },
+ {
+  "id": "OSM-way-437012406",
+  "dataset": "live",
+  "name": "Balco-II Power Station",
+  "type": "Thermal power plant",
+  "lat": 22.393076647058823,
+  "lon": 82.7437952352941,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-437012406"
+  ]
+ },
+ {
+  "id": "OSM-way-437012407",
+  "dataset": "live",
+  "name": "Balco-I Captive Power Plant",
+  "type": "Thermal power plant",
+  "lat": 22.394496312500003,
+  "lon": 82.673169375,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-437012407"
+  ]
+ },
+ {
+  "id": "OSM-way-663471185",
+  "dataset": "live",
+  "name": "Swastik Power and Mineral Resources Private Limited",
+  "type": "Thermal power plant",
+  "lat": 22.297997849999994,
+  "lon": 82.70304715,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-663471185"
+  ]
+ },
+ {
+  "id": "OSM-relation-13118729",
+  "dataset": "live",
+  "name": "Gevra Open Cast Mine",
+  "type": "Mine / quarry",
+  "lat": 22.33034167676767,
+  "lon": 82.59133045454547,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-relation-13118729"
+  ]
+ },
+ {
+  "id": "OSM-relation-16214720",
+  "dataset": "live",
+  "name": "Balco-III Power Station",
+  "type": "Thermal power plant",
+  "lat": 22.397243230769227,
+  "lon": 82.740636,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-relation-16214720"
+  ]
+ },
+ {
+  "id": "OSM-relation-16214721",
+  "dataset": "live",
+  "name": "BALCO Korba Power Stations",
+  "type": "Thermal power plant",
+  "lat": 22.393076647058823,
+  "lon": 82.7437952352941,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-relation-16214721"
+  ]
+ },
+ {
+  "id": "OSM-way-117695916",
+  "dataset": "live",
+  "name": "Tetulmari coal mine",
+  "type": "Mine / quarry",
+  "lat": 23.80104791176471,
+  "lon": 86.3499526764706,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-117695916"
+  ]
+ },
+ {
+  "id": "OSM-way-117695917",
+  "dataset": "live",
+  "name": "Cluster 11 and Cluster 7 (BCCL) Coal Mines",
+  "type": "Mine / quarry",
+  "lat": 23.770640868131867,
+  "lon": 86.39936509890107,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-117695917"
+  ]
+ },
+ {
+  "id": "OSM-way-117807504",
+  "dataset": "live",
+  "name": "Cluster 8 and Cluster 9 Coal Mines",
+  "type": "Mine / quarry",
+  "lat": 23.734428852713187,
+  "lon": 86.43600443410854,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-117807504"
+  ]
+ },
+ {
+  "id": "OSM-way-117807506",
+  "dataset": "live",
+  "name": "Amalgamated Keshalpur-West Mudidih (AKWMC) Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 23.80380861290323,
+  "lon": 86.31839525806451,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-117807506"
+  ]
+ },
+ {
+  "id": "OSM-way-117810134",
+  "dataset": "live",
+  "name": "Cluster 6 (BCCL) Coal Mines",
+  "type": "Mine / quarry",
+  "lat": 23.796166936170213,
+  "lon": 86.37757640425532,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-117810134"
+  ]
+ },
+ {
+  "id": "OSM-way-433223158",
+  "dataset": "live",
+  "name": "SAIL Chasnalla ADM Building",
+  "type": "Industrial site",
+  "lat": 23.664835699999998,
+  "lon": 86.44558029999999,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-433223158"
+  ]
+ },
+ {
+  "id": "OSM-way-433225639",
+  "dataset": "live",
+  "name": "SAIL Parbatpur colliery Area",
+  "type": "Mine / quarry",
+  "lat": 23.68108427027027,
+  "lon": 86.34622286486484,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-433225639"
+  ]
+ },
+ {
+  "id": "OSM-way-433247994",
+  "dataset": "live",
+  "name": "SAIL Parbatpur Colliery",
+  "type": "Mine / quarry",
+  "lat": 23.682151347826085,
+  "lon": 86.35241102173916,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-433247994"
+  ]
+ },
+ {
+  "id": "OSM-way-528437053",
+  "dataset": "live",
+  "name": "Moonidih coal project",
+  "type": "Mine / quarry",
+  "lat": 23.740607380952383,
+  "lon": 86.35216766666667,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-528437053"
+  ]
+ },
+ {
+  "id": "OSM-way-509157314",
+  "dataset": "live",
+  "name": "rice mill",
+  "type": "Industrial site",
+  "lat": 17.043143800000003,
+  "lon": 82.2045624,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-509157314"
+  ]
+ },
+ {
+  "id": "OSM-way-814891223",
+  "dataset": "live",
+  "name": "Ice Factory",
+  "type": "Industrial site",
+  "lat": 16.936156200000003,
+  "lon": 82.2295406,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-814891223"
+  ]
+ },
+ {
+  "id": "OSM-way-1248068176",
+  "dataset": "live",
+  "name": "DEVI FISHERIES PVT LTD",
+  "type": "Industrial site",
+  "lat": 17.018981166666666,
+  "lon": 82.23300316666666,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1248068176"
+  ]
+ },
+ {
+  "id": "OSM-way-1415869607",
+  "dataset": "live",
+  "name": "APSRTC Bus Depot , Kakinada",
+  "type": "Industrial site",
+  "lat": 16.965716800000003,
+  "lon": 82.2403856,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1415869607"
+  ]
+ },
+ {
+  "id": "OSM-way-65310813",
+  "dataset": "live",
+  "name": "Bhilai Steel Plant",
+  "type": "Steel plant",
+  "lat": 21.187872629139076,
+  "lon": 81.38438296688749,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-65310813"
+  ]
+ },
+ {
+  "id": "OSM-way-129773729",
+  "dataset": "live",
+  "name": "ACC Jamul",
+  "type": "Industrial site",
+  "lat": 21.23771674444443,
+  "lon": 81.38313835555557,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-129773729"
+  ]
+ },
+ {
+  "id": "OSM-way-202180496",
+  "dataset": "live",
+  "name": "Bhilai 500 MW Expansion Power Project",
+  "type": "Thermal power plant",
+  "lat": 21.1892622264151,
+  "lon": 81.4268940943396,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-202180496"
+  ]
+ },
+ {
+  "id": "OSM-way-310672417",
+  "dataset": "live",
+  "name": "Bhilai Jaypee Cement Ltd.",
+  "type": "Industrial site",
+  "lat": 21.18389566666667,
+  "lon": 81.36147666666666,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-310672417"
+  ]
+ },
+ {
+  "id": "OSM-way-1224580452",
+  "dataset": "live",
+  "name": "Bhilai Steel 74 MW Captive Power Plant",
+  "type": "Thermal power plant",
+  "lat": 21.178741199999997,
+  "lon": 81.3950855,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1224580452"
+  ]
+ },
+ {
+  "id": "OSM-way-90989998",
+  "dataset": "live",
+  "name": "Angul Smelter power station",
+  "type": "Thermal power plant",
+  "lat": 20.854303666666667,
+  "lon": 85.19251375,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-90989998"
+  ]
+ },
+ {
+  "id": "OSM-way-231258311",
+  "dataset": "live",
+  "name": "Talcher Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 20.913262208333332,
+  "lon": 85.20845604166665,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-231258311"
+  ]
+ },
+ {
+  "id": "OSM-way-396925739",
+  "dataset": "live",
+  "name": "Kamalanga Thermal Power Plant",
+  "type": "Thermal power plant",
+  "lat": 20.867554696202532,
+  "lon": 85.264665443038,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-396925739"
+  ]
+ },
+ {
+  "id": "OSM-way-928075506",
+  "dataset": "live",
+  "name": "Ananta coal mine",
+  "type": "Mine / quarry",
+  "lat": 20.96657335135135,
+  "lon": 85.13714672972974,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-928075506"
+  ]
+ },
+ {
+  "id": "OSM-way-982272879",
+  "dataset": "live",
+  "name": "Lingaraj Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 20.962585083333334,
+  "lon": 85.181973,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-982272879"
+  ]
+ },
+ {
+  "id": "OSM-way-986314149",
+  "dataset": "live",
+  "name": "Nandira",
+  "type": "Mine / quarry",
+  "lat": 20.927583399999996,
+  "lon": 85.1239847,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-986314149"
+  ]
+ },
+ {
+  "id": "OSM-way-988893557",
+  "dataset": "live",
+  "name": "Bhubhaneshwari coal mine",
+  "type": "Mine / quarry",
+  "lat": 20.97257,
+  "lon": 85.17058075,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-988893557"
+  ]
+ },
+ {
+  "id": "OSM-way-196019571",
+  "dataset": "live",
+  "name": "Vindhyachal",
+  "type": "Thermal power plant",
+  "lat": 24.10477453296703,
+  "lon": 82.67408216483511,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-196019571"
+  ]
+ },
+ {
+  "id": "OSM-way-196411761",
+  "dataset": "live",
+  "name": "Singrauli Super Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 24.10645496551724,
+  "lon": 82.70579613793105,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-196411761"
+  ]
+ },
+ {
+  "id": "OSM-way-196441523",
+  "dataset": "live",
+  "name": "Field WorkShop",
+  "type": "Industrial site",
+  "lat": 24.138604285714287,
+  "lon": 82.65666757142857,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-196441523"
+  ]
+ },
+ {
+  "id": "OSM-way-196527355",
+  "dataset": "live",
+  "name": "Khadia Mine",
+  "type": "Mine / quarry",
+  "lat": 24.129652387755094,
+  "lon": 82.7070925510204,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-196527355"
+  ]
+ },
+ {
+  "id": "OSM-way-196935284",
+  "dataset": "live",
+  "name": "Bina Mine",
+  "type": "Mine / quarry",
+  "lat": 24.157046875,
+  "lon": 82.7480560625,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-196935284"
+  ]
+ },
+ {
+  "id": "OSM-way-197159959",
+  "dataset": "live",
+  "name": "Amlohri Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 24.127779901639336,
+  "lon": 82.59082231147538,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-197159959"
+  ]
+ },
+ {
+  "id": "OSM-way-197159960",
+  "dataset": "live",
+  "name": "Dudhichua Mine",
+  "type": "Mine / quarry",
+  "lat": 24.14662675,
+  "lon": 82.68595621428571,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-197159960"
+  ]
+ },
+ {
+  "id": "OSM-way-197159969",
+  "dataset": "live",
+  "name": "Jayant Mine",
+  "type": "Mine / quarry",
+  "lat": 24.16386852631579,
+  "lon": 82.6563319736842,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-197159969"
+  ]
+ },
+ {
+  "id": "OSM-way-197159971",
+  "dataset": "live",
+  "name": "Kakri Mine",
+  "type": "Mine / quarry",
+  "lat": 24.174468772727277,
+  "lon": 82.75058863636364,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-197159971"
+  ]
+ },
+ {
+  "id": "OSM-way-197159973",
+  "dataset": "live",
+  "name": "Nigahi Mine",
+  "type": "Mine / quarry",
+  "lat": 24.145780183333336,
+  "lon": 82.62598725000001,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-197159973"
+  ]
+ },
+ {
+  "id": "OSM-way-982784437",
+  "dataset": "live",
+  "name": "Krishnashila Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 24.130934846153846,
+  "lon": 82.74809626923077,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-982784437"
+  ]
+ },
+ {
+  "id": "OSM-way-985843341",
+  "dataset": "live",
+  "name": "Block - B coal mine",
+  "type": "Mine / quarry",
+  "lat": 24.163418239130426,
+  "lon": 82.56946745652172,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-985843341"
+  ]
+ },
+ {
+  "id": "OSM-way-334475705",
+  "dataset": "live",
+  "name": "Renuka Sugar Mill",
+  "type": "Industrial site",
+  "lat": 22.058932444444444,
+  "lon": 88.08795333333333,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334475705"
+  ]
+ },
+ {
+  "id": "OSM-way-334696846",
+  "dataset": "live",
+  "name": "Apeejay Infralogistic",
+  "type": "Industrial site",
+  "lat": 22.082307730769237,
+  "lon": 88.03927609615383,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334696846"
+  ]
+ },
+ {
+  "id": "OSM-way-334702194",
+  "dataset": "live",
+  "name": "Godown",
+  "type": "Industrial site",
+  "lat": 22.0830803,
+  "lon": 88.04998435000002,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334702194"
+  ]
+ },
+ {
+  "id": "OSM-way-334702481",
+  "dataset": "live",
+  "name": "Godown",
+  "type": "Industrial site",
+  "lat": 22.07854589473684,
+  "lon": 88.04811131578947,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334702481"
+  ]
+ },
+ {
+  "id": "OSM-way-334702756",
+  "dataset": "live",
+  "name": "Logistic Park",
+  "type": "Industrial site",
+  "lat": 22.07763447826087,
+  "lon": 88.05124939130434,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334702756"
+  ]
+ },
+ {
+  "id": "OSM-way-334703582",
+  "dataset": "live",
+  "name": "Logistic Park",
+  "type": "Industrial site",
+  "lat": 22.073323739130426,
+  "lon": 88.0549540652174,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334703582"
+  ]
+ },
+ {
+  "id": "OSM-way-334704368",
+  "dataset": "live",
+  "name": "Ural India Limited",
+  "type": "Industrial site",
+  "lat": 22.073109905660374,
+  "lon": 88.06575277358488,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334704368"
+  ]
+ },
+ {
+  "id": "OSM-way-334709526",
+  "dataset": "live",
+  "name": "Logistic Park",
+  "type": "Industrial site",
+  "lat": 22.068774703703703,
+  "lon": 88.07007051851852,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334709526"
+  ]
+ },
+ {
+  "id": "OSM-way-334799495",
+  "dataset": "live",
+  "name": "Logistic Park",
+  "type": "Industrial site",
+  "lat": 22.069510095238098,
+  "lon": 88.06229238095236,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-334799495"
+  ]
+ },
+ {
+  "id": "OSM-way-335591575",
+  "dataset": "live",
+  "name": "Indian Oil Corporation Ltd IOCL Refinery",
+  "type": "Oil refinery",
+  "lat": 22.04256313043478,
+  "lon": 88.10378921739131,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335591575"
+  ]
+ },
+ {
+  "id": "OSM-way-335594001",
+  "dataset": "live",
+  "name": "Hindustan Fertilizer Corporation Limited",
+  "type": "Fertilizer plant",
+  "lat": 22.05155526666667,
+  "lon": 88.11458506666668,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335594001"
+  ]
+ },
+ {
+  "id": "OSM-way-335706015",
+  "dataset": "live",
+  "name": "Haldia Petrochemicals Ltd.",
+  "type": "Petrochemical complex",
+  "lat": 22.066318704918032,
+  "lon": 88.11494267213111,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335706015"
+  ]
+ },
+ {
+  "id": "OSM-way-335946818",
+  "dataset": "live",
+  "name": "Haldia Tata Power Power Plant",
+  "type": "Thermal power plant",
+  "lat": 22.0544882,
+  "lon": 88.1212702,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335946818"
+  ]
+ },
+ {
+  "id": "OSM-way-335947479",
+  "dataset": "live",
+  "name": "Hooghly Met Coke and Power Company Limited",
+  "type": "Industrial site",
+  "lat": 22.054594111111115,
+  "lon": 88.126102,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335947479"
+  ]
+ },
+ {
+  "id": "OSM-way-335958438",
+  "dataset": "live",
+  "name": "Bharat Petroleum Corporation Limited",
+  "type": "Industrial site",
+  "lat": 22.05682427777778,
+  "lon": 88.13530027777779,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335958438"
+  ]
+ },
+ {
+  "id": "OSM-way-335959127",
+  "dataset": "live",
+  "name": "Shaw Wallace Agrochemicals Limited",
+  "type": "Industrial site",
+  "lat": 22.060676571428576,
+  "lon": 88.137101,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335959127"
+  ]
+ },
+ {
+  "id": "OSM-way-335962915",
+  "dataset": "live",
+  "name": "Exide Industries Limited",
+  "type": "Industrial site",
+  "lat": 22.063874749999997,
+  "lon": 88.13342108333335,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-335962915"
+  ]
+ },
+ {
+  "id": "OSM-way-336019651",
+  "dataset": "live",
+  "name": "Gokul Refoils & Solvent",
+  "type": "Industrial site",
+  "lat": 22.06227815,
+  "lon": 88.08984724999999,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336019651"
+  ]
+ },
+ {
+  "id": "OSM-way-336022340",
+  "dataset": "live",
+  "name": "Adani Wilmar Limited",
+  "type": "Industrial site",
+  "lat": 22.06718178378378,
+  "lon": 88.08460308108107,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336022340"
+  ]
+ },
+ {
+  "id": "OSM-way-336022382",
+  "dataset": "live",
+  "name": "AL Logistic Pvt. Ltd.",
+  "type": "Industrial site",
+  "lat": 22.066726282051285,
+  "lon": 88.08166061538462,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336022382"
+  ]
+ },
+ {
+  "id": "OSM-way-336023471",
+  "dataset": "live",
+  "name": "Emami Bio Diesel",
+  "type": "Industrial site",
+  "lat": 22.074216999999997,
+  "lon": 88.08539576666665,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336023471"
+  ]
+ },
+ {
+  "id": "OSM-way-336951544",
+  "dataset": "live",
+  "name": "Hindustan Petrolium Ltd.",
+  "type": "Industrial site",
+  "lat": 22.082181714285717,
+  "lon": 88.11370267857146,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336951544"
+  ]
+ },
+ {
+  "id": "OSM-way-336952434",
+  "dataset": "live",
+  "name": "Reliance Pvt. Ltd.",
+  "type": "Industrial site",
+  "lat": 22.069984125,
+  "lon": 88.09815441666667,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336952434"
+  ]
+ },
+ {
+  "id": "OSM-way-336953705",
+  "dataset": "live",
+  "name": "Marcus Oil & Chemical",
+  "type": "Industrial site",
+  "lat": 22.0743374,
+  "lon": 88.107788,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336953705"
+  ]
+ },
+ {
+  "id": "OSM-way-336970140",
+  "dataset": "live",
+  "name": "Indian Oil Petrona Pvt. Ltd.",
+  "type": "Industrial site",
+  "lat": 22.078389,
+  "lon": 88.10681295744683,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-336970140"
+  ]
+ },
+ {
+  "id": "OSM-way-337005792",
+  "dataset": "live",
+  "name": "RDB Brasyans",
+  "type": "Industrial site",
+  "lat": 22.076722907407408,
+  "lon": 88.12807425925924,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-337005792"
+  ]
+ },
+ {
+  "id": "OSM-way-337010940",
+  "dataset": "live",
+  "name": "South Asian Petro Chemicals Ltd.",
+  "type": "Industrial site",
+  "lat": 22.07980317391304,
+  "lon": 88.12466073913043,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-337010940"
+  ]
+ },
+ {
+  "id": "OSM-way-337769312",
+  "dataset": "live",
+  "name": "Zenith Erectors",
+  "type": "Industrial site",
+  "lat": 22.066679818181818,
+  "lon": 88.14081327272729,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-337769312"
+  ]
+ },
+ {
+  "id": "OSM-way-337807318",
+  "dataset": "live",
+  "name": "HPCL Haldia Oil",
+  "type": "Industrial site",
+  "lat": 22.071319326086954,
+  "lon": 88.15484702173912,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-337807318"
+  ]
+ },
+ {
+  "id": "OSM-way-340326508",
+  "dataset": "live",
+  "name": "Haldia Dock Complex",
+  "type": "Industrial site",
+  "lat": 22.0391097721519,
+  "lon": 88.08732872151901,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-340326508"
+  ]
+ },
+ {
+  "id": "OSM-way-388022770",
+  "dataset": "live",
+  "name": "Adani Wilmar Limited",
+  "type": "Industrial site",
+  "lat": 22.06688428,
+  "lon": 88.08428308,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-388022770"
+  ]
+ },
+ {
+  "id": "OSM-way-398462400",
+  "dataset": "live",
+  "name": "Electrosteel Castings Limited",
+  "type": "Steel plant",
+  "lat": 22.08941145714285,
+  "lon": 88.11188705714287,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-398462400"
+  ]
+ },
+ {
+  "id": "OSM-way-475959669",
+  "dataset": "live",
+  "name": "Hiranmaye Haldia Power Plant",
+  "type": "Thermal power plant",
+  "lat": 22.08081906896552,
+  "lon": 88.10284048275864,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-475959669"
+  ]
+ },
+ {
+  "id": "OSM-way-603765443",
+  "dataset": "live",
+  "name": "Haldia Energy power station",
+  "type": "Thermal power plant",
+  "lat": 22.106909823529417,
+  "lon": 88.17779023529411,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-603765443"
+  ]
+ },
+ {
+  "id": "OSM-way-926899740",
+  "dataset": "live",
+  "name": "HPL Cogen Haldia Power Plant",
+  "type": "Thermal power plant",
+  "lat": 22.066442333333338,
+  "lon": 88.10238583333334,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-926899740"
+  ]
+ },
+ {
+  "id": "OSM-way-1385765265",
+  "dataset": "live",
+  "name": "Satish Samanta Trade Centre",
+  "type": "Industrial site",
+  "lat": 22.052836375000002,
+  "lon": 88.07984249999998,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1385765265"
+  ]
+ },
+ {
+  "id": "OSM-way-56146167",
+  "dataset": "live",
+  "name": "Neyveli III Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 11.52148518181818,
+  "lon": 79.47732913636365,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-56146167"
+  ]
+ },
+ {
+  "id": "OSM-way-56400658",
+  "dataset": "live",
+  "name": "Neyveli Lignite Mines - II",
+  "type": "Mine / quarry",
+  "lat": 11.51885309090909,
+  "lon": 79.43431809090909,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-56400658"
+  ]
+ },
+ {
+  "id": "OSM-way-136727943",
+  "dataset": "live",
+  "name": "Neyveli Thermal Power Station II",
+  "type": "Thermal power plant",
+  "lat": 11.554368803278686,
+  "lon": 79.44485259016398,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-136727943"
+  ]
+ },
+ {
+  "id": "OSM-way-345057949",
+  "dataset": "live",
+  "name": "Neyveli New Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 11.59123756521739,
+  "lon": 79.45005730434782,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-345057949"
+  ]
+ },
+ {
+  "id": "OSM-way-465874233",
+  "dataset": "live",
+  "name": "Neyveli Thermal Power Station I",
+  "type": "Thermal power plant",
+  "lat": 11.5930775,
+  "lon": 79.46939594444446,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-465874233"
+  ]
+ },
+ {
+  "id": "OSM-way-676328216",
+  "dataset": "live",
+  "name": "Ferrocarril",
+  "type": "Industrial site",
+  "lat": 11.58535790909091,
+  "lon": 79.5149161818182,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-676328216"
+  ]
+ },
+ {
+  "id": "OSM-way-924966809",
+  "dataset": "live",
+  "name": "Neyveli Zero Power Plant",
+  "type": "Thermal power plant",
+  "lat": 11.541216125000002,
+  "lon": 79.414291125,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-924966809"
+  ]
+ },
+ {
+  "id": "OSM-way-982810559",
+  "dataset": "live",
+  "name": "Neyveli I Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 11.562565875,
+  "lon": 79.50280615,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-982810559"
+  ]
+ },
+ {
+  "id": "OSM-relation-8553387",
+  "dataset": "live",
+  "name": "Neyveli Solar Project",
+  "type": "Power plant (non-thermal)",
+  "lat": 11.614131166666667,
+  "lon": 79.52454916666666,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-relation-8553387"
+  ]
+ },
+ {
+  "id": "OSM-way-133956716",
+  "dataset": "live",
+  "name": "Naval Dock Yard",
+  "type": "Industrial site",
+  "lat": 17.712694562499998,
+  "lon": 83.269812,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-133956716"
+  ]
+ },
+ {
+  "id": "OSM-way-241951867",
+  "dataset": "live",
+  "name": "Vizag Steel Captive Power Plant-I",
+  "type": "Thermal power plant",
+  "lat": 17.604788444444445,
+  "lon": 83.19592744444444,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-241951867"
+  ]
+ },
+ {
+  "id": "OSM-way-241951906",
+  "dataset": "live",
+  "name": "Simhadri Super Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 17.595708545454546,
+  "lon": 83.09120175757577,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-241951906"
+  ]
+ },
+ {
+  "id": "OSM-way-280178624",
+  "dataset": "live",
+  "name": "Hindustan Petroleum Corporation Limited",
+  "type": "Oil refinery",
+  "lat": 17.693985100000003,
+  "lon": 83.24445874999999,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-280178624"
+  ]
+ },
+ {
+  "id": "OSM-way-385123914",
+  "dataset": "live",
+  "name": "Vizag Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 17.564434526315786,
+  "lon": 83.14209136842105,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-385123914"
+  ]
+ },
+ {
+  "id": "OSM-way-385123922",
+  "dataset": "live",
+  "name": "Vizag Steel Captive Power Plant-II",
+  "type": "Thermal power plant",
+  "lat": 17.617354,
+  "lon": 83.16525800000001,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-385123922"
+  ]
+ },
+ {
+  "id": "OSM-way-395219953",
+  "dataset": "live",
+  "name": "Visakhapatnam Steel Plant",
+  "type": "Steel plant",
+  "lat": 17.617194050847456,
+  "lon": 83.18321713559318,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-395219953"
+  ]
+ },
+ {
+  "id": "OSM-way-397989480",
+  "dataset": "live",
+  "name": "Visakhapatnam Refinery",
+  "type": "Oil refinery",
+  "lat": 17.70670507142857,
+  "lon": 83.23900650000003,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-397989480"
+  ]
+ },
+ {
+  "id": "OSM-way-397989483",
+  "dataset": "live",
+  "name": "Hindusthan Petroleum Corporation Limited",
+  "type": "Industrial site",
+  "lat": 17.7161881,
+  "lon": 83.2482224,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-397989483"
+  ]
+ },
+ {
+  "id": "OSM-way-402901441",
+  "dataset": "live",
+  "name": "GAIL (INDIA) LIMITED VSPL",
+  "type": "Industrial site",
+  "lat": 17.716726374999997,
+  "lon": 83.20772662499999,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-402901441"
+  ]
+ },
+ {
+  "id": "OSM-way-521013580",
+  "dataset": "live",
+  "name": "Brick Factory",
+  "type": "Brick kiln",
+  "lat": 17.68855289473684,
+  "lon": 83.13959273684209,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": true,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-521013580"
+  ]
+ },
+ {
+  "id": "OSM-way-544537915",
+  "dataset": "live",
+  "name": "vishaka dairy",
+  "type": "Industrial site",
+  "lat": 17.70579325,
+  "lon": 83.20693233333333,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-544537915"
+  ]
+ },
+ {
+  "id": "OSM-way-560728097",
+  "dataset": "live",
+  "name": "Hindustan Shipyard limited",
+  "type": "Industrial site",
+  "lat": 17.689071500000004,
+  "lon": 83.27916033333334,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-560728097"
+  ]
+ },
+ {
+  "id": "OSM-way-654136477",
+  "dataset": "live",
+  "name": "industrial building",
+  "type": "Industrial site",
+  "lat": 17.679098277777776,
+  "lon": 83.28464805555555,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-654136477"
+  ]
+ },
+ {
+  "id": "OSM-way-796425325",
+  "dataset": "live",
+  "name": "Andhra Pradesh Medtech Zone",
+  "type": "Industrial site",
+  "lat": 17.625626470588234,
+  "lon": 83.15580770588235,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-796425325"
+  ]
+ },
+ {
+  "id": "OSM-way-1067998751",
+  "dataset": "live",
+  "name": "Simhadri floating solar farm",
+  "type": "Power plant (non-thermal)",
+  "lat": 17.591054800000002,
+  "lon": 83.1147948,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1067998751"
+  ]
+ },
+ {
+  "id": "OSM-way-1088347266",
+  "dataset": "live",
+  "name": "Visakhapatnam Port",
+  "type": "Power plant (non-thermal)",
+  "lat": 17.719095095238092,
+  "lon": 83.25418757142859,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1088347266"
+  ]
+ },
+ {
+  "id": "OSM-way-1105894455",
+  "dataset": "live",
+  "name": "Gangavaram Port",
+  "type": "Industrial site",
+  "lat": 17.65915788888889,
+  "lon": 83.20764633333334,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1105894455"
+  ]
+ },
+ {
+  "id": "OSM-way-1106072235",
+  "dataset": "live",
+  "name": "Ramky Pharma City",
+  "type": "Industrial site",
+  "lat": 17.664473484848486,
+  "lon": 83.098768,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1106072235"
+  ]
+ },
+ {
+  "id": "OSM-way-1415869613",
+  "dataset": "live",
+  "name": "APSRTC Bus Depot , Kurmanapalem (Steel City)",
+  "type": "Steel plant",
+  "lat": 17.6836688,
+  "lon": 83.16560899999999,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1415869613"
+  ]
+ },
+ {
+  "id": "OSM-way-1415869614",
+  "dataset": "live",
+  "name": "APSRTC Bus Depot, Gajuwaka",
+  "type": "Industrial site",
+  "lat": 17.691347999999998,
+  "lon": 83.2245168,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1415869614"
+  ]
+ },
+ {
+  "id": "OSM-way-64690594",
+  "dataset": "live",
+  "name": "Durgapur Steel Plant",
+  "type": "Steel plant",
+  "lat": 23.539419156626508,
+  "lon": 87.25792361445782,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-64690594"
+  ]
+ },
+ {
+  "id": "OSM-way-118649859",
+  "dataset": "live",
+  "name": "Durgapur Projects Limited Power Station",
+  "type": "Thermal power plant",
+  "lat": 23.515693564516123,
+  "lon": 87.3044861290322,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-118649859"
+  ]
+ },
+ {
+  "id": "OSM-way-206009237",
+  "dataset": "live",
+  "name": "Durgapur Steel Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 23.577341191011243,
+  "lon": 87.21237650561797,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-206009237"
+  ]
+ },
+ {
+  "id": "OSM-way-440768838",
+  "dataset": "live",
+  "name": "Durgapur Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 23.529386444444448,
+  "lon": 87.25046738888891,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-440768838"
+  ]
+ },
+ {
+  "id": "OSM-way-733870655",
+  "dataset": "live",
+  "name": "Jhanjra KB & RS Factory",
+  "type": "Industrial site",
+  "lat": 23.63792988888889,
+  "lon": 87.28423066666669,
+  "state": "",
+  "cpcbCategory": null,
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-733870655"
+  ]
+ },
+ {
+  "id": "OSM-way-982810626",
+  "dataset": "live",
+  "name": "Tara (East & West) Coal Mine",
+  "type": "Mine / quarry",
+  "lat": 23.455650249999994,
+  "lon": 87.23711758333333,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-982810626"
+  ]
+ },
+ {
+  "id": "OSM-way-987918498",
+  "dataset": "live",
+  "name": "Durgapur SAIL power station",
+  "type": "Thermal power plant",
+  "lat": 23.5515952,
+  "lon": 87.247838,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-987918498"
+  ]
+ },
+ {
+  "id": "OSM-way-988613851",
+  "dataset": "live",
+  "name": "MAOHUSUDANPUR 7 PIT & INCLINE",
+  "type": "Mine / quarry",
+  "lat": 23.630318857142857,
+  "lon": 87.19759309523809,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-988613851"
+  ]
+ },
+ {
+  "id": "OSM-way-1265285557",
+  "dataset": "live",
+  "name": "Jai Balaji (Shri Ramrupai Balaji) Steel Captive Power Plant",
+  "type": "Thermal power plant",
+  "lat": 23.482431400000003,
+  "lon": 87.35855919999999,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-1265285557"
+  ]
+ },
+ {
+  "id": "OSM-way-66665052",
+  "dataset": "live",
+  "name": "Barauni Oil Refinery",
+  "type": "Oil refinery",
+  "lat": 25.433733499999995,
+  "lon": 86.05778764705884,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-way-66665052"
+  ]
+ },
+ {
+  "id": "OSM-relation-13875985",
+  "dataset": "live",
+  "name": "Barauni Thermal Power Station",
+  "type": "Thermal power plant",
+  "lat": 25.400542488888888,
+  "lon": 86.0239574,
+  "state": "",
+  "cpcbCategory": "Red",
+  "cpcbSource": "Derived from industry type (CPCB 2016 categorisation) — not an official per-facility record",
+  "routineSources": [],
+  "kiln": false,
+  "mappedSince": null,
+  "source": "OpenStreetMap via Overpass bulk load",
+  "refreshedAt": "2026-09-29T11:06:04.248Z",
+  "polygonIds": [
+   "OSM-relation-13875985"
+  ]
+ }
+]

@@ -1,0 +1,21 @@
+# Local PostGIS for SATFIRE (dev only). Bound to localhost; credentials are dev defaults and can be
+# overridden with SATFIRE_DB_PASSWORD. Matching DATABASE_URL:
+#   postgres://satfire:satfire_dev@localhost:5433/satfire
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: satfire
+      POSTGRES_PASSWORD: ${SATFIRE_DB_PASSWORD:-satfire_dev}
+      POSTGRES_DB: satfire
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - satfire_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U satfire -d satfire"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  satfire_pg:

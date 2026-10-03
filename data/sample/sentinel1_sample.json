@@ -1,0 +1,38 @@
+[
+ {
+  "siteKey": "FAC-001",
+  "status": "supports",
+  "coherenceDrop": 0.42,
+  "preDate": "2026-04-17",
+  "postDate": "2026-04-23",
+  "detail": "Coherence loss between pre- and post-event passes over the process area; consistent with structural or surface change.",
+  "sample": true
+ },
+ {
+  "siteKey": "FAC-003",
+  "status": "pending",
+  "coherenceDrop": null,
+  "preDate": "2026-04-17",
+  "postDate": null,
+  "detail": "Post-event pass not yet acquired (revisit is days).",
+  "sample": true
+ },
+ {
+  "siteKey": "FAC-009",
+  "status": "does_not_support",
+  "coherenceDrop": 0.04,
+  "preDate": "2026-04-17",
+  "postDate": "2026-04-23",
+  "detail": "No coherence change over the flare area.",
+  "sample": true
+ },
+ {
+  "siteKey": "CELL-20.37-72.93",
+  "status": "sar_baseline_unavailable",
+  "coherenceDrop": null,
+  "preDate": null,
+  "postDate": "2026-04-23",
+  "detail": "No pre-event SAR baseline for this location.",
+  "sample": true
+ }
+]

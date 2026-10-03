@@ -1,0 +1,877 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-001",
+   "properties": {
+    "id": "POLY-FAC-001",
+    "tag": "industrial",
+    "facilityId": "FAC-001",
+    "name": "Paradip Petrochemical Processing Complex",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2019-06-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "petrochemical",
+     "name": "Paradip Petrochemical Processing Complex"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       86.648576,
+       20.285007
+      ],
+      [
+       86.675424,
+       20.285007
+      ],
+      [
+       86.675424,
+       20.302993
+      ],
+      [
+       86.648576,
+       20.302993
+      ],
+      [
+       86.648576,
+       20.285007
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-002",
+   "properties": {
+    "id": "POLY-FAC-002",
+    "tag": "industrial",
+    "facilityId": "FAC-002",
+    "name": "Jamnagar Refinery — Flare Yard",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2016-03-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "refinery",
+     "name": "Jamnagar Refinery — Flare Yard"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       69.994493,
+       22.372208
+      ],
+      [
+       70.029507,
+       22.372208
+      ],
+      [
+       70.029507,
+       22.393792
+      ],
+      [
+       69.994493,
+       22.393792
+      ],
+      [
+       69.994493,
+       22.372208
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-003",
+   "properties": {
+    "id": "POLY-FAC-003",
+    "tag": "industrial",
+    "facilityId": "FAC-003",
+    "name": "Korba Thermal Power Station",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "power": "plant",
+     "name": "Korba Thermal Power Station"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       82.668329,
+       22.375007
+      ],
+      [
+       82.691671,
+       22.375007
+      ],
+      [
+       82.691671,
+       22.392993
+      ],
+      [
+       82.668329,
+       22.392993
+      ],
+      [
+       82.668329,
+       22.375007
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-004",
+   "properties": {
+    "id": "POLY-FAC-004",
+    "tag": "quarry",
+    "facilityId": "FAC-004",
+    "name": "Jharia Coal Mine Complex",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2014-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "quarry",
+     "resource": "coal",
+     "name": "Jharia Coal Mine Complex"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       86.388444,
+       23.694014
+      ],
+      [
+       86.437556,
+       23.694014
+      ],
+      [
+       86.437556,
+       23.729986
+      ],
+      [
+       86.388444,
+       23.729986
+      ],
+      [
+       86.388444,
+       23.694014
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-005",
+   "properties": {
+    "id": "POLY-FAC-005",
+    "tag": "industrial",
+    "facilityId": "FAC-005",
+    "name": "Kakinada LNG Terminal",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2018-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "port",
+     "name": "Kakinada LNG Terminal"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       82.272538,
+       16.955705
+      ],
+      [
+       82.289462,
+       16.955705
+      ],
+      [
+       82.289462,
+       16.968295
+      ],
+      [
+       82.272538,
+       16.968295
+      ],
+      [
+       82.272538,
+       16.955705
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-006",
+   "properties": {
+    "id": "POLY-FAC-006",
+    "tag": "industrial",
+    "facilityId": "FAC-006",
+    "name": "Bhilai Steel Plant",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "steelmaking",
+     "name": "Bhilai Steel Plant"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       81.364567,
+       21.183309
+      ],
+      [
+       81.395433,
+       21.183309
+      ],
+      [
+       81.395433,
+       21.206691
+      ],
+      [
+       81.364567,
+       21.206691
+      ],
+      [
+       81.364567,
+       21.183309
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-007",
+   "properties": {
+    "id": "POLY-FAC-007",
+    "tag": "industrial",
+    "facilityId": "FAC-007",
+    "name": "Talcher Fertilizer Complex",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2017-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "chemical",
+     "name": "Talcher Fertilizer Complex"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       85.194296,
+       20.937705
+      ],
+      [
+       85.209704,
+       20.937705
+      ],
+      [
+       85.209704,
+       20.950295
+      ],
+      [
+       85.194296,
+       20.950295
+      ],
+      [
+       85.194296,
+       20.937705
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-008",
+   "properties": {
+    "id": "POLY-FAC-008",
+    "tag": "industrial",
+    "facilityId": "FAC-008",
+    "name": "Vindhyachal Super Thermal Power Station",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "power": "plant",
+     "name": "Vindhyachal Super Thermal Power Station"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       82.659193,
+       24.085107
+      ],
+      [
+       82.684807,
+       24.085107
+      ],
+      [
+       82.684807,
+       24.104893
+      ],
+      [
+       82.659193,
+       24.104893
+      ],
+      [
+       82.659193,
+       24.085107
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-009",
+   "properties": {
+    "id": "POLY-FAC-009",
+    "tag": "industrial",
+    "facilityId": "FAC-009",
+    "name": "Haldia Petrochemical Refinery",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2016-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "refinery",
+     "name": "Haldia Petrochemical Refinery"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       88.105415,
+       22.052107
+      ],
+      [
+       88.132585,
+       22.052107
+      ],
+      [
+       88.132585,
+       22.071893
+      ],
+      [
+       88.105415,
+       22.071893
+      ],
+      [
+       88.105415,
+       22.052107
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-010",
+   "properties": {
+    "id": "POLY-FAC-010",
+    "tag": "quarry",
+    "facilityId": "FAC-010",
+    "name": "Neyveli Lignite Mine",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2014-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "quarry",
+     "resource": "lignite",
+     "name": "Neyveli Lignite Mine"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       79.454047,
+       11.593215
+      ],
+      [
+       79.499953,
+       11.593215
+      ],
+      [
+       79.499953,
+       11.632785
+      ],
+      [
+       79.454047,
+       11.632785
+      ],
+      [
+       79.454047,
+       11.593215
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-011",
+   "properties": {
+    "id": "POLY-FAC-011",
+    "tag": "industrial",
+    "facilityId": "FAC-011",
+    "name": "Visakhapatnam Steel Plant",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "steelmaking",
+     "name": "Visakhapatnam Steel Plant"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       83.183845,
+       17.618208
+      ],
+      [
+       83.212155,
+       17.618208
+      ],
+      [
+       83.212155,
+       17.639792
+      ],
+      [
+       83.183845,
+       17.639792
+      ],
+      [
+       83.183845,
+       17.618208
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-012",
+   "properties": {
+    "id": "POLY-FAC-012",
+    "tag": "industrial",
+    "facilityId": "FAC-012",
+    "name": "Mathura Refinery",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2016-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "refinery",
+     "name": "Mathura Refinery"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       77.661848,
+       27.480906
+      ],
+      [
+       77.684152,
+       27.480906
+      ],
+      [
+       77.684152,
+       27.497094
+      ],
+      [
+       77.661848,
+       27.497094
+      ],
+      [
+       77.661848,
+       27.480906
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-013",
+   "properties": {
+    "id": "POLY-FAC-013",
+    "tag": "industrial",
+    "facilityId": "FAC-013",
+    "name": "Durgapur Steel & Power Cluster",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "steelmaking",
+     "name": "Durgapur Steel & Power Cluster"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       87.279247,
+       23.539007
+      ],
+      [
+       87.304753,
+       23.539007
+      ],
+      [
+       87.304753,
+       23.556993
+      ],
+      [
+       87.279247,
+       23.556993
+      ],
+      [
+       87.279247,
+       23.539007
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-014",
+   "properties": {
+    "id": "POLY-FAC-014",
+    "tag": "industrial",
+    "facilityId": "FAC-014",
+    "name": "Barauni Refinery",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2016-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "refinery",
+     "name": "Barauni Refinery"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       86.011041,
+       25.434805
+      ],
+      [
+       86.030959,
+       25.434805
+      ],
+      [
+       86.030959,
+       25.449195
+      ],
+      [
+       86.011041,
+       25.449195
+      ],
+      [
+       86.011041,
+       25.434805
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FAC-015",
+   "properties": {
+    "id": "POLY-FAC-015",
+    "tag": "industrial",
+    "facilityId": "FAC-015",
+    "name": "Newly mapped chemical unit (sample), Bharuch district",
+    "cpcbCategory": "Red",
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2026-03-10T00:00:00Z",
+    "osmTags": {
+     "landuse": "industrial",
+     "industrial": "chemical",
+     "name": "Newly mapped chemical unit (sample), Bharuch district"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       72.576192,
+       21.696503
+      ],
+      [
+       72.587808,
+       21.696503
+      ],
+      [
+       72.587808,
+       21.705497
+      ],
+      [
+       72.576192,
+       21.705497
+      ],
+      [
+       72.576192,
+       21.696503
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-AGRI-LDH",
+   "properties": {
+    "id": "POLY-AGRI-LDH",
+    "tag": "farmland",
+    "facilityId": null,
+    "name": "Farmland, Ludhiana district, Punjab",
+    "cpcbCategory": null,
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "farmland",
+     "name": "Farmland, Ludhiana district, Punjab"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       75.307021,
+       31.127717
+      ],
+      [
+       75.380579,
+       31.127717
+      ],
+      [
+       75.380579,
+       31.172683
+      ],
+      [
+       75.307021,
+       31.172683
+      ],
+      [
+       75.307021,
+       31.127717
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-AGRI-KNL",
+   "properties": {
+    "id": "POLY-AGRI-KNL",
+    "tag": "farmland",
+    "facilityId": null,
+    "name": "Farmland, Karnal district, Haryana",
+    "cpcbCategory": null,
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "farmland",
+     "crop": "wheat",
+     "name": "Farmland, Karnal district, Haryana"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       76.951046,
+       29.659017
+      ],
+      [
+       77.013154,
+       29.659017
+      ],
+      [
+       77.013154,
+       29.703983
+      ],
+      [
+       76.951046,
+       29.703983
+      ],
+      [
+       76.951046,
+       29.659017
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FOR-SIM",
+   "properties": {
+    "id": "POLY-FOR-SIM",
+    "tag": "forest",
+    "facilityId": null,
+    "name": "Similipal forest, Odisha",
+    "cpcbCategory": null,
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "landuse": "forest",
+     "boundary": "national_park",
+     "name": "Similipal forest, Odisha"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       86.197678,
+       21.804082
+      ],
+      [
+       86.430322,
+       21.804082
+      ],
+      [
+       86.430322,
+       22.019918
+      ],
+      [
+       86.197678,
+       22.019918
+      ],
+      [
+       86.197678,
+       21.804082
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "POLY-FOR-UK",
+   "properties": {
+    "id": "POLY-FOR-UK",
+    "tag": "forest",
+    "facilityId": null,
+    "name": "Reserve forest, Pauri Garhwal, Uttarakhand",
+    "cpcbCategory": null,
+    "source": "SAMPLE geometry (approximate, hand-drawn around the facility location)",
+    "refreshedAt": "2026-04-01T00:00:00Z",
+    "mappedSince": "2015-01-01T00:00:00Z",
+    "osmTags": {
+     "natural": "wood",
+     "name": "Reserve forest, Pauri Garhwal, Uttarakhand"
+    }
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       79.218956,
+       30.008361
+      ],
+      [
+       79.406044,
+       30.008361
+      ],
+      [
+       79.406044,
+       30.170239
+      ],
+      [
+       79.218956,
+       30.170239
+      ],
+      [
+       79.218956,
+       30.008361
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,7 +1,8 @@
 -- SATFIRE v3 PostGIS schema. Based on v3_execution_checklist.md §5:
 --   * GiST indexes are on the SAME type the queries use (geom::geography)
 --   * inserts are idempotent on (sensor, acq_time, lat, lon)
---   * nearest facility wins; runner-ups are kept; no rows = unmapped
+--   * nearest facility wins, with categorical tag priority (industrial > quarry >
+--     forest > farmland) breaking distance ties; runner-ups are kept; no rows = unmapped
 -- Additions: dataset column (live / sample), provenance and attribution versioning,
 -- events-derived alerts (DB-first dispatch), operator reviews (gold set), ingest log.
 -- Idempotent: safe to run repeatedly (npm run db:init).

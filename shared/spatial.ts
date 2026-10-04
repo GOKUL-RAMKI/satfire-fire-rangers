@@ -1,6 +1,7 @@
 // In-memory spatial join with the same semantics as the PostGIS query in db/schema.sql:
-//   ST_DWithin(detection, polygon, buffer) on geography, ordered by distance, top 3,
-//   rank 1 wins, ranks 2-3 are runner-ups, no rows = unmapped.
+//   ST_DWithin(detection, polygon, buffer) on geography, ordered by distance, then by
+//   categorical tag priority (industrial > quarry > forest > farmland), then polygon id;
+//   top 3, rank 1 wins, ranks 2-3 are runner-ups, no rows = unmapped.
 // The fence-line buffer is the Dozier fire radius clamped to a geolocation floor and
 // cap: VIIRS geolocation is ~50-100 m at nadir and worse at edge, so a few-metre
 // fire radius alone would turn near-miss polygons into false unmapped candidates.
@@ -17,6 +18,28 @@ import type {
 } from "./types.ts";
 
 export const SPATIAL = { maxBufferM: 150, minBufferM: 100, nominalPixelM: 375, topN: 3 };
+
+/**
+ * Categorical priority for overlapping polygons. High-risk industrial areas win
+ * tie-breakers over generic land-use tags: a 0 m industrial + 0 m forest overlap
+ * (e.g. a coal mine inside a forest polygon) must attribute to the mine, because
+ * the reporting and danger levels of an industrial fire outweigh the generic tag.
+ * Distance still dominates: a nearer polygon always beats a farther one.
+ */
+export const TAG_PRIORITY: Record<LandTag, number> = {
+  industrial: 0,
+  quarry: 1,
+  forest: 2,
+  farmland: 3,
+};
+
+export function compareMatches(a: FacilityMatch, b: FacilityMatch): number {
+  return (
+    a.distanceM - b.distanceM ||
+    (TAG_PRIORITY[a.tag] ?? 99) - (TAG_PRIORITY[b.tag] ?? 99) ||
+    a.polygonId.localeCompare(b.polygonId)
+  );
+}
 
 export interface PolygonIndex {
   features: { f: PolygonFeature; polys: number[][][][]; bbox: [number, number, number, number] }[];
@@ -82,7 +105,7 @@ export function joinPoint(index: PolygonIndex, lat: number, lon: number, bufferM
     });
   }
   return hits
-    .sort((a, b) => a.distanceM - b.distanceM || a.polygonId.localeCompare(b.polygonId))
+    .sort(compareMatches)
     .slice(0, SPATIAL.topN)
     .map((h, i) => ({ ...h, rank: i + 1 }));
 }
@@ -156,7 +179,12 @@ export function eventContext(
       if (d.match.distanceM < v.m.distanceM) v.m = d.match;
     } else votes.set(d.match.polygonId, { m: d.match, n: 1 });
   }
-  const ranked = [...votes.values()].sort((a, b) => b.n - a.n || a.m.distanceM - b.m.distanceM);
+  const ranked = [...votes.values()].sort(
+    (a, b) =>
+      b.n - a.n ||
+      (TAG_PRIORITY[a.m.tag] ?? 99) - (TAG_PRIORITY[b.m.tag] ?? 99) ||
+      a.m.distanceM - b.m.distanceM,
+  );
   const winner = ranked[0]?.m ?? null;
   const others = new Map<string, FacilityMatch>();
   for (const d of detections)
@@ -166,7 +194,7 @@ export function eventContext(
         if (!prev || m.distanceM < prev.distanceM) others.set(m.polygonId, m);
       }
   const runnerUps = [...others.values()]
-    .sort((a, b) => a.distanceM - b.distanceM)
+    .sort(compareMatches)
     .slice(0, SPATIAL.topN - 1)
     .map((m, i) => ({ ...m, rank: i + 2 }));
 

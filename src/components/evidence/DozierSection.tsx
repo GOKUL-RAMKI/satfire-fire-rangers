@@ -1,5 +1,5 @@
 import type { Detection, DozierResult } from "../../../shared/types.ts";
-import { fmtNum, fmtRange, fmtTime, pText, tfText } from "../../lib/format";
+import { fmtNum, fmtRange, fmtTime, isNarrowTfRange, pText, tfText } from "../../lib/format";
 import { FlagChip } from "../badges";
 import { Kv, Section } from "../panels";
 
@@ -33,6 +33,10 @@ export function DozierSection({ dozier, detections }: { dozier: DozierResult; de
           </div>
           <div className="text-[11px] leading-snug text-faint">
             The solve is repeated across the background band; the spread is reported as a range, never collapsed to one exact number.
+            {isNarrowTfRange(dozier) && (
+              <> A {fmtRange(dozier.tfRangeC, "°C")} display means the physical spread is below the 0.1 °C display precision
+              {dozier.backgroundSource === "default_300K" ? " (default 300 K background, no neighbour pixels)" : ""} — not a missing range.</>
+            )}
           </div>
         </div>
       </div>
@@ -66,7 +70,10 @@ export function DozierSection({ dozier, detections }: { dozier: DozierResult; de
                 <td className="px-1.5 py-1">{fmtNum(d.brightI5K)}</td>
                 <td className="px-1.5 py-1">{d.dozier.status.replaceAll("_", " ")}</td>
                 <td className="px-1.5 py-1 whitespace-nowrap">{tfCell(d.dozier)}</td>
-                <td className="px-1.5 py-1 whitespace-nowrap">{fmtRange(d.dozier.tfRangeC, "")}</td>
+                <td className="px-1.5 py-1 whitespace-nowrap">
+                  {fmtRange(d.dozier.tfRangeC, "")}
+                  {isNarrowTfRange(d.dozier) && <span className="text-faint"> (narrow)</span>}
+                </td>
                 <td className="px-1.5 py-1 whitespace-nowrap">{fmtRange(d.dozier.pRangePct, "", 4)}</td>
                 <td className="px-1.5 py-1">{fmtNum(d.bufferM, 0)}</td>
                 <td className="px-1.5 py-1">

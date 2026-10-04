@@ -8,7 +8,9 @@ import { lifecycleOf, linkDetections } from "../shared/lifecycle.ts";
 import { parseAcqTime, runQualityGate } from "../shared/qualityGate.ts";
 import { tagOf } from "../shared/osmTags.ts";
 import { agriSeason, inKilnSeason } from "../shared/season.ts";
-import type { Detection, DozierResult, FirmsRow, HistoryRecord, Kinematics, SiteContext, SiteHistory } from "../shared/types.ts";
+import { buildPolygonIndex, compareMatches, eventContext, joinPoint } from "../shared/spatial.ts";
+import { isNarrowTfRange, tfText } from "../src/lib/format.ts";
+import type { Detection, DozierResult, FacilityMatch, FirmsRow, HistoryRecord, Kinematics, PolygonCollection, SiteContext, SiteHistory } from "../shared/types.ts";
 
 const A = 0.39 * 0.36 * 1e6;
 
@@ -369,6 +371,85 @@ test("kiln heat outside the operating season is not whitelisted (deviation d)", 
   const c = classify(input({ context: ctx({ kiln: true }), when: "2026-08-10T08:00:00Z" }));
   assert.equal(c.winningRule, "industrial_watch");
   assert.ok(c.flags.includes("kiln_off_season"));
+});
+
+// ---------------------------------------------------------------- Chirimiri follow-ups (overlap priority, thermal veto, Code Red runner-ups)
+
+const polyFeature = (id: string, tag: "industrial" | "quarry" | "forest" | "farmland", cpcb: "Red" | null = null) => ({
+  type: "Feature" as const,
+  id,
+  properties: {
+    id, tag, facilityId: tag === "industrial" ? "F-MINE" : null, name: tag === "industrial" ? "Chirimiri Coal Mine" : null,
+    cpcbCategory: cpcb, source: "test", refreshedAt: "2026-01-01T00:00:00Z", mappedSince: null as string | null, osmTags: {},
+  },
+  geometry: {
+    type: "Polygon" as const,
+    coordinates: [[[80.49, 22.49], [80.51, 22.49], [80.51, 22.51], [80.49, 22.51], [80.49, 22.49]]],
+  },
+});
+
+test("spatial join breaks 0 m ties by tag priority: industrial beats forest regardless of polygon id", () => {
+  // Forest id sorts first lexically, so pure poly_id order would pick it (the old bug).
+  const collection: PolygonCollection = { type: "FeatureCollection", features: [polyFeature("A-FOREST", "forest"), polyFeature("Z-MINE", "industrial", "Red")] };
+  const hits = joinPoint(buildPolygonIndex(collection), 22.5, 80.5, 150);
+  assert.equal(hits.length, 2);
+  assert.equal(hits[0].tag, "industrial");
+  assert.equal(hits[0].rank, 1);
+  assert.equal(hits[1].tag, "forest");
+  // Distance still dominates: a nearer forest beats a farther mine.
+  const near = { ...hits[1], distanceM: 0 };
+  const far = { ...hits[0], distanceM: 50 };
+  assert.ok(compareMatches(near, far) < 0);
+});
+
+test("eventContext majority tie-break prefers industrial over forest at equal pixel counts", () => {
+  const forestHit: FacilityMatch = { polygonId: "A-FOREST", facilityId: null, name: null, tag: "forest", distanceM: 0, rank: 1, cpcbCategory: null, source: "test", refreshedAt: "2026-01-01T00:00:00Z", mappedSince: null, attributionVersion: 1, osmTags: {} };
+  const mineHit: FacilityMatch = { ...forestHit, polygonId: "Z-MINE", facilityId: "F-MINE", name: "Chirimiri Coal Mine", tag: "industrial", cpcbCategory: "Red" };
+  const opts = { worldCover: null, worldCoverSource: "unavailable" as const, spatialBackend: "memory" as const, attributionVersion: 1, polygonSource: "test", polygonSample: false, facilityTypeOf: () => ({ type: null, kiln: false }) };
+  const dForest = det(22.5, 80.5, "2026-04-21T08:00:00Z", { match: forestHit, runnerUps: [] });
+  const dMine = det(22.5, 80.5, "2026-04-21T20:00:00Z", { match: mineHit, runnerUps: [] });
+  assert.equal(eventContext([dForest, dMine], opts).tag, "industrial");
+});
+
+test("wildfire vetoes unsaturated smoldering heat but keeps saturated and genuinely hot open flame", () => {
+  const forest = ctx({ tag: "forest", match: null, tagSource: "worldcover" });
+  const expanding = kin({ expanding: true, pattern: "radial-expansion", overpasses: 3, pixels: 9 });
+  const smolder = classify(input({ context: forest, dozier: dz(313, 0.5), kinematics: expanding }));
+  assert.notEqual(smolder.winningRule, "wildfire");
+  assert.ok(smolder.flags.includes("wildfire_thermal_veto"));
+  assert.ok(smolder.evidenceAgainst.some((e) => e.includes("vetoed as wildfire")));
+  const hot = classify(input({ context: forest, dozier: dz(900, 0.5), kinematics: expanding }));
+  assert.equal(hot.winningRule, "wildfire");
+  const saturated = classify(input({ context: forest, dozier: dz(null, null, true), kinematics: expanding }));
+  assert.equal(saturated.winningRule, "wildfire");
+});
+
+test("Code Red spatial signal sees a CPCB Red runner-up behind a non-Red primary", () => {
+  const red = { ...ctx().match as FacilityMatch, polygonId: "P2", name: "Neighbour Red plant", cpcbCategory: "Red" as const, rank: 2, distanceM: 0 };
+  const orange = { ...ctx().match as FacilityMatch, cpcbCategory: "Orange" as const };
+  const fire = { dozier: dz(1100, 0.8), history: hist(8), kinematics: kin({ expanding: true, overpasses: 4, pattern: "radial-expansion" }) };
+  // Runner-up Red at 0 m satisfies the spatial check even though the primary is Orange.
+  const viaRunnerUp = classify(input({ ...fire, context: ctx({ match: orange, runnerUps: [red] }) }));
+  assert.equal(viaRunnerUp.tier, "code_red");
+  assert.equal(viaRunnerUp.codeRedRule.satisfied, true);
+  assert.ok(viaRunnerUp.codeRedRule.checks.find((c) => c.name === "spatial")?.detail.includes("runner-up"));
+  // No Red anywhere -> Alert, not Code Red.
+  const noRed = classify(input({ ...fire, context: ctx({ match: orange, runnerUps: [] }) }));
+  assert.equal(noRed.tier, "alert");
+  assert.equal(noRed.codeRedRule.satisfied, false);
+  // A Red runner-up across the fence (5 m, not inside) does not count.
+  const acrossFence = classify(input({ ...fire, context: ctx({ match: orange, runnerUps: [{ ...red, distanceM: 5 }] }) }));
+  assert.equal(acrossFence.codeRedRule.satisfied, false);
+});
+
+test("degenerate Dozier range is explained as display precision, never collapsed to a bare number", () => {
+  const narrow: DozierResult = { ...dz(313.1, 0.05), tfRangeC: [313.1, 313.1], backgroundSource: "default_300K", flags: ["background_default", "range_narrow"] };
+  assert.equal(isNarrowTfRange(narrow), true);
+  assert.ok(tfText(narrow).includes("313"));
+  assert.ok(tfText(narrow).includes("313–313"));
+  assert.ok(tfText(narrow).includes("below 0.1"));
+  assert.ok(tfText(narrow).includes("default 300 K"));
+  assert.equal(isNarrowTfRange({ ...narrow, tfRangeC: [300.1, 313.1] }), false);
 });
 
 // ---------------------------------------------------------------- history

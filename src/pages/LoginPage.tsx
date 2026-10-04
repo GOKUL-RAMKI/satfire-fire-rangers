@@ -12,9 +12,13 @@ export default function LoginPage({ onLogin, notice }: { onLogin: (u: User) => v
     setBusy(true);
     setErr(null);
     try {
-      onLogin(await api.login(username, password));
+      const user = await api.login(username, password);
+      setPassword("");
+      setUsername("");
+      onLogin(user);
     } catch (x) {
       setErr(errorText(x));
+    } finally {
       setBusy(false);
     }
   };

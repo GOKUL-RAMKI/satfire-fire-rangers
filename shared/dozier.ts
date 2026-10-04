@@ -80,6 +80,10 @@ export function dozierUnmix(
   const tfRangeC: [number, number] = [r1(Math.min(...tfC)), r1(Math.max(...tfC))];
   const pRangePct: [number, number] = [r4(Math.min(...pPct)), r4(Math.max(...pPct))];
   if (tfRangeC[1] - tfRangeC[0] > 300 || pRangePct[1] > 2 * Math.max(pRangePct[0], 1e-6)) flags.push("range_wide");
+  // A 1-decimal display can render a genuinely narrow physical spread as a
+  // degenerate-looking range (e.g. 313.1–313.1 °C). Flag it so the UI can explain
+  // the precision limit instead of looking like a collapsed single number.
+  if (tfRangeC[0] === tfRangeC[1]) flags.push("range_narrow");
 
   return {
     ...base,

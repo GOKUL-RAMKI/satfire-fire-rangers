@@ -11,6 +11,12 @@
 //   d) brick-kiln seasonal check: kiln heat outside the operating season is never whitelisted
 //   e) wildfire accepts radial as well as irregular expansion inside forest
 //   f) detections held by the quality gate (low confidence) are classified provisional
+//   g) wildfire has a thermal sanity veto: unsaturated forest expansion below
+//      RULES.wildfireMinC (450 °C) is not an open flame (e.g. smoldering coal) —
+//      the rule does not fire and the veto is flagged + logged in the trace
+//   h) Code Red spatial signal scans the primary match AND runner-ups for a CPCB Red
+//      industrial polygon at 0 m (overlapping mine under a generic forest polygon)
+//      — the other three signals must still agree, and only industrial_fire escalates
 // Thresholds are starting rules to be tuned on data (Phase 8).
 
 import { CLASS_ACTIONS, PRECEDENCE, RULE_TO_CLASS } from "./labels.ts";
@@ -39,6 +45,8 @@ export const RULES = {
   watchX: 1.5,
   routineX: 1.5,
   miningMaxC: 400,
+  /** Open-flame wildfire floor: smoldering heat (< this, unsaturated) vetoes the wildfire rule. */
+  wildfireMinC: 450,
   codeRedX: 5,
   codeRedOverpasses: 3,
 };
@@ -136,8 +144,18 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
     `industrial=${ind}, hot=${hot}, expanding=${k.expanding}, deviation ${coldStart ? "cold start" : `${dev}×`} (≥${RULES.watchX}×), tiny=${tiny}${kilnOffSeason ? ", kiln off-season" : ""}`,
   ]);
 
-  const wildfire = c.tag === "forest" && (k.pattern === "irregular-expansion" || k.pattern === "radial-expansion");
-  checks.push(["wildfire", wildfire, `forest=${c.tag === "forest"}, pattern=${k.pattern}`]);
+  // Thermal sanity veto: smoldering heat (e.g. ~313 °C coal-seam fire) is the classic
+  // signature of oxygen-starved subsurface burning, not an open spreading forest flame.
+  // Unsaturated forest expansion below wildfireMinC is vetoed instead of routed to NDRF.
+  const wildfireShape = c.tag === "forest" && (k.pattern === "irregular-expansion" || k.pattern === "radial-expansion");
+  const wildfireThermalOk = d.saturated || (d.tfCentralC ?? -Infinity) >= RULES.wildfireMinC;
+  const wildfire = wildfireShape && wildfireThermalOk;
+  if (wildfireShape && !wildfireThermalOk) flags.push("wildfire_thermal_veto");
+  checks.push([
+    "wildfire",
+    wildfire,
+    `forest=${c.tag === "forest"}, pattern=${k.pattern}, thermal=${wildfireThermalOk ? "ok" : "vetoed"} (Tf ${t(d.tfCentralC)}${d.saturated ? ", saturated" : ""} needs ≥${RULES.wildfireMinC} °C or saturation)`,
+  ]);
 
   const agri = c.tag === "farmland" && (k.pattern === "linear-field" || fieldBound);
   const inSeason = season?.inSeason ?? false;
@@ -193,6 +211,13 @@ function codeRedRule(input: ClassifyInput) {
   const { dozier: d, context: c, history: h, kinematics: k } = input;
   const hot = d.saturated || (d.tfCentralC ?? 0) >= RULES.hotC;
   const dev = h.deviationX;
+  // The trigger scans every overlapping polygon, not just the winner: a CPCB Red
+  // facility in any runner-up (e.g. a coal mine under a generic forest polygon, or a
+  // plant just across the fence line) still counts as the spatial signal. The other
+  // three signals must still agree, and the tier only escalates an industrial_fire.
+  const redHit = [c.match, ...c.runnerUps].find(
+    (m) => m && m.tag === "industrial" && m.distanceM === 0 && m.cpcbCategory === "Red",
+  );
   const checks = [
     {
       name: "thermal",
@@ -201,8 +226,10 @@ function codeRedRule(input: ClassifyInput) {
     },
     {
       name: "spatial",
-      ok: c.tag === "industrial" && c.match?.distanceM === 0 && c.match?.cpcbCategory === "Red",
-      detail: `inside mapped facility=${c.match?.distanceM === 0}, CPCB ${c.match?.cpcbCategory ?? "—"} (needs Red)`,
+      ok: redHit !== undefined,
+      detail: redHit
+        ? `CPCB Red facility involved: ${redHit.name ?? redHit.polygonId} (${redHit.rank === 1 ? "primary" : "runner-up"} rank ${redHit.rank}, ${redHit.distanceM} m)`
+        : `no CPCB Red industrial polygon at 0 m (primary: ${c.match?.polygonId ?? "none"}${c.runnerUps.length ? `, ${c.runnerUps.length} runner-up(s) checked` : ""})`,
     },
     {
       name: "kinematic",
@@ -300,6 +327,12 @@ function evidence(input: ClassifyInput, season: SeasonInfo | null) {
   )
     a.push("Weak-thermal unmapped shape (single static daytime pixel, wide Dozier range) — held for review without Alert tier");
   if (c.runnerUps.length) a.push(`Ambiguous attribution: ${c.runnerUps.length} runner-up polygon(s) within buffer`);
+  if (
+    c.tag === "forest" &&
+    (k.pattern === "irregular-expansion" || k.pattern === "radial-expansion") &&
+    !d.saturated && (d.tfCentralC ?? -Infinity) < RULES.wildfireMinC
+  )
+    a.push(`Forest expansion vetoed as wildfire: unsaturated T_f below ${RULES.wildfireMinC} °C matches smoldering, not open flame`);
   if (h.coldStart) a.push(`Cold start: ${h.coldStartReason} — routed to manual review`);
   else f.push(`Site history ${h.pattern}: ${h.activeDays} active days, baseline ${h.baselineFrpMW} MW, current ${h.currentFrpMW} MW (${h.deviationX}×)`);
   f.push(`Kinematics: ${k.pattern}, ${k.pixels} pixel(s) over ${k.overpasses} overpass(es)${k.expanding ? ", expanding" : ", not expanding"}`);

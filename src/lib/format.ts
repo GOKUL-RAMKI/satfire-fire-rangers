@@ -25,8 +25,17 @@ export function tfText(d: DozierResult): string {
     return lb !== null && lb !== undefined ? `≥ ${fmtNum(lb, 0)} °C (lower bound, I4 saturated)` : "lower bound only (I4 saturated)";
   }
   if (d.tfCentralC === null) return d.status.replaceAll("_", " ");
-  return `≈ ${fmtNum(d.tfCentralC, 0)} °C (range ${fmtRange(d.tfRangeC, "°C")})`;
+  const base = `≈ ${fmtNum(d.tfCentralC, 0)} °C (range ${fmtRange(d.tfRangeC, "°C")})`;
+  // A degenerate-looking range (313.1–313.1 °C) is a display-precision artefact of a
+  // genuinely narrow spread, usually with the default 300 K background — say so.
+  if (d.tfRangeC && d.tfRangeC[0] === d.tfRangeC[1])
+    return `${base} — spread below 0.1 °C precision${d.backgroundSource === "default_300K" ? " (default 300 K background, no neighbour pixels)" : ""}`;
+  return base;
 }
+
+/** True when the 1-decimal T_f range renders as a degenerate-looking X–X display. */
+export const isNarrowTfRange = (d: DozierResult): boolean =>
+  d.tfRangeC !== null && d.tfRangeC !== undefined && d.tfRangeC[0] === d.tfRangeC[1];
 
 export function pText(d: DozierResult): string {
   if (d.pCentralPct === null) return "—";

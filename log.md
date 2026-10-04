@@ -292,3 +292,77 @@ submitting, and flip the rows if they fail.**
   provisional flavors 666 unsolvable_cool / 207 low_confidence / 43 modis_only. Routine
   non-tiny industrial heat stays in Other per operator call.
 - Verified: typecheck, lint, `npm test` 60/60, integration 3/3, build, backtest unchanged.
+
+## 2026-10-04 — overlap priority, wildfire thermal veto, Code Red runner-up scan, narrow-range display
+
+Friend-review of a Chirimiri-type case (coal mine under a generic forest polygon, ~313 °C
+expanding heat routed to Forest Dept as wildfire) held up on all five claims; fixed four
+engine/UX causes, left precedence order untouched (spec invariant):
+
+- Fix 1 spatial tie-break (`shared/spatial.ts`, `backend/postgis.ts`, `db/schema.sql`):
+  distance still dominates, but 0 m ties now break by tag priority
+  industrial > quarry > forest > farmland, then polygon id. Same semantics in the
+  in-memory join (`compareMatches`/`TAG_PRIORITY`), the PostGIS LATERAL join
+  (`CASE tag ...` in both ORDER BYs) and the event majority vote. Runner-ups were
+  already plumbed end-to-end; they were just ignored for the label.
+- Fix 5 wildfire thermal veto (`shared/classify.ts`, new `RULES.wildfireMinC = 450`):
+  unsaturated forest expansion below 450 °C no longer fires `wildfire` — it falls to
+  `other` with a `wildfire_thermal_veto` flag + trace detail + evidence line (smoldering,
+  not open flame). Saturated and genuinely hot (=450 °C) wildfires unchanged.
+- Fix 3 Code Red (`shared/classify.ts` `codeRedRule`): the spatial check now scans the
+  primary match AND runner-ups for a CPCB Red industrial polygon at 0 m and names which
+  one triggered it. Other three signals must still agree; only `industrial_fire`
+  escalates, so a forest-winner with a Red runner-up shows the signal without a false
+  Code Red tier. Fence-line near-miss (Red at 5 m) still fails — must be inside.
+- Fix 4 Dozier display (`shared/dozier.ts`, `src/lib/format.ts`,
+  `src/components/evidence/DozierSection.tsx`): 1-decimal rounding can render a narrow
+  spread as `313–313 °C`. The range tuple is still reported (never a bare number); new
+  `range_narrow` flag plus `tfText`/`isNarrowTfRange` explain it as below-0.1 °C precision
+  (usually default 300 K background) in the header, the explainer line and the table
+  cell. Header comment in `classify.ts` documents veto + runner-up scan as deviations
+  g/h; precedence order NOT changed.
+- Before/after: `npm test` 60/60 ? 65/65 (5 new: 0 m tie-break, vote tie-break, veto,
+  runner-up Red incl. fence-line negative, narrow-range text); typecheck, lint, build
+  pass; `npm run backtest` metrics unchanged (report diff is timestamp-only; strict
+  industrial_fire per-class recall 0.75 is the pre-existing Vapi truth-label caveat,
+  industrialFireRecall 1.00).
+
+## 2026-10-04 — live-history audit (why provisional/unmapped/other stay full)
+
+Question: can MODIS/VIIRS history classify the pile? Audit (PostGIS down,
+`ECONNREFUSED 127.0.0.1:5433`, so file store `data/runtime/store.json` audited):
+- File store: 4,553 live records / 1,730 sites, but max span 3.8 d
+  (2026-09-29..2026-10-03) — 0 sites >= 90 d, so effectively 100% cold start there.
+  Top sites are Raniganj/Jharia-belt coal CELLs + OSM ways.
+- Alerts in file mode: 41 unmapped / 4 industrial_fire / 2 wildfire — mapping gap dominates.
+- Sensor finding: HistoryRecord carries no sensor field, so history is sensor-blind by
+  design. Live fetch pulls VIIRS SNPP+NOAA20+NOAA21 + MODIS (`config.ts:77`); gate merges
+  co-located MODIS into VIIRS corroboration (`qualityGate.ts:171-191`) and lone MODIS
+  stays provisional (`dozierNotApplicable`), but all surviving detections (VIIRS + lone
+  MODIS + provisional) are appended to history (`pipeline.ts:184-187`). Seed script
+  defaults to VIIRS_SNPP_SP only, Jharia+Neyveli belts. No live baselines file exists
+  (`site_baselines_live.json` missing; sample file covers 10 sites) — live falls back to
+  engine median, which still needs records + 90 d span.
+- Structural limits confirmed: provisional returns before history is read; unmapped
+  returns before history rules (history never supplies a tag); `other` is helped only
+  where history makes mining/persistent/industrial-watch fire. 1 km MODIS FRP mixing
+  with 375 m VIIRS FRP in one baseline is an unacknowledged caveat — per-sensor history
+  would need a HistoryRecord schema change (proposed, not implemented).
+
+## 2026-10-04 — full-belt seed verified + live baselines built (steps 3-4)
+
+User seeded 6 belts x VIIRS_SNPP_SP x 12 mo: 48,045 rows accepted, 0 rejections,
+35,941 inserted (rest idempotent overlap with the earlier Jharia/Neyveli seed).
+Step 3 audit of PostGIS live (53,174 detections, all keyed): sensors VIIRS_SNPP
+49,690 + NOAA20 1,853 + NOAA21 1,461 (live NRT pulls) + MODIS_TERRA 88 +
+MODIS_AQUA 82 (lone MODIS from live pulls — confirms MODIS enters history as
+sensor-blind FRP records). 513/8,625 keyed sites clear the 90-day span
+(distribution: 513 >= 90 d, 885 at 30-90 d, 7,227 < 30 d — long tail of young
+CELLs graduates via nightly pulls). Top sites span ~364 d (seed + live pulls).
+bbox-4 Korba/Ib matched only 41% (10,069/24,618) vs 69-87% elsewhere — mapping
+gap, not history; those CELLs can only ever be unmapped candidates.
+Step 4: dumped live history and ran site_baselines.py (no --sample) ->
+data/derived/site_baselines_live.json (sample:false): 201 IsolationForest
+baselines / 8,625 sites. Pipeline picks it up as baselinesFor(live); status
+should flip to "IsolationForest inlier median". Label impact pending step 5
+(live pipeline refresh + before/after cold-start/mining/persistent/Code Red).

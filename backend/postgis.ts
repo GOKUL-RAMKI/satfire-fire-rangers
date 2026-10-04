@@ -41,18 +41,21 @@ export async function insertDetections(pool: pg.Pool, detections: Detection[]): 
   return inserted;
 }
 
-// nearest facility wins (rank 1); rank 2-3 are runner-ups stored on the event; no rows = unmapped
+// nearest facility wins (rank 1), with categorical tag priority breaking distance ties
+// (industrial > quarry > forest > farmland); rank 2-3 are runner-ups stored on the event; no rows = unmapped
+const tagOrder = (alias: string) =>
+  `CASE ${alias}.tag WHEN 'industrial' THEN 0 WHEN 'quarry' THEN 1 WHEN 'forest' THEN 2 WHEN 'farmland' THEN 3 ELSE 4 END`;
 const JOIN_SQL = `
 SELECT f.det_key, m.poly_id, m.tag, m.facility_id, m.facility_name, m.cpcb_category, m.source, m.refreshed_at,
        m.mapped_since, m.osm_tags, m.distance_m,
-       ROW_NUMBER() OVER (PARTITION BY f.det_key ORDER BY m.distance_m, m.poly_id) AS rank
+       ROW_NUMBER() OVER (PARTITION BY f.det_key ORDER BY m.distance_m, ${tagOrder("m")}, m.poly_id) AS rank
 FROM firms_detections f
 LEFT JOIN LATERAL (
   SELECT o.poly_id, o.tag, o.facility_id, o.facility_name, o.cpcb_category, o.source, o.refreshed_at, o.mapped_since, o.osm_tags,
          ST_Distance(f.geom::geography, o.geom::geography) AS distance_m
   FROM osm_landuse o
   WHERE o.dataset = f.dataset AND ST_DWithin(f.geom::geography, o.geom::geography, f.buffer_m)
-  ORDER BY distance_m, o.poly_id LIMIT 3
+  ORDER BY distance_m, ${tagOrder("o")}, o.poly_id LIMIT 3
 ) m ON TRUE
 WHERE f.det_key = ANY($1)`;
 

@@ -123,8 +123,8 @@ export function applyRules(input: ClassifyInput, season: SeasonInfo | null): Rul
   if (d.tfCentralC === null && !d.saturated) return early("provisional", `dozier_${d.status}`);
   if (weakUnmappedShape) return early("other", "unmapped_weak_thermal");
   if (c.tag === null && hot) {
-    // Live mode has no land-cover fallback, so an unmapped call there rests on
-    // polygon absence alone — say so explicitly instead of looking certain.
+    // Without a land-cover fallback, an unmapped call rests on polygon absence
+    // alone — say so explicitly instead of looking certain.
     const unverified = c.worldCoverSource === "unavailable" ? "spatial_unverified_no_landcover" : undefined;
     return early("unmapped_industrial_candidate", unverified);
   }
@@ -317,7 +317,7 @@ function evidence(input: ClassifyInput, season: SeasonInfo | null) {
   else if (c.tag === null && hot) f.push("Hot signature with no map match — basis for the unmapped industrial candidate call");
   else a.push("No mapped land-use polygon or land-cover class at this location");
   if (c.tag === null && c.worldCoverSource === "unavailable")
-    a.push("No land-cover fallback in live mode — the unmapped call rests on polygon absence alone");
+    a.push("No land-cover fallback — the unmapped call rests on polygon absence alone");
   if (input.partialHold) a.push("Mixed confidence: some pixels held by the quality gate — classification is less certain");
   if (input.heldByGate && c.tag === null && hot)
     a.push("Hot unmapped signature held provisional for low confidence — review as potential industrial heat, never auto-escalated");

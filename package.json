@@ -24,6 +24,7 @@
     "osm:wri": "node scripts/load-wri.ts",
     "firms:history": "node scripts/fetch-firms-history.ts",
     "seed:history": "node scripts/seed-history.ts",
+    "wc:sample": "node scripts/sample-worldcover.ts",
     "baselines": "python analytics/site_baselines.py",
     "backtest": "python analytics/backtest.py"
   },

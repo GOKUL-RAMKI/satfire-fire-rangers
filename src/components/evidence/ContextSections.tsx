@@ -1,6 +1,6 @@
 import type { Classification, FacilityMatch, Kinematics, SarCheck, SatEvent, SiteContext, SiteHistory } from "../../../shared/types.ts";
 import { fmtDate, fmtNum, fmtTime, SAR_TEXT } from "../../lib/format";
-import { SampleBadge } from "../badges";
+import { FallbackBadge, SampleBadge } from "../badges";
 import { HistoryChart, OverpassChart } from "../charts";
 import { Kv, Section } from "../panels";
 
@@ -35,6 +35,7 @@ export function GeoSection({ ctx }: { ctx: SiteContext }) {
         v={
           <span className="inline-flex items-center gap-1.5">
             {ctx.worldCoverSource === "sample" && <SampleBadge title="WorldCover class is sample data" />}
+            {ctx.worldCoverSource === "live" && <FallbackBadge title="WorldCover class is point-sampled live fallback data" />}
             {ctx.worldCover ?? (ctx.worldCoverSource === "unavailable" ? "unavailable" : "—")}
           </span>
         }

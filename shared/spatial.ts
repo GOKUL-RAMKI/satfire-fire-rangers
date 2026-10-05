@@ -128,7 +128,7 @@ export function featuresInBbox(
   return { features: out, truncated: false };
 }
 
-// ---------------------------------------------------------------- WorldCover (sample layer)
+// ---------------------------------------------------------------- WorldCover (sample points, live point samples)
 
 export interface LandcoverPoint {
   lat: number;
@@ -162,7 +162,7 @@ export function eventContext(
   detections: Detection[],
   opts: {
     worldCover: string | null;
-    worldCoverSource: "sample" | "unavailable";
+    worldCoverSource: "sample" | "live" | "unavailable";
     spatialBackend: "postgis" | "memory";
     attributionVersion: number;
     polygonSource: string;

@@ -76,7 +76,7 @@ export function assembleEvents(detections: Detection[], res: EngineResources): S
       if (!res.landcover) return { worldCover: null, source: "unavailable", place: null };
       const wc = worldCoverAt(res.landcover, lat, lon);
       const place = res.landcover.find((p) => p.place && haversineM(lat, lon, p.lat, p.lon) <= p.radiusKm * 1000)?.place ?? null;
-      return { worldCover: wc, source: "sample", place };
+      return { worldCover: wc, source: res.dataset === "sample" ? "sample" : "live", place };
     },
     historyFor: ({ siteKey, lat, lon, match }) => ({
       records: match

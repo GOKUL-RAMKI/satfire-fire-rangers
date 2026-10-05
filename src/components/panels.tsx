@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { PipelineStatus } from "../../shared/types.ts";
 import { fmtNum, fmtTime } from "../lib/format";
-import { SampleBadge } from "./badges";
+import { FallbackBadge, SampleBadge } from "./badges";
 
 export function StatCard({
   label,
@@ -60,7 +60,7 @@ export function Empty({ children }: { children: ReactNode }) {
   return <div className="rounded border border-dashed border-rule p-4 text-center text-xs text-mute">{children}</div>;
 }
 
-type Row = { k: string; v: ReactNode; tone?: "bad" | "warn"; sample?: boolean };
+type Row = { k: string; v: ReactNode; tone?: "bad" | "warn"; sample?: boolean; fallback?: boolean };
 
 function statusRows(s: PipelineStatus): Row[] {
   const run = s.lastRun;
@@ -98,7 +98,18 @@ function statusRows(s: PipelineStatus): Row[] {
       v: `${s.polygons.source} · ${s.polygons.count} polygons${s.polygons.refreshedAt ? ` · refreshed ${fmtTime(s.polygons.refreshedAt)}` : ""}`,
       sample: s.polygons.sample,
     },
-    { k: "WorldCover", v: s.worldCover === "sample" ? "sample land-cover points" : "unavailable", sample: s.worldCover === "sample", tone: s.worldCover === "unavailable" ? "warn" : undefined },
+    {
+      k: "WorldCover",
+      v:
+        s.worldCover === "sample"
+          ? "sample land-cover points"
+          : s.worldCover === "live"
+            ? "WorldCover v200 point samples (data/runtime)"
+            : "unavailable",
+      sample: s.worldCover === "sample",
+      fallback: s.worldCover === "live",
+      tone: s.worldCover === "unavailable" ? "warn" : undefined,
+    },
     { k: "Site history", v: `${s.history.source} · baselines: ${s.history.baselines}`, sample: /sample/i.test(s.history.source) },
     { k: "Sentinel-1 SAR", v: s.sar === "sample" ? "sample post-event results" : "not available (roadmap)", sample: s.sar === "sample" },
     {
@@ -135,6 +146,7 @@ export function DataStatusPanel({ status }: { status: PipelineStatus | null }) {
               }`}
             >
               {r.sample && <SampleBadge />}
+              {r.fallback && <FallbackBadge />}
               {r.v}
             </span>
           </div>

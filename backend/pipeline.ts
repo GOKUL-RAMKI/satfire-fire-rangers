@@ -30,6 +30,7 @@ import type { Dispatcher } from "./dispatch.ts";
 import { fetchFirms } from "./firms.ts";
 import type { Phraser } from "./llm.ts";
 import { loadLiveLayer, liveLayerIndex } from "./livePolygons.ts";
+import { loadLiveLandcover } from "./worldcover.ts";
 import { attributionVersion, insertDetections, joinDetections, loadPolygons, polygonCount, polygonsInBbox, setSiteKeys } from "./postgis.ts";
 import { loadSample, type SampleBundle } from "./sampleData.ts";
 import { alertId, type Store } from "./store.ts";
@@ -163,6 +164,9 @@ export function createPipeline(deps: {
 
     const reviews: Review[] = await store.listReviews();
     const history: HistoryRecord[] = dataset === "sample" ? sample.history : await store.history("live");
+    // Live land-cover fallback: point-sampled ESA WorldCover when the sampler has
+    // run (data/runtime/landcover_live.json); null preserves "unavailable" otherwise.
+    const liveLandcover = dataset === "sample" ? null : loadLiveLandcover(cfg.root);
     const res: EngineResources = {
       dataset,
       now,
@@ -171,7 +175,7 @@ export function createPipeline(deps: {
       polygonSource: poly.source,
       polygonSample: poly.sample,
       facilities: facilitiesFor(dataset),
-      landcover: dataset === "sample" ? sample.landcover : null,
+      landcover: dataset === "sample" ? sample.landcover : (liveLandcover?.points ?? null),
       history,
       historySource: dataset === "sample" ? "SAMPLE site history (data/sample/site_history.json)" : `Stored live detections (${store.kind})`,
       historySample: dataset === "sample",
@@ -263,7 +267,7 @@ export function createPipeline(deps: {
       spatialBackend: pool ? "postgis" : "memory",
       store: store.kind,
       polygons: { count: poly.fc.features.length, source: poly.source, sample: poly.sample, refreshedAt: poly.refreshedAt },
-      worldCover: dataset === "sample" ? "sample" : "unavailable",
+      worldCover: dataset === "sample" ? "sample" : loadLiveLandcover(cfg.root) ? "live" : "unavailable",
       history: {
         source: dataset === "sample" ? "SAMPLE site history" : `Stored live detections (${store.kind})`,
         baselines: baselinesFor(dataset) ? "IsolationForest inlier median (data/derived)" : "Median per-overpass FRP (computed)",

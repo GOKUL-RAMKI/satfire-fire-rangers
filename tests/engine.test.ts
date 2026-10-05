@@ -452,6 +452,21 @@ test("degenerate Dozier range is explained as display precision, never collapsed
   assert.equal(isNarrowTfRange({ ...narrow, tfRangeC: [300.1, 313.1] }), false);
 });
 
+test("live WorldCover fallback tags unmatched sites exactly like sample points", () => {
+  const opts = { worldCover: "Cropland", worldCoverSource: "live" as const, spatialBackend: "memory" as const, attributionVersion: 1, polygonSource: "test", polygonSample: false, facilityTypeOf: () => ({ type: null, kiln: false }) };
+  const d = det(31.15, 75.34, "2026-04-22T07:30:00Z", { match: null, runnerUps: [] });
+  const c = eventContext([d], opts);
+  assert.equal(c.tag, "farmland");
+  assert.equal(c.tagSource, "worldcover");
+  assert.equal(c.worldCoverSource, "live");
+  // ... and the fallback drains `other` through the rules (off-season field-bound heat).
+  const off = classify(
+    input({ context: ctx({ tag: "farmland", match: null, tagSource: "worldcover", worldCover: "Cropland", worldCoverSource: "live" }), dozier: dz(400, 3), kinematics: kin({ pattern: "single-pixel", pixels: 1, overpasses: 1 }), lat: 31.15, lon: 75.34, when: "2026-07-15T08:00:00Z" }),
+  );
+  assert.equal(off.winningRule, "agri_off_season");
+  assert.equal(off.needsReview, true);
+});
+
 // ---------------------------------------------------------------- history
 
 test("history excludes the current event, detects patterns, and cold-starts young sites", () => {

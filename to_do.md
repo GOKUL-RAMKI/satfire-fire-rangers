@@ -59,8 +59,11 @@ Status as of 2026-09-29. Deadline 30 Sep 2026. Ordered by priority. See `log.md`
   the fallback. Covered earlier: Vijayanagar/JSW Toranagallu bbox.
 - [x] WRI Global Power Plant Database as second anchor: `npm run osm:wri` (1,589 India plants,
   388 thermal circular anchors, OSM wins on overlap). GEM steel / oil & gas trackers still open.
-- [ ] ESA WorldCover bulk tiles for land cover. Live mode currently has no WorldCover (status shows
-  "unavailable"); sample mode uses sample points.
+- [x] ESA WorldCover live fallback (point-sampled, not bulk raster): `npm run wc:sample`
+  (WorldCover v200 COGs sampled at live CELL sites, 8,062 points, 2026-10-04;
+  5,913 farmland + 959 forest tag-bearing; Grassland/Built-up stay untagged by design).
+  Live pipeline prefers `data/runtime/landcover_live.json` when present, else "unavailable".
+  Bulk-raster PostGIS load remains roadmap. Re-run the sampler when new CELL sites appear.
 - [ ] Facility datasets as a second anchor: Global Energy Monitor
   steel/oil & gas trackers, VIIRS Nightfire flare catalogue, and the official CPCB Red category list.
   The CPCB category is currently derived from industry type and labelled as such.

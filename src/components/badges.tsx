@@ -64,6 +64,18 @@ export function SampleBadge({ title = "This layer is sample data, not a live obs
   );
 }
 
+/** Live fallback layer: real data, but point-sampled and coarser than the primary source. */
+export function FallbackBadge({ title = "Fallback layer: real data at coarser resolution than the primary source" }: { title?: string }) {
+  return (
+    <span
+      title={title}
+      className="inline-flex shrink-0 items-center border border-sky-700/50 bg-sky-50 px-1.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wide text-sky-900"
+    >
+      Fallback data
+    </span>
+  );
+}
+
 export function FlagChip({ flag }: { flag: string }) {
   const warn = /cold_start|off_season|held|regional_default|unsolvable|invalid|saturated|range_wide|background_default|capped|high_scan/.test(flag);
   return (

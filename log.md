@@ -366,3 +366,57 @@ data/derived/site_baselines_live.json (sample:false): 201 IsolationForest
 baselines / 8,625 sites. Pipeline picks it up as baselinesFor(live); status
 should flip to "IsolationForest inlier median". Label impact pending step 5
 (live pipeline refresh + before/after cold-start/mining/persistent/Code Red).
+
+## 2026-10-04 — step 5 refresh: seed drains cold start share, mining 2->6
+
+Live pipeline refresh after full-belt seed + site_baselines_live.json (201
+IsolationForest baselines / 8,625 sites). Before -> after: events 904 -> 1,315
+(+411 fresh October fire-season pulls, incl. Punjab/Haryana stubble clusters);
+cold start 895 (99%) -> 1,254 (95%); provisional 639 -> 868; other 256 -> 417;
+mining 2 -> 6 (LONG_SMEAR quarries graduating as predicted); class coverage 5/8.
+History line now "Stored live detections (postgis), baselines: IsolationForest
+inlier median". Verdict: seed works where history is decisive; absolute bucket
+growth is denominator growth (new sites are cold start by definition), so track
+cold-start share + mining/persistent/deviation from here. Provisional/unmapped
+flat-or-growing is expected (structural: gate/physics pre-history, history never
+supplies a tag). Noted: scheduler shows enabled:false — tail graduates only on
+manual refresh until re-enabled. Next: mapping work (Korba/Ib bbox-4 matched only
+41%; CELL-22.04-83.73 CONSISTENT n=1284 stays unmapped candidate despite baseline).
+
+## 2026-10-04 — mapping audit: Korba gap is distance, not tags (WS1 rejected by evidence)
+
+Workstream 1 gap audit over bbox-4 (Korba/Ib, 82.4,21.6,84.2,22.6): 24,916 live
+detections, 14,589 CELL (59% unmapped, matches seed 41% matched). CELL thermal
+split: 433 saturated + 263 hot-unsat (unmapped candidates) vs 13,893 cool
+unsolved (other) + 1,994 gate-provisional. Overpass probe at CELL-22.04-83.73
+found two named quarries (Garjanbahal + Basundhara West, MCL) — but DB check
+shows them 1.3-1.4 km from the cluster center, far outside the 100-150 m
+fence-line buffer. The mines ARE mapped (47 quarries in bbox-4); the fires burn
+beyond attribution range. Near-miss census: 23 CELL within 150 m, 723 at
+150-500 m of quarry/industrial (5%), 2,043 within 500 m of any polygon (14%),
+only 3 hot within 500 m of quarry/industrial. 86% is >500 m from any polygon:
+genuinely unmapped rural heat (fields/scrub/soil), correctly other/unmapped.
+Verdict: tag-filter extension REJECTED — no spoil-heap/pit objects found, tags
+are fine. Reprioritized: WorldCover live fallback first (converts the 13.9k cool
++ stubble clusters to agri logging), GEM coal extents second (captures part of
+the 723 near-miss where lease footprints exceed OSM ways). No code changed;
+scratch audit scripts removed.
+
+## 2026-10-04 — WorldCover live fallback: point-sampled, wired, verified
+
+Replaces bulk-raster ambition with point sampling: `scripts/sample-worldcover.ts`
+(new, `npm run wc:sample`) batches live CELL sites by 3° tile and samples ESA
+WorldCover v200 COGs once per tile (GDAL container over /vsicurl/, HTTP timeouts
+so a stalled tile fails fast; `--tile`, `--radius-km`, `--dry-run` flags; output
+merges so batched runs accumulate). 8,072 CELL sites / 65 tiles -> 8,062 points in
+data/runtime/landcover_live.json (10 nodata at tile ocean edges): 5,913 Cropland
+-> farmland, 959 Tree cover -> forest, 145 Built-up + 1,045 other classes stay
+untagged by design (same WORLDCOVER_TAG as sample). Only consulted when no
+polygon wins, so it can log agri fires and route thermal-ok wildfires but never
+create industrial/Code Red. Wiring: worldCoverSource gains "live"
+(types/buildEvents/spatial/engine), backend/worldcover.ts cached loader,
+pipeline prefers the file (status flips unavailable->live), FallbackBadge (not
+SampleBadge — real data, coarser layer) in status + evidence, stale "no live
+fallback" comments fixed. Tests 65 -> 68 (live-tag parity incl. agri_off_season
+via live fallback, loader missing/present); typecheck/lint/build pass; backtest
+unchanged (sample path untouched). Live delta pending server restart + refresh.

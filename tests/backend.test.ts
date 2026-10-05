@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -10,6 +10,7 @@ import { createPhraser, factCheck } from "../backend/llm.ts";
 import { inWindow, nextRun, parseWindows } from "../backend/scheduler.ts";
 import { startServer } from "../backend/server.ts";
 import { alertId, createFileStore } from "../backend/store.ts";
+import { loadLiveLandcover } from "../backend/worldcover.ts";
 import type { AlertRecord } from "../shared/types.ts";
 
 const tmp = () => mkdtempSync(join(tmpdir(), "satfire-test-"));
@@ -221,4 +222,21 @@ test("API: login is rate-limited after repeated failures", async () => {
   let last = 0;
   for (let i = 0; i < 7; i++) last = (await api("/api/auth/login", { method: "POST", body: JSON.stringify({ username: "x", password: "y" }) })).status;
   assert.equal(last, 429);
+});
+
+test("live WorldCover fallback: missing file means unavailable (today's behaviour preserved)", () => {
+  assert.equal(loadLiveLandcover(join(tmp(), "definitely-missing-root")), null);
+});
+
+test("live WorldCover fallback: loads sampler points when present", () => {
+  const root = tmp();
+  mkdirSync(join(root, "data", "runtime"), { recursive: true });
+  writeFileSync(
+    join(root, "data", "runtime", "landcover_live.json"),
+    JSON.stringify([{ lat: 22.04, lon: 83.73, radiusKm: 1.5, worldCoverClass: "Cropland", place: "CELL-22.04-83.73" }]),
+  );
+  const layer = loadLiveLandcover(root);
+  assert.ok(layer);
+  assert.equal(layer.points.length, 1);
+  assert.ok(layer.source.includes("WorldCover"));
 });

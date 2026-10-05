@@ -111,7 +111,8 @@ export interface SiteContext {
   match: FacilityMatch | null;
   runnerUps: FacilityMatch[];
   worldCover: string | null;
-  worldCoverSource: "sample" | "unavailable";
+  /** sample: sample points; live: ESA WorldCover point samples (data/runtime); unavailable: no fallback. */
+  worldCoverSource: "sample" | "live" | "unavailable";
   spatialBackend: "postgis" | "memory";
   attributionVersion: number;
   facilityType: string | null;
@@ -415,7 +416,7 @@ export interface PipelineStatus {
   spatialBackend: "postgis" | "memory";
   store: "postgis" | "file";
   polygons: { count: number; source: string; sample: boolean; refreshedAt: string | null };
-  worldCover: "sample" | "unavailable";
+  worldCover: "sample" | "live" | "unavailable";
   history: { source: string; baselines: string };
   sar: "sample" | "not_available";
   lastRun: PipelineRunStats | null;

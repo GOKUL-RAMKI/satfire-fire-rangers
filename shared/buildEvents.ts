@@ -17,7 +17,7 @@ export interface BuildEventsDeps {
   polygonSource: string;
   polygonSample: boolean;
   facilityTypeOf: (facilityId: string | null) => { type: string | null; kiln: boolean };
-  worldCoverAt: (lat: number, lon: number) => { worldCover: string | null; source: "sample" | "unavailable"; place: string | null };
+  worldCoverAt: (lat: number, lon: number) => { worldCover: string | null; source: "sample" | "live" | "unavailable"; place: string | null };
   historyFor: (args: { siteKey: string; lat: number; lon: number; match: FacilityMatch | null; eventStart: string }) => {
     records: HistoryRecord[];
     source: string;
